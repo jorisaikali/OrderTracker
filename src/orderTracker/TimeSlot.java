@@ -4,22 +4,26 @@ public class TimeSlot {
 
 	private String time;
 	private String customerName;
+	private String meridiem;
 	
-	public TimeSlot(String t, String cN) {
+	public TimeSlot(String t, String cN, String m) {
 		time = t;
 		customerName = cN;
+		meridiem = m;
 	}
 	
-	public TimeSlot(String t) {
+	public TimeSlot(String t, String m) {
 		time = t;
 		customerName = null;
+		meridiem = m;
 	}
 	
 	public String GetTime() { return time; }
 	public String GetCustomerName() { return customerName; }
+	public String GetMeridiem() { return meridiem; }
 	
 	public void PrintTimeSlot() {
-		System.out.println(time + ", " + customerName);
+		System.out.println(time + meridiem + ", " + customerName);
 	}
 	
 	public void AddCustomer(String name) {
