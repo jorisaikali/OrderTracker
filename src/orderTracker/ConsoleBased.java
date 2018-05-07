@@ -5,10 +5,10 @@ public class ConsoleBased {
 	
 	Scanner reader = new Scanner(System.in);
 	
-	public String[] RunInterfaceConsole() {
+	public String[] RunInterfaceConsole(TimeSlot[] todaysOrders, TimeSlot[] tomorrowsOrders) {
 		
 		System.out.println("Welcome to the Order Tracker.\n\n Please choose one of the following options.");
-		System.out.println("\n 1) Print today's orders.\n 2) Print tomorrow's orders.\n 3) Add a customer's name to a time slot.\n 4) Complete an order with a customers name.\n 5) Quit.");
+		System.out.println("\n 1) Display today's orders.\n 2) Display tomorrow's orders.\n 3) Add a customer's name to a time slot.\n 4) Complete an order with a customers name.\n 5) Quit.");
 		
 		while (true) {
 			System.out.println("\nEnter a number: ");
@@ -20,10 +20,32 @@ public class ConsoleBased {
 			switch(n) {
 				case 1:
 					// Print today's orders
+					System.out.println("\nToday's Orders:\n");
+					
+					for (int i = 0; i < todaysOrders.length; i += 3) {
+						todaysOrders[i].PrintTimeSlot();
+						System.out.print("        ");
+						todaysOrders[i+1].PrintTimeSlot();
+						System.out.print("        ");
+						todaysOrders[i+2].PrintTimeSlot();
+						System.out.println('\n');
+					}
+					
 					break;
 					
 				case 2:
 					// Print tomorrow's orders
+					System.out.println("\nTomorrow's Orders:\n");
+					
+					for (int i = 0; i < tomorrowsOrders.length; i += 3) {
+						tomorrowsOrders[i].PrintTimeSlot();
+						System.out.print("        ");
+						tomorrowsOrders[i+1].PrintTimeSlot();
+						System.out.print("        ");
+						tomorrowsOrders[i+2].PrintTimeSlot();
+						System.out.println('\n');
+					}
+					
 					break;
 			
 				case 3:

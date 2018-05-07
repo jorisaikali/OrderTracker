@@ -55,7 +55,7 @@ public class OrderTracker {
 		TimeSlot[] tomorrowsOrders = ot.initTimeSlots();
 		
 		while(true) {
-			String[] data = cons.RunInterfaceConsole();
+			String[] data = cons.RunInterfaceConsole(todaysOrders, tomorrowsOrders);
 			
 			if (data.length == 3) {
 				

@@ -23,7 +23,7 @@ public class TimeSlot {
 	public String GetMeridiem() { return meridiem; }
 	
 	public void PrintTimeSlot() {
-		System.out.println(time + meridiem + ", " + customerName);
+		System.out.print(time + meridiem + ", " + customerName);
 	}
 	
 	public String WriteTimeSlot() {
