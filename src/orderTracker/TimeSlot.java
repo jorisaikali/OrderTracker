@@ -26,6 +26,10 @@ public class TimeSlot {
 		System.out.println(time + meridiem + ", " + customerName);
 	}
 	
+	public String WriteTimeSlot() {
+		return time + " " + meridiem + "," + customerName + "\n";
+	}
+	
 	public void AddCustomer(String name) {
 		customerName = name;
 	}
