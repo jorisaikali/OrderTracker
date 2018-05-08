@@ -6,7 +6,10 @@
 
 package orderTracker;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
@@ -14,7 +17,7 @@ public class OrderTracker {
 	
 	private TimeSlot[] initTimeSlots() {
 		
-		TimeSlot[] timeSlots = {new TimeSlot("8:00", "Jori", "AM"), new TimeSlot("8:00", "Bob", "AM"), new TimeSlot("8:00", "Kelsey", "AM"), 
+		TimeSlot[] timeSlots = {new TimeSlot("8:00", "AM"), new TimeSlot("8:00", "AM"), new TimeSlot("8:00", "AM"), 
 								new TimeSlot("8:30", "AM"), new TimeSlot("8:30", "AM"), new TimeSlot("8:30", "AM"),
 								new TimeSlot("9:00", "AM"), new TimeSlot("9:00", "AM"), new TimeSlot("9:00", "AM"),
 								new TimeSlot("9:30", "AM"), new TimeSlot("9:30", "AM"), new TimeSlot("9:30", "AM"),
@@ -51,6 +54,81 @@ public class OrderTracker {
 		
 		TimeSlot[] todaysOrders = ot.initTimeSlots();
 		TimeSlot[] tomorrowsOrders = ot.initTimeSlots();
+		
+		String todayFileName = "persistantDataToday.txt";
+		String tomorrowFileName = "persistantDataTomorrow.txt";
+		
+		String line = null;
+		
+		try {
+			FileReader fileReaderToday = new FileReader(todayFileName);
+			
+			BufferedReader bufferedReader = new BufferedReader(fileReaderToday);
+			
+			int count = 0;
+			//System.out.println("C1");
+			while((line = bufferedReader.readLine()) != null) {
+				// Process line and insert to array
+				
+				if (line.equals("")) {
+					continue;
+				}
+				
+				//System.out.println("C2");
+				//System.out.println("line: " + line + ", count: " + count);
+				String[] splitLines = line.split(" ");
+				
+				//System.out.println("C3");
+				//System.out.println(splitLines[2]);
+				if (splitLines[2].equals("null") == false) {
+					//System.out.println("C4, count = " + count);
+					todaysOrders[count].AddCustomer(splitLines[2]);
+					todaysOrders[count].PrintTimeSlot();
+				}
+				else {
+					//System.out.println("C5");
+					count++;
+					continue;
+				}
+				//System.out.println("C6");
+				
+				count++;
+			}
+			
+			count = 0;
+			bufferedReader.close();
+			
+			FileReader fileReaderTomorrow = new FileReader(tomorrowFileName);
+			bufferedReader = new BufferedReader(fileReaderTomorrow);
+			
+			while((line = bufferedReader.readLine()) != null) {
+				// Process line and insert to array
+				
+				if (line.equals("")) {
+					continue;
+				}
+				
+				String[] splitLines = line.split(" ");
+				
+				//System.out.println(splitLines[2]);
+				if (splitLines[2] != null) {
+					tomorrowsOrders[count].AddCustomer(splitLines[2]);
+				}
+				else {
+					continue;
+				}
+				
+				count++;
+			}
+			
+			bufferedReader.close();
+		} 
+		catch(FileNotFoundException ex) {
+			System.out.println("Unable to open file. Creating new ones.");
+		}
+		catch(IOException ex) {
+			System.out.println("Error reading file.");
+		}
 		
 		while(true) {
 			String[] data = cons.RunInterfaceConsole(todaysOrders, tomorrowsOrders);

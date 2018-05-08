@@ -27,7 +27,7 @@ public class TimeSlot {
 	}
 	
 	public String WriteTimeSlot() {
-		return time + " " + meridiem + "," + customerName + "\n";
+		return time + " " + meridiem + " " + customerName + "\n";
 	}
 	
 	public void AddCustomer(String name) {
