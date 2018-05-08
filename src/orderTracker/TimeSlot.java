@@ -27,7 +27,13 @@ public class TimeSlot {
 	}
 	
 	public String WriteTimeSlot() {
-		return time + " " + meridiem + " " + customerName + "\n";
+		String cn = "null";
+		
+		if (customerName != null) {
+			cn = customerName.replace(' ', ';');
+		}
+		
+		return time + " " + meridiem + " " + cn + "\n";
 	}
 	
 	public void AddCustomer(String name) {

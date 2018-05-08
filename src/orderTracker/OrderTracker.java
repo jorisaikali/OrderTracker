@@ -73,24 +73,17 @@ public class OrderTracker {
 				if (line.equals("")) {
 					continue;
 				}
-				
-				//System.out.println("C2");
-				//System.out.println("line: " + line + ", count: " + count);
+
 				String[] splitLines = line.split(" ");
-				
-				//System.out.println("C3");
-				//System.out.println(splitLines[2]);
-				if (splitLines[2].equals("null") == false) {
-					//System.out.println("C4, count = " + count);
-					todaysOrders[count].AddCustomer(splitLines[2]);
-					todaysOrders[count].PrintTimeSlot();
+				String name = splitLines[2].replace(';', ' ');
+
+				if (name.equals("null") == false) {
+					todaysOrders[count].AddCustomer(name);
 				}
 				else {
-					//System.out.println("C5");
 					count++;
 					continue;
 				}
-				//System.out.println("C6");
 				
 				count++;
 			}
@@ -109,12 +102,13 @@ public class OrderTracker {
 				}
 				
 				String[] splitLines = line.split(" ");
+				String name = splitLines[2].replace(';', ' ');
 				
-				//System.out.println(splitLines[2]);
-				if (splitLines[2] != null) {
-					tomorrowsOrders[count].AddCustomer(splitLines[2]);
+				if (name != null) {
+					tomorrowsOrders[count].AddCustomer(name);
 				}
 				else {
+					count++;
 					continue;
 				}
 				
@@ -210,6 +204,10 @@ public class OrderTracker {
 								break;
 							}
 						}
+					}
+					
+					if (found == false) {
+						System.out.println(data[0] + " was not found.\n");
 					}
 				}
 				
