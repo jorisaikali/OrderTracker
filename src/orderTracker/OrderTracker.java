@@ -136,7 +136,7 @@ public class OrderTracker {
 				if (data[3].equals("today")) {
 					for (TimeSlot slot : todaysOrders) {
 						if (slot.GetTime().equals(data[1]) && slot.GetMeridiem().equals(data[2])) {		
-							if (slot.GetCustomerName() == null) {
+							if (slot.GetCustomerName() == null || slot.GetCustomerName().equals("null")) {
 								slot.AddCustomer(data[0]);
 								added = true;
 								break;
@@ -146,7 +146,7 @@ public class OrderTracker {
 				} else {
 					for (TimeSlot slot : tomorrowsOrders) {
 						if (slot.GetTime().equals(data[1]) && slot.GetMeridiem().equals(data[2])) {		
-							if (slot.GetCustomerName() == null) {
+							if (slot.GetCustomerName() == null || slot.GetCustomerName().equals("null")) {
 								slot.AddCustomer(data[0]);
 								added = true;
 								break;
