@@ -7,10 +7,11 @@ public class ConsoleBased {
 	
 	public String[] RunInterfaceConsole(TimeSlot[] todaysOrders, TimeSlot[] tomorrowsOrders) {
 		
-		System.out.println("Welcome to the Order Tracker.\n\n Please choose one of the following options.");
-		System.out.println("\n 1) Display today's orders.\n 2) Display tomorrow's orders.\n 3) Add a customer's name to a time slot.\n 4) Complete an order with a customers name.\n 5) Quit.");
-		
 		while (true) {
+		
+			System.out.println("Welcome to the Order Tracker.\n\n Please choose one of the following options.");
+			System.out.println("\n 1) Display today's orders.\n 2) Display tomorrow's orders.\n 3) Add a customer's name to a time slot for today.\n 4) Add a customer's name to a time slot for tomorrow.\n 5) Complete an order with a customers name.\n 6) Quit.");
+		
 			System.out.println("\nEnter a number: ");
 			int n = reader.nextInt();
 			reader.nextLine();
@@ -55,14 +56,23 @@ public class ConsoleBased {
 					timeSlot = slot[0];
 					String meridiem = slot[1];
 					
-					return new String[] {customerName, timeSlot, meridiem};
+					return new String[] {customerName, timeSlot, meridiem, "today"};
 					
 				case 4:
+					customerName = GetCustomerNameConsole();
+					String slotTomorrow[] = GetTimeSlot();
+					
+					timeSlot = slotTomorrow[0];
+					String meridiemTomorrow = slotTomorrow[1];
+					
+					return new String[] {customerName, timeSlot, meridiemTomorrow, "tomorrow"};
+					
+				case 5:
 					customerName = GetCustomerNameConsole();
 					
 					return new String[] {customerName};
 					
-				case 5:
+				case 6:
 					
 					return new String[] {"EXIT"};
 					
@@ -79,6 +89,7 @@ public class ConsoleBased {
 	private String GetCustomerNameConsole() {
 		System.out.println("\nWhat is the customer's name?");
 		String customerName = reader.nextLine();
+		System.out.println();
 		
 		return customerName;
 	}
@@ -86,6 +97,7 @@ public class ConsoleBased {
 	private String[] GetTimeSlot() {
 		System.out.println("\nWhich time slot? (hh:mm AM/PM)");
 		String slot = reader.nextLine();
+		System.out.println();
 		String[] splitSlot = slot.split(" ");
 		
 		String timeSlot = splitSlot[0];

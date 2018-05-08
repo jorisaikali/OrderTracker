@@ -1,8 +1,6 @@
 // ---------------------------------------------------------- //
 /*	BUG REPORT:
- * 		- After adding customer "test" to 4:00 PM, when trying to complete "test", fails at line 99 in OrderTracker.java; if (slot.GetCustomerName().equals(data[0])) {
- * 
- * 
+ *
  */
 // ---------------------------------------------------------- //
 
@@ -57,20 +55,32 @@ public class OrderTracker {
 		while(true) {
 			String[] data = cons.RunInterfaceConsole(todaysOrders, tomorrowsOrders);
 			
-			if (data.length == 3) {
+			if (data.length == 4) {
 				
 				// Iterate through list, find time slot, if customer name is not null, continue, if null, set customer name, if all time slots have been traversed
 				// then print message saying over booking is not allowed
 				boolean added = false;
 				
-				for (TimeSlot slot : todaysOrders) {
-					if (slot.GetTime().equals(data[1]) && slot.GetMeridiem().equals(data[2])) {		
-						if (slot.GetCustomerName() == null) {
-							slot.AddCustomer(data[0]);
-							added = true;
-							break;
-						}			
-					}					
+				if (data[3].equals("today")) {
+					for (TimeSlot slot : todaysOrders) {
+						if (slot.GetTime().equals(data[1]) && slot.GetMeridiem().equals(data[2])) {		
+							if (slot.GetCustomerName() == null) {
+								slot.AddCustomer(data[0]);
+								added = true;
+								break;
+							}			
+						}					
+					}
+				} else {
+					for (TimeSlot slot : tomorrowsOrders) {
+						if (slot.GetTime().equals(data[1]) && slot.GetMeridiem().equals(data[2])) {		
+							if (slot.GetCustomerName() == null) {
+								slot.AddCustomer(data[0]);
+								added = true;
+								break;
+							}			
+						}					
+					}
 				}
 				
 				if (added) {
@@ -83,22 +93,44 @@ public class OrderTracker {
 				
 				if (data[0] == "EXIT") {
 					// Write all elements from list to file
-					PrintWriter writer = new PrintWriter("persistantData.txt", "UTF-8");
+					PrintWriter writerToday = new PrintWriter("persistantDataToday.txt", "UTF-8");
 					
 					for (TimeSlot slot : todaysOrders) {
-						writer.println(slot.WriteTimeSlot());
+						writerToday.println(slot.WriteTimeSlot());
 					}
 					
-					writer.close();
+					writerToday.close();
+					
+					PrintWriter writerTomorrow = new PrintWriter("persistantDataTomorrow.txt", "UTF-8");
+					
+					for (TimeSlot slot : tomorrowsOrders) {
+						writerTomorrow.println(slot.WriteTimeSlot());
+					}
+					
+					writerTomorrow.close();
+					
 					return;
 					
 				}
 				else {
 					// Iterate through list, find element with customer name, set it to null
+					boolean found = false;
+					
 					for (TimeSlot slot : todaysOrders) {
-						if (slot.GetCustomerName().equals(data[0])) {						
+						if (slot.GetCustomerName() != null && slot.GetCustomerName().equals(data[0])) {						
 							slot.RemoveCustomer();
+							found = true;
 							break;
+						}
+					}
+					
+					if (found == false) {
+						for (TimeSlot slot : tomorrowsOrders) {
+							if (slot.GetCustomerName() != null && slot.GetCustomerName().equals(data[0])) {						
+								slot.RemoveCustomer();
+								found = true;
+								break;
+							}
 						}
 					}
 				}
