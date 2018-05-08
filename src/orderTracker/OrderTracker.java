@@ -55,8 +55,8 @@ public class OrderTracker {
 		TimeSlot[] todaysOrders = ot.initTimeSlots();
 		TimeSlot[] tomorrowsOrders = ot.initTimeSlots();
 		
-		String todayFileName = "persistantDataToday.txt";
-		String tomorrowFileName = "persistantDataTomorrow.txt";
+		String todayFileName = "data/persistantDataToday.txt";
+		String tomorrowFileName = "data/persistantDataTomorrow.txt";
 		
 		String line = null;
 		
@@ -165,7 +165,7 @@ public class OrderTracker {
 				
 				if (data[0] == "EXIT") {
 					// Write all elements from list to file
-					PrintWriter writerToday = new PrintWriter("persistantDataToday.txt", "UTF-8");
+					PrintWriter writerToday = new PrintWriter("data/persistantDataToday.txt", "UTF-8");
 					
 					for (TimeSlot slot : todaysOrders) {
 						writerToday.println(slot.WriteTimeSlot());
@@ -173,7 +173,7 @@ public class OrderTracker {
 					
 					writerToday.close();
 					
-					PrintWriter writerTomorrow = new PrintWriter("persistantDataTomorrow.txt", "UTF-8");
+					PrintWriter writerTomorrow = new PrintWriter("data/persistantDataTomorrow.txt", "UTF-8");
 					
 					for (TimeSlot slot : tomorrowsOrders) {
 						writerTomorrow.println(slot.WriteTimeSlot());
