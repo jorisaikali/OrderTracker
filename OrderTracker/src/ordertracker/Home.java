@@ -327,7 +327,7 @@ public class Home extends javax.swing.JFrame {
 
         add_user_TS_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         add_user_TS_jLabel.setText("Time Slot:");
-        add_user_UI_jPanel.add(add_user_TS_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
+        add_user_UI_jPanel.add(add_user_TS_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 178, -1, -1));
 
         add_user_CN_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         add_user_CN_jLabel.setText("Customer's Name:");
@@ -335,7 +335,7 @@ public class Home extends javax.swing.JFrame {
 
         add_user_TT_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         add_user_TT_jLabel.setText("Today/Tomorrow:");
-        add_user_UI_jPanel.add(add_user_TT_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
+        add_user_UI_jPanel.add(add_user_TT_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 128, -1, -1));
 
         add_user_CN_jTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         add_user_CN_jTextField.setBorder(null);
@@ -351,10 +351,10 @@ public class Home extends javax.swing.JFrame {
         add_user_UI_jPanel.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 96, 340, -1));
 
         add_user_TT_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Today", "Tomorrow" }));
-        add_user_UI_jPanel.add(add_user_TT_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 128, 170, -1));
+        add_user_UI_jPanel.add(add_user_TT_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 170, -1));
 
         add_user_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
-        add_user_UI_jPanel.add(add_user_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 178, 170, -1));
+        add_user_UI_jPanel.add(add_user_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 170, -1));
 
         UI_jPanel.add(add_user_UI_jPanel, "card2");
 
