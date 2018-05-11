@@ -79,7 +79,17 @@ public class Home extends javax.swing.JFrame {
         credits_description_jLabel = new javax.swing.JLabel();
         instructions_description_jLabel = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
+        complete_order_UI_jPanel = new javax.swing.JPanel();
+        calendar_UI_jPanel = new javax.swing.JPanel();
+        share_UI_jPanel = new javax.swing.JPanel();
         add_user_UI_jPanel = new javax.swing.JPanel();
+        add_user_TS_jLabel = new javax.swing.JLabel();
+        add_user_CN_jLabel = new javax.swing.JLabel();
+        add_user_TT_jLabel = new javax.swing.JLabel();
+        add_user_CN_jTextField = new javax.swing.JTextField();
+        jSeparator7 = new javax.swing.JSeparator();
+        add_user_TT_jComboBox = new javax.swing.JComboBox<>();
+        add_user_TS_jComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("OrderTracker");
@@ -216,7 +226,7 @@ public class Home extends javax.swing.JFrame {
 
         complete_order_subtitle_jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         complete_order_subtitle_jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        complete_order_subtitle_jLabel1.setText("Complete an order on a specific time slot.");
+        complete_order_subtitle_jLabel1.setText("Remove finished orders at a specific time slot.");
         complete_order_title_jPanel.add(complete_order_subtitle_jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 790, -1));
 
         complete_order_title_jLabel1.setFont(new java.awt.Font("Tahoma", 0, 78)); // NOI18N
@@ -246,7 +256,7 @@ public class Home extends javax.swing.JFrame {
 
         share_subtitle_jLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         share_subtitle_jLabel.setForeground(new java.awt.Color(255, 255, 255));
-        share_subtitle_jLabel.setText("Share time slot data with other local Order Tracker's.");
+        share_subtitle_jLabel.setText("Share time slot data with other local Order Trackers.");
         share_title_jPanel.add(share_subtitle_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 850, -1));
 
         share_title_jLabel.setFont(new java.awt.Font("Tahoma", 0, 78)); // NOI18N
@@ -300,8 +310,52 @@ public class Home extends javax.swing.JFrame {
 
         UI_jPanel.add(home_UI_jPanel, "card2");
 
+        complete_order_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        complete_order_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        UI_jPanel.add(complete_order_UI_jPanel, "card2");
+
+        calendar_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        calendar_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        UI_jPanel.add(calendar_UI_jPanel, "card2");
+
+        share_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        share_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        UI_jPanel.add(share_UI_jPanel, "card2");
+
         add_user_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
         add_user_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        add_user_TS_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add_user_TS_jLabel.setText("Time Slot:");
+        add_user_UI_jPanel.add(add_user_TS_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
+
+        add_user_CN_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add_user_CN_jLabel.setText("Customer's Name:");
+        add_user_UI_jPanel.add(add_user_CN_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
+
+        add_user_TT_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add_user_TT_jLabel.setText("Today/Tomorrow:");
+        add_user_UI_jPanel.add(add_user_TT_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
+
+        add_user_CN_jTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add_user_CN_jTextField.setBorder(null);
+        add_user_CN_jTextField.setOpaque(false);
+        add_user_CN_jTextField.setBackground(new Color(0,0,0,0));
+
+        add_user_CN_jTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_user_CN_jTextFieldActionPerformed(evt);
+            }
+        });
+        add_user_UI_jPanel.add(add_user_CN_jTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 66, 340, 30));
+        add_user_UI_jPanel.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 96, 340, -1));
+
+        add_user_TT_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Today", "Tomorrow" }));
+        add_user_UI_jPanel.add(add_user_TT_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 128, 170, -1));
+
+        add_user_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
+        add_user_UI_jPanel.add(add_user_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 178, 170, -1));
+
         UI_jPanel.add(add_user_UI_jPanel, "card2");
 
         getContentPane().add(UI_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 970, 350));
@@ -334,6 +388,11 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_add_user_jLabelMouseClicked
 
     private void complete_order_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_complete_order_jLabelMouseClicked
+        UI_jPanel.removeAll();
+        UI_jPanel.add(complete_order_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
         title_jPanel.removeAll();
         title_jPanel.add(complete_order_title_jPanel);
         title_jPanel.repaint();
@@ -341,6 +400,11 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_complete_order_jLabelMouseClicked
 
     private void calendar_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calendar_jLabelMouseClicked
+        UI_jPanel.removeAll();
+        UI_jPanel.add(calendar_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
         title_jPanel.removeAll();
         title_jPanel.add(calendar_title_jPanel);
         title_jPanel.repaint();
@@ -348,11 +412,20 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_calendar_jLabelMouseClicked
 
     private void share_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_share_jLabelMouseClicked
+        UI_jPanel.removeAll();
+        UI_jPanel.add(share_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
         title_jPanel.removeAll();
         title_jPanel.add(share_title_jPanel);
         title_jPanel.repaint();
         title_jPanel.revalidate();
     }//GEN-LAST:event_share_jLabelMouseClicked
+
+    private void add_user_CN_jTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_user_CN_jTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_add_user_CN_jTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -394,15 +467,23 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel UI_jPanel;
+    private javax.swing.JLabel add_user_CN_jLabel;
+    private javax.swing.JTextField add_user_CN_jTextField;
+    private javax.swing.JComboBox<String> add_user_TS_jComboBox;
+    private javax.swing.JLabel add_user_TS_jLabel;
+    private javax.swing.JComboBox<String> add_user_TT_jComboBox;
+    private javax.swing.JLabel add_user_TT_jLabel;
     private javax.swing.JPanel add_user_UI_jPanel;
     private javax.swing.JLabel add_user_jLabel;
     private javax.swing.JLabel add_user_subtitle_jLabel;
     private javax.swing.JLabel add_user_title_jLabel;
     private javax.swing.JPanel add_user_title_jPanel;
+    private javax.swing.JPanel calendar_UI_jPanel;
     private javax.swing.JLabel calendar_jLabel;
     private javax.swing.JLabel calendar_subtitle_jLabel;
     private javax.swing.JLabel calendar_title_jLabel;
     private javax.swing.JPanel calendar_title_jPanel;
+    private javax.swing.JPanel complete_order_UI_jPanel;
     private javax.swing.JLabel complete_order_jLabel;
     private javax.swing.JLabel complete_order_subtitle_jLabel1;
     private javax.swing.JLabel complete_order_title_jLabel1;
@@ -421,10 +502,12 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JLabel order_tracker_jLabel;
     private javax.swing.JPanel search_area_jPanel;
     private javax.swing.JLabel search_icon_jLabel;
     private javax.swing.JTextField search_jTextField;
+    private javax.swing.JPanel share_UI_jPanel;
     private javax.swing.JLabel share_jLabel;
     private javax.swing.JLabel share_subtitle_jLabel;
     private javax.swing.JLabel share_title_jLabel;
