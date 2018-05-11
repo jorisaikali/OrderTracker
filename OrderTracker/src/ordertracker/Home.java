@@ -82,7 +82,6 @@ public class Home extends javax.swing.JFrame {
         credits_description_jLabel = new javax.swing.JLabel();
         instructions_description_jLabel = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
-        share_UI_jPanel = new javax.swing.JPanel();
         add_user_UI_jPanel = new javax.swing.JPanel();
         add_user_TS_jLabel = new javax.swing.JLabel();
         add_user_CN_jLabel = new javax.swing.JLabel();
@@ -91,6 +90,7 @@ public class Home extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         add_user_TT_jComboBox = new javax.swing.JComboBox<>();
         add_user_TS_jComboBox = new javax.swing.JComboBox<>();
+        add_user_submit_jLabel = new javax.swing.JLabel();
         complete_order_UI_jPanel = new javax.swing.JPanel();
         complete_order_CN_jLabel = new javax.swing.JLabel();
         complete_order_CN_jTextField = new javax.swing.JTextField();
@@ -98,11 +98,16 @@ public class Home extends javax.swing.JFrame {
         complete_order_TS_jLabel = new javax.swing.JLabel();
         complete_order_TS_jComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        complete_order_submit_jLabel = new javax.swing.JLabel();
         calendar_UI_jPanel = new javax.swing.JPanel();
         calendar_TT_jLabel = new javax.swing.JLabel();
         calendar_TT_jComboBox = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        calendar_jTable = new javax.swing.JTable();
+        share_UI_jPanel = new javax.swing.JPanel();
+        share_body_title_jLabel = new javax.swing.JLabel();
+        share_body_description_jLabel = new javax.swing.JLabel();
+        share_submit_jLabel = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -336,10 +341,6 @@ public class Home extends javax.swing.JFrame {
 
         UI_jPanel.add(home_UI_jPanel, "card2");
 
-        share_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
-        share_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        UI_jPanel.add(share_UI_jPanel, "card2");
-
         add_user_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
         add_user_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -376,6 +377,9 @@ public class Home extends javax.swing.JFrame {
         add_user_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
         add_user_UI_jPanel.add(add_user_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 170, -1));
 
+        add_user_submit_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
+        add_user_UI_jPanel.add(add_user_submit_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
+
         UI_jPanel.add(add_user_UI_jPanel, "card2");
 
         complete_order_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
@@ -409,6 +413,9 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setText("<html>Need help finding a customer's name?<br>Search by time slot!</html>");
         complete_order_UI_jPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
+        complete_order_submit_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
+        complete_order_UI_jPanel.add(complete_order_submit_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
+
         UI_jPanel.add(complete_order_UI_jPanel, "card2");
 
         calendar_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
@@ -422,7 +429,7 @@ public class Home extends javax.swing.JFrame {
         calendar_TT_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Today", "Tomorrow" }));
         calendar_UI_jPanel.add(calendar_TT_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 170, -1));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        calendar_jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"8:00 AM", null, null, null},
                 {"8:30 AM", null, null, null},
@@ -470,11 +477,29 @@ public class Home extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable2);
+        calendar_jTable.getTableHeader().setResizingAllowed(false);
+        calendar_jTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(calendar_jTable);
 
         calendar_UI_jPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 850, 210));
 
         UI_jPanel.add(calendar_UI_jPanel, "card2");
+
+        share_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        share_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        share_body_title_jLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        share_body_title_jLabel.setText("This must be done if Order Tracker is kept open.");
+        share_UI_jPanel.add(share_body_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
+
+        share_body_description_jLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        share_body_description_jLabel.setText("<html>Order Tracker saves time slot data when the window is closed. If Order Tracker is not closed,<br>then time slot data will not be saved nor be shared. Share will save all time slot data and share it with<br>other local Order Tracker's on the fly!");
+        share_UI_jPanel.add(share_body_description_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+
+        share_submit_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
+        share_UI_jPanel.add(share_submit_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
+
+        UI_jPanel.add(share_UI_jPanel, "card2");
 
         getContentPane().add(UI_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 970, 350));
 
@@ -597,6 +622,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel add_user_TT_jLabel;
     private javax.swing.JPanel add_user_UI_jPanel;
     private javax.swing.JLabel add_user_jLabel;
+    private javax.swing.JLabel add_user_submit_jLabel;
     private javax.swing.JLabel add_user_subtitle_jLabel;
     private javax.swing.JLabel add_user_title_jLabel;
     private javax.swing.JPanel add_user_title_jPanel;
@@ -604,6 +630,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel calendar_TT_jLabel;
     private javax.swing.JPanel calendar_UI_jPanel;
     private javax.swing.JLabel calendar_jLabel;
+    private javax.swing.JTable calendar_jTable;
     private javax.swing.JLabel calendar_subtitle_jLabel;
     private javax.swing.JLabel calendar_title_jLabel;
     private javax.swing.JPanel calendar_title_jPanel;
@@ -613,6 +640,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel complete_order_TS_jLabel;
     private javax.swing.JPanel complete_order_UI_jPanel;
     private javax.swing.JLabel complete_order_jLabel;
+    private javax.swing.JLabel complete_order_submit_jLabel;
     private javax.swing.JLabel complete_order_subtitle_jLabel1;
     private javax.swing.JLabel complete_order_title_jLabel1;
     private javax.swing.JPanel complete_order_title_jPanel;
@@ -636,13 +664,15 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel order_tracker_jLabel;
     private javax.swing.JPanel search_area_jPanel;
     private javax.swing.JLabel search_icon_jLabel;
     private javax.swing.JTextField search_jTextField;
     private javax.swing.JPanel share_UI_jPanel;
+    private javax.swing.JLabel share_body_description_jLabel;
+    private javax.swing.JLabel share_body_title_jLabel;
     private javax.swing.JLabel share_jLabel;
+    private javax.swing.JLabel share_submit_jLabel;
     private javax.swing.JLabel share_subtitle_jLabel;
     private javax.swing.JLabel share_title_jLabel;
     private javax.swing.JPanel share_title_jPanel;
