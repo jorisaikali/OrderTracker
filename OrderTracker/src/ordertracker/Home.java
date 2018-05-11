@@ -8,6 +8,7 @@ package ordertracker;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,8 +21,14 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        this.setLocation(300,100);
+        initialize();
     }
 
+    private void initialize() {
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("verified-notes-symbol.png")));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,8 +67,8 @@ public class Home extends javax.swing.JFrame {
         share_title_jPanel = new javax.swing.JPanel();
         share_subtitle_jLabel = new javax.swing.JLabel();
         share_title_jLabel = new javax.swing.JLabel();
-        user_area_jPanel = new javax.swing.JPanel();
-        home_user_area_jPanel = new javax.swing.JPanel();
+        UI_jPanel = new javax.swing.JPanel();
+        home_UI_jPanel = new javax.swing.JPanel();
         thumbs_up_jLabel = new javax.swing.JLabel();
         instructions_icon_jLabel = new javax.swing.JLabel();
         instructions_title_jLabel = new javax.swing.JLabel();
@@ -72,11 +79,14 @@ public class Home extends javax.swing.JFrame {
         credits_description_jLabel = new javax.swing.JLabel();
         instructions_description_jLabel = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
+        add_user_UI_jPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("OrderTracker");
         setBackground(new java.awt.Color(51, 51, 51));
         setForeground(java.awt.Color.white);
         setMinimumSize(new java.awt.Dimension(1029, 657));
+        setName("main_frame"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1029, 657));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -147,59 +157,24 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(toolbar_blank_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 60, 210));
 
         search_area_jPanel.setBackground(new java.awt.Color(244, 237, 237));
+        search_area_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         search_icon_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         search_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/search.png"))); // NOI18N
+        search_area_jPanel.add(search_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 0, 48, 50));
 
         search_jTextField.setBackground(new java.awt.Color(0, 0, 0));
         search_jTextField.setBorder(null);
         search_jTextField.setOpaque(false);
         search_jTextField.setBackground(new Color(0,0,0,0));
+        search_area_jPanel.add(search_jTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 11, 531, 28));
+        search_area_jPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 37, 531, -1));
 
         staples_logo_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/staples--english-french-logo-2.png"))); // NOI18N
+        search_area_jPanel.add(staples_logo_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(813, 11, -1, -1));
 
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        javax.swing.GroupLayout search_area_jPanelLayout = new javax.swing.GroupLayout(search_area_jPanel);
-        search_area_jPanel.setLayout(search_area_jPanelLayout);
-        search_area_jPanelLayout.setHorizontalGroup(
-            search_area_jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(search_area_jPanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(search_icon_jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(search_area_jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(search_jTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
-                    .addComponent(jSeparator1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
-                .addComponent(staples_logo_jLabel)
-                .addGap(26, 26, 26))
-            .addGroup(search_area_jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, search_area_jPanelLayout.createSequentialGroup()
-                    .addContainerGap(884, Short.MAX_VALUE)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(94, Short.MAX_VALUE)))
-        );
-        search_area_jPanelLayout.setVerticalGroup(
-            search_area_jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(search_icon_jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, search_area_jPanelLayout.createSequentialGroup()
-                .addGroup(search_area_jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(search_area_jPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, search_area_jPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(search_area_jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(search_jTextField)
-                            .addComponent(staples_logo_jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
-            .addGroup(search_area_jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, search_area_jPanelLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
-        );
+        search_area_jPanel.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(882, 12, -1, 24));
 
         getContentPane().add(search_area_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 0, 980, 50));
 
@@ -271,8 +246,8 @@ public class Home extends javax.swing.JFrame {
 
         share_subtitle_jLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         share_subtitle_jLabel.setForeground(new java.awt.Color(255, 255, 255));
-        share_subtitle_jLabel.setText("Share all time slot data with other Order Tracker's.");
-        share_title_jPanel.add(share_subtitle_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 820, -1));
+        share_subtitle_jLabel.setText("Share time slot data with other local Order Tracker's.");
+        share_title_jPanel.add(share_subtitle_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 850, -1));
 
         share_title_jLabel.setFont(new java.awt.Font("Tahoma", 0, 78)); // NOI18N
         share_title_jLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -283,54 +258,63 @@ public class Home extends javax.swing.JFrame {
 
         getContentPane().add(title_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 980, 260));
 
-        user_area_jPanel.setBackground(new java.awt.Color(192, 192, 192));
-        user_area_jPanel.setLayout(new java.awt.CardLayout());
+        UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        UI_jPanel.setLayout(new java.awt.CardLayout());
 
-        home_user_area_jPanel.setBackground(new java.awt.Color(192, 192, 192));
-        home_user_area_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        home_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        home_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         thumbs_up_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         thumbs_up_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/thumbs-up.png"))); // NOI18N
-        home_user_area_jPanel.add(thumbs_up_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 88, -1, -1));
+        home_UI_jPanel.add(thumbs_up_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 88, -1, -1));
 
         instructions_icon_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         instructions_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/instructions.png"))); // NOI18N
-        home_user_area_jPanel.add(instructions_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 88, -1, -1));
+        home_UI_jPanel.add(instructions_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 88, -1, -1));
 
         instructions_title_jLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         instructions_title_jLabel.setText("Instructions");
-        home_user_area_jPanel.add(instructions_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 170, -1, -1));
-        home_user_area_jPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 190, 140, -1));
-        home_user_area_jPanel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 190, 140, -1));
+        home_UI_jPanel.add(instructions_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 170, -1, -1));
+        home_UI_jPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 190, 140, -1));
+        home_UI_jPanel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 190, 140, -1));
 
         credits_title_jLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         credits_title_jLabel.setText("Credits");
-        home_user_area_jPanel.add(credits_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, -1, -1));
-        home_user_area_jPanel.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(646, 190, 140, -1));
+        home_UI_jPanel.add(credits_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, -1, -1));
+        home_UI_jPanel.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(646, 190, 140, -1));
 
         credits_description_jLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         credits_description_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         credits_description_jLabel.setText("<html><center>Credits given to those<br>who made Order Tracker<br>possible.</html>");
         credits_description_jLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        home_user_area_jPanel.add(credits_description_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, -1, -1));
+        home_UI_jPanel.add(credits_description_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, -1, -1));
 
         instructions_description_jLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         instructions_description_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         instructions_description_jLabel.setText("<html><center>Clear instrustions on how<br>to use Order Tracker.</html>");
         instructions_description_jLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        home_user_area_jPanel.add(instructions_description_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
+        home_UI_jPanel.add(instructions_description_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        home_user_area_jPanel.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, 240));
+        home_UI_jPanel.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, 240));
 
-        user_area_jPanel.add(home_user_area_jPanel, "card2");
+        UI_jPanel.add(home_UI_jPanel, "card2");
 
-        getContentPane().add(user_area_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 298, 980, 360));
+        add_user_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        add_user_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        UI_jPanel.add(add_user_UI_jPanel, "card2");
+
+        getContentPane().add(UI_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 970, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void home_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_home_jLabelMouseClicked
+        UI_jPanel.removeAll();
+        UI_jPanel.add(home_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
         title_jPanel.removeAll();
         title_jPanel.add(home_title_jPanel);
         title_jPanel.repaint();
@@ -338,6 +322,11 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_home_jLabelMouseClicked
 
     private void add_user_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_user_jLabelMouseClicked
+        UI_jPanel.removeAll();
+        UI_jPanel.add(add_user_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
         title_jPanel.removeAll();
         title_jPanel.add(add_user_title_jPanel);
         title_jPanel.repaint();
@@ -404,6 +393,8 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel UI_jPanel;
+    private javax.swing.JPanel add_user_UI_jPanel;
     private javax.swing.JLabel add_user_jLabel;
     private javax.swing.JLabel add_user_subtitle_jLabel;
     private javax.swing.JLabel add_user_title_jLabel;
@@ -418,9 +409,9 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel complete_order_title_jPanel;
     private javax.swing.JLabel credits_description_jLabel;
     private javax.swing.JLabel credits_title_jLabel;
+    private javax.swing.JPanel home_UI_jPanel;
     private javax.swing.JLabel home_jLabel;
     private javax.swing.JPanel home_title_jPanel;
-    private javax.swing.JPanel home_user_area_jPanel;
     private javax.swing.JLabel instructions_description_jLabel;
     private javax.swing.JLabel instructions_icon_jLabel;
     private javax.swing.JLabel instructions_title_jLabel;
@@ -443,7 +434,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel title_jPanel;
     private javax.swing.JPanel toolbar_blank_jPanel;
     private javax.swing.JPanel toolbar_jPanel;
-    private javax.swing.JPanel user_area_jPanel;
     private javax.swing.JLabel welcome_jLabel;
     // End of variables declaration//GEN-END:variables
 }
