@@ -79,7 +79,6 @@ public class Home extends javax.swing.JFrame {
         credits_description_jLabel = new javax.swing.JLabel();
         instructions_description_jLabel = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
-        complete_order_UI_jPanel = new javax.swing.JPanel();
         calendar_UI_jPanel = new javax.swing.JPanel();
         share_UI_jPanel = new javax.swing.JPanel();
         add_user_UI_jPanel = new javax.swing.JPanel();
@@ -90,6 +89,13 @@ public class Home extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         add_user_TT_jComboBox = new javax.swing.JComboBox<>();
         add_user_TS_jComboBox = new javax.swing.JComboBox<>();
+        complete_order_UI_jPanel = new javax.swing.JPanel();
+        complete_order_CN_jLabel = new javax.swing.JLabel();
+        complete_order_CN_jTextField = new javax.swing.JTextField();
+        jSeparator8 = new javax.swing.JSeparator();
+        complete_order_TS_jLabel = new javax.swing.JLabel();
+        complete_order_TS_jComboBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("OrderTracker");
@@ -310,10 +316,6 @@ public class Home extends javax.swing.JFrame {
 
         UI_jPanel.add(home_UI_jPanel, "card2");
 
-        complete_order_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
-        complete_order_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        UI_jPanel.add(complete_order_UI_jPanel, "card2");
-
         calendar_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
         calendar_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         UI_jPanel.add(calendar_UI_jPanel, "card2");
@@ -357,6 +359,38 @@ public class Home extends javax.swing.JFrame {
         add_user_UI_jPanel.add(add_user_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 170, -1));
 
         UI_jPanel.add(add_user_UI_jPanel, "card2");
+
+        complete_order_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        complete_order_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        complete_order_CN_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        complete_order_CN_jLabel.setText("Customer's Name:");
+        complete_order_UI_jPanel.add(complete_order_CN_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
+
+        complete_order_CN_jTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        complete_order_CN_jTextField.setBorder(null);
+        complete_order_CN_jTextField.setOpaque(false);
+        complete_order_CN_jTextField.setBackground(new Color(0,0,0,0));
+        complete_order_CN_jTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                complete_order_CN_jTextFieldActionPerformed(evt);
+            }
+        });
+        complete_order_UI_jPanel.add(complete_order_CN_jTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 340, 30));
+        complete_order_UI_jPanel.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 340, -1));
+
+        complete_order_TS_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        complete_order_TS_jLabel.setText("Time Slot:");
+        complete_order_UI_jPanel.add(complete_order_TS_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
+
+        complete_order_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
+        complete_order_UI_jPanel.add(complete_order_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 170, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("<html>Need help finding a customer's name?<br>Search by time slot!</html>");
+        complete_order_UI_jPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
+
+        UI_jPanel.add(complete_order_UI_jPanel, "card2");
 
         getContentPane().add(UI_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 970, 350));
 
@@ -427,6 +461,10 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_add_user_CN_jTextFieldActionPerformed
 
+    private void complete_order_CN_jTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_complete_order_CN_jTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_complete_order_CN_jTextFieldActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -483,6 +521,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel calendar_subtitle_jLabel;
     private javax.swing.JLabel calendar_title_jLabel;
     private javax.swing.JPanel calendar_title_jPanel;
+    private javax.swing.JLabel complete_order_CN_jLabel;
+    private javax.swing.JTextField complete_order_CN_jTextField;
+    private javax.swing.JComboBox<String> complete_order_TS_jComboBox;
+    private javax.swing.JLabel complete_order_TS_jLabel;
     private javax.swing.JPanel complete_order_UI_jPanel;
     private javax.swing.JLabel complete_order_jLabel;
     private javax.swing.JLabel complete_order_subtitle_jLabel1;
@@ -496,6 +538,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel instructions_description_jLabel;
     private javax.swing.JLabel instructions_icon_jLabel;
     private javax.swing.JLabel instructions_title_jLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -503,6 +546,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JLabel order_tracker_jLabel;
     private javax.swing.JPanel search_area_jPanel;
     private javax.swing.JLabel search_icon_jLabel;
