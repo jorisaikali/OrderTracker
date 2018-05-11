@@ -22,6 +22,7 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         this.setLocation(300,100);
+        this.setSize(1029, 657);
         initialize();
     }
 
@@ -100,8 +101,8 @@ public class Home extends javax.swing.JFrame {
         calendar_UI_jPanel = new javax.swing.JPanel();
         calendar_TT_jLabel = new javax.swing.JLabel();
         calendar_TT_jComboBox = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -367,9 +368,11 @@ public class Home extends javax.swing.JFrame {
         add_user_UI_jPanel.add(add_user_CN_jTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 66, 340, 30));
         add_user_UI_jPanel.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 96, 340, -1));
 
+        add_user_TT_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         add_user_TT_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Today", "Tomorrow" }));
         add_user_UI_jPanel.add(add_user_TT_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 170, -1));
 
+        add_user_TS_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         add_user_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
         add_user_UI_jPanel.add(add_user_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 170, -1));
 
@@ -398,6 +401,7 @@ public class Home extends javax.swing.JFrame {
         complete_order_TS_jLabel.setText("Time Slot:");
         complete_order_UI_jPanel.add(complete_order_TS_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
 
+        complete_order_TS_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         complete_order_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
         complete_order_UI_jPanel.add(complete_order_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 170, -1));
 
@@ -412,16 +416,63 @@ public class Home extends javax.swing.JFrame {
 
         calendar_TT_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         calendar_TT_jLabel.setText("Today/Tomorrow:");
-        calendar_UI_jPanel.add(calendar_TT_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
+        calendar_UI_jPanel.add(calendar_TT_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
 
+        calendar_TT_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         calendar_TT_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Today", "Tomorrow" }));
-        calendar_UI_jPanel.add(calendar_TT_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 170, -1));
+        calendar_UI_jPanel.add(calendar_TT_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 170, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"8:00 AM", null, null, null},
+                {"8:30 AM", null, null, null},
+                {"9:00 AM", null, null, null},
+                {"9:30 AM", null, null, null},
+                {"10:00 AM", null, null, null},
+                {"10:30 AM", null, null, null},
+                {"11:00 AM", null, null, null},
+                {"11:30 AM", null, null, null},
+                {"12:00 PM", null, null, null},
+                {"12:30 PM", null, null, null},
+                {"1:00 PM", null, null, null},
+                {"1:30 PM", null, null, null},
+                {"2:00 PM", null, null, null},
+                {"2:30 PM", null, null, null},
+                {"3:00 PM", null, null, null},
+                {"3:30 PM", null, null, null},
+                {"4:00 PM", null, null, null},
+                {"4:30 PM", null, null, null},
+                {"5:00 PM", null, null, null},
+                {"5:30 PM", null, null, null},
+                {"6:00 PM", null, null, null},
+                {"6:30 PM", null, null, null},
+                {"7:00 PM", null, null, null},
+                {"7:30 PM", null, null, null},
+                {"8:00 PM", null, null, null},
+                {"8:30 PM", null, null, null}
+            },
+            new String [] {
+                "Time Slot", "Customer Name", "Customer Name", "Customer Name"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        calendar_UI_jPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 860, 210));
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable2);
+
+        calendar_UI_jPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 850, 210));
 
         UI_jPanel.add(calendar_UI_jPanel, "card2");
 
@@ -574,8 +625,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel instructions_icon_jLabel;
     private javax.swing.JLabel instructions_title_jLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -585,7 +636,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JLabel order_tracker_jLabel;
     private javax.swing.JPanel search_area_jPanel;
     private javax.swing.JLabel search_icon_jLabel;
