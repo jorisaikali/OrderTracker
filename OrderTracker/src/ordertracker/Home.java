@@ -38,6 +38,8 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         toolbar_jPanel = new javax.swing.JPanel();
         home_jLabel = new javax.swing.JLabel();
         add_user_jLabel = new javax.swing.JLabel();
@@ -79,7 +81,6 @@ public class Home extends javax.swing.JFrame {
         credits_description_jLabel = new javax.swing.JLabel();
         instructions_description_jLabel = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
-        calendar_UI_jPanel = new javax.swing.JPanel();
         share_UI_jPanel = new javax.swing.JPanel();
         add_user_UI_jPanel = new javax.swing.JPanel();
         add_user_TS_jLabel = new javax.swing.JLabel();
@@ -96,6 +97,24 @@ public class Home extends javax.swing.JFrame {
         complete_order_TS_jLabel = new javax.swing.JLabel();
         complete_order_TS_jComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        calendar_UI_jPanel = new javax.swing.JPanel();
+        calendar_TT_jLabel = new javax.swing.JLabel();
+        calendar_TT_jComboBox = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("OrderTracker");
@@ -316,10 +335,6 @@ public class Home extends javax.swing.JFrame {
 
         UI_jPanel.add(home_UI_jPanel, "card2");
 
-        calendar_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
-        calendar_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        UI_jPanel.add(calendar_UI_jPanel, "card2");
-
         share_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
         share_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         UI_jPanel.add(share_UI_jPanel, "card2");
@@ -391,6 +406,24 @@ public class Home extends javax.swing.JFrame {
         complete_order_UI_jPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
         UI_jPanel.add(complete_order_UI_jPanel, "card2");
+
+        calendar_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        calendar_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        calendar_TT_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        calendar_TT_jLabel.setText("Today/Tomorrow:");
+        calendar_UI_jPanel.add(calendar_TT_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
+
+        calendar_TT_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Today", "Tomorrow" }));
+        calendar_UI_jPanel.add(calendar_TT_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 170, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        calendar_UI_jPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 860, 210));
+
+        UI_jPanel.add(calendar_UI_jPanel, "card2");
 
         getContentPane().add(UI_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 970, 350));
 
@@ -476,7 +509,7 @@ public class Home extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -516,6 +549,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel add_user_subtitle_jLabel;
     private javax.swing.JLabel add_user_title_jLabel;
     private javax.swing.JPanel add_user_title_jPanel;
+    private javax.swing.JComboBox<String> calendar_TT_jComboBox;
+    private javax.swing.JLabel calendar_TT_jLabel;
     private javax.swing.JPanel calendar_UI_jPanel;
     private javax.swing.JLabel calendar_jLabel;
     private javax.swing.JLabel calendar_subtitle_jLabel;
@@ -539,6 +574,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel instructions_icon_jLabel;
     private javax.swing.JLabel instructions_title_jLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -547,6 +584,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel order_tracker_jLabel;
     private javax.swing.JPanel search_area_jPanel;
     private javax.swing.JLabel search_icon_jLabel;
