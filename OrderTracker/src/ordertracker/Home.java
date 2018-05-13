@@ -125,6 +125,20 @@ public class Home extends javax.swing.JFrame {
         instructions_body_question_jLabel2 = new javax.swing.JLabel();
         instructions_body_answer_jLabel2 = new javax.swing.JLabel();
         instructions_complete_order_icon_jLabel = new javax.swing.JLabel();
+        instructions_view_jPanel = new javax.swing.JPanel();
+        instructions_body_question_jLabel3 = new javax.swing.JLabel();
+        instructions_body_answer_jLabel3 = new javax.swing.JLabel();
+        instructions_view_icon_jLabel = new javax.swing.JLabel();
+        instructions_share_jPanel = new javax.swing.JPanel();
+        instructions_body_question_jLabel4 = new javax.swing.JLabel();
+        instructions_body_answer_jLabel4 = new javax.swing.JLabel();
+        instructions_share_icon_jLabel = new javax.swing.JLabel();
+        instructions_dkcn_jPanel = new javax.swing.JPanel();
+        instructions_body_question_jLabel5 = new javax.swing.JLabel();
+        instructions_body_answer_jLabel5 = new javax.swing.JLabel();
+        instructions_max_jPanel = new javax.swing.JPanel();
+        instructions_body_question_jLabel6 = new javax.swing.JLabel();
+        instructions_body_answer_jLabel6 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -564,6 +578,30 @@ public class Home extends javax.swing.JFrame {
                         instructions_body_jPanel.repaint();
                         instructions_body_jPanel.revalidate();
                     }
+                    else if (item.toString().equals("How do I view all time slot data?")) {
+                        instructions_body_jPanel.removeAll();
+                        instructions_body_jPanel.add(instructions_view_jPanel);
+                        instructions_body_jPanel.repaint();
+                        instructions_body_jPanel.revalidate();
+                    }
+                    else if (item.toString().equals("How do I share all time slot data with other local Order Trackers?")) {
+                        instructions_body_jPanel.removeAll();
+                        instructions_body_jPanel.add(instructions_share_jPanel);
+                        instructions_body_jPanel.repaint();
+                        instructions_body_jPanel.revalidate();
+                    }
+                    else if (item.toString().equals("What do I do if I don't know the customer's name and I want to complete their order?")) {
+                        instructions_body_jPanel.removeAll();
+                        instructions_body_jPanel.add(instructions_dkcn_jPanel);
+                        instructions_body_jPanel.repaint();
+                        instructions_body_jPanel.revalidate();
+                    }
+                    else if (item.toString().equals("Why doesn't Order Tracker let me add more than three orders in each hour increment?")) {
+                        instructions_body_jPanel.removeAll();
+                        instructions_body_jPanel.add(instructions_max_jPanel);
+                        instructions_body_jPanel.repaint();
+                        instructions_body_jPanel.revalidate();
+                    }
                 }
             }
         });
@@ -608,6 +646,64 @@ public class Home extends javax.swing.JFrame {
         instructions_complete_jPanel.add(instructions_complete_order_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
 
         instructions_body_jPanel.add(instructions_complete_jPanel, "card2");
+
+        instructions_view_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        instructions_view_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        instructions_body_question_jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        instructions_body_question_jLabel3.setText("How do I view all time slot data?");
+        instructions_view_jPanel.add(instructions_body_question_jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        instructions_body_answer_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        instructions_body_answer_jLabel3.setText("<html>\nTo view time slot data, click the View Time Slots button. This will take you to a page with a table with<br>\ntime slot data. To view today's time slots, select Today from the choice box, vice versa to view tomorrow's<br>\ntime slot data.\n</html>");
+        instructions_view_jPanel.add(instructions_body_answer_jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        instructions_view_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/view_time_slots.PNG"))); // NOI18N
+        instructions_view_jPanel.add(instructions_view_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
+
+        instructions_body_jPanel.add(instructions_view_jPanel, "card2");
+
+        instructions_share_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        instructions_share_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        instructions_body_question_jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        instructions_body_question_jLabel4.setText("How do I share all time slot data with other local Order Trackers?");
+        instructions_share_jPanel.add(instructions_body_question_jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        instructions_body_answer_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        instructions_body_answer_jLabel4.setText("<html>\nThere are two ways to share time slot data to other local Order Trackers. The first being the 'X' close<br>\nbutton in the top right corner like a normal window. The second way is manually through the Share button<br>\nin the toolbar. Press the green chechmark to share manually. The reason for the second option is if it is<br>\ndesired for Order Tracker to remain open. If Order Tracker is never closed, time slot data will not be shared,<br>\nhence why the second option exists.\n</html>");
+        instructions_share_jPanel.add(instructions_body_answer_jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        instructions_share_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/share.PNG"))); // NOI18N
+        instructions_share_jPanel.add(instructions_share_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
+
+        instructions_body_jPanel.add(instructions_share_jPanel, "card2");
+
+        instructions_dkcn_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        instructions_dkcn_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        instructions_body_question_jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        instructions_body_question_jLabel5.setText("What do I do if I don't know the customer's name and I want to complete their order?");
+        instructions_dkcn_jPanel.add(instructions_body_question_jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        instructions_body_answer_jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        instructions_body_answer_jLabel5.setText("<html>\n If you do not know the customer's name, you can search for the customer's name with a given time slot. To do<br>\nthis, first click the Complete Order button in the toolbar. Once there, you will be present with the option to search<br>\nby time slot. Choose the time slot you are looking for which will display all customer's name on that specific time slot<br>\nto help you when searching. Once the customer's name is filled in, press the green button with the checkmark to<br>\nsubmit your completion.\n</html>");
+        instructions_dkcn_jPanel.add(instructions_body_answer_jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        instructions_body_jPanel.add(instructions_dkcn_jPanel, "card2");
+
+        instructions_max_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        instructions_max_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        instructions_body_question_jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        instructions_body_question_jLabel6.setText("Why doesn't Order Tracker let me add more than three orders in each hour increment?");
+        instructions_max_jPanel.add(instructions_body_question_jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        instructions_body_answer_jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        instructions_body_answer_jLabel6.setText("<html>\nOrder Tracker will only allow a maximum of three orders for each hour increment. This is due to the fact that<br>\noverbooking is an easy and quick way to overburden you and your coworkers in the Copy & Print Center. Order<br>\nTracker will attempt to minimize the amount of overbooking done by giving a maximum to the amount of orders that<br>\nare allowed to be taken in a given hour.\n</html>");
+        instructions_max_jPanel.add(instructions_body_answer_jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        instructions_body_jPanel.add(instructions_max_jPanel, "card2");
 
         instructions_UI_jPanel.add(instructions_body_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 850, 190));
 
@@ -782,19 +878,33 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel instructions_add_user_icon_jLabel;
     private javax.swing.JLabel instructions_body_answer_jLabel;
     private javax.swing.JLabel instructions_body_answer_jLabel2;
+    private javax.swing.JLabel instructions_body_answer_jLabel3;
+    private javax.swing.JLabel instructions_body_answer_jLabel4;
+    private javax.swing.JLabel instructions_body_answer_jLabel5;
+    private javax.swing.JLabel instructions_body_answer_jLabel6;
     private javax.swing.JPanel instructions_body_jPanel;
     private javax.swing.JLabel instructions_body_question_jLabel;
     private javax.swing.JLabel instructions_body_question_jLabel2;
+    private javax.swing.JLabel instructions_body_question_jLabel3;
+    private javax.swing.JLabel instructions_body_question_jLabel4;
+    private javax.swing.JLabel instructions_body_question_jLabel5;
+    private javax.swing.JLabel instructions_body_question_jLabel6;
     private javax.swing.JPanel instructions_complete_jPanel;
     private javax.swing.JLabel instructions_complete_order_icon_jLabel;
     private javax.swing.JLabel instructions_description_jLabel;
+    private javax.swing.JPanel instructions_dkcn_jPanel;
     private javax.swing.JLabel instructions_howto_jLabel;
     private javax.swing.JLabel instructions_icon_jLabel;
     private javax.swing.JLabel instructions_main_title_jLabel;
+    private javax.swing.JPanel instructions_max_jPanel;
     private javax.swing.JComboBox<String> instructions_questions_jComboBox;
+    private javax.swing.JLabel instructions_share_icon_jLabel;
+    private javax.swing.JPanel instructions_share_jPanel;
     private javax.swing.JLabel instructions_subtitle_jLabel;
     private javax.swing.JLabel instructions_title_jLabel;
     private javax.swing.JPanel instructions_title_jPanel;
+    private javax.swing.JLabel instructions_view_icon_jLabel;
+    private javax.swing.JPanel instructions_view_jPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
