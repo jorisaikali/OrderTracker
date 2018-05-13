@@ -108,6 +108,12 @@ public class Home extends javax.swing.JFrame {
         share_body_title_jLabel = new javax.swing.JLabel();
         share_body_description_jLabel = new javax.swing.JLabel();
         share_submit_jLabel = new javax.swing.JLabel();
+        instructions_UI_jPanel = new javax.swing.JPanel();
+        instructions_howto_jLabel = new javax.swing.JLabel();
+        instructions_questions_jComboBox = new javax.swing.JComboBox<>();
+        instructions_body_jPanel = new javax.swing.JPanel();
+        instructions_body_question_jLabel = new javax.swing.JLabel();
+        instructions_body_answer_jLabel = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -501,6 +507,37 @@ public class Home extends javax.swing.JFrame {
 
         UI_jPanel.add(share_UI_jPanel, "card2");
 
+        instructions_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        instructions_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        instructions_howto_jLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        instructions_howto_jLabel.setText("How to:");
+        instructions_UI_jPanel.add(instructions_howto_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
+
+        instructions_questions_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        instructions_questions_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "How do I add a customer's name to a specific time slot?", "How do I remove completed orders from a time slot?", "How do I view all time slot data?", "How do I share all time slot data with other local Order Trackers?", "What do I do if I don't know the customer's name and I want to complete their order?", "Why doesn't Order Tracker let me add more than three orders in each hour increment?", " " }));
+        instructions_questions_jComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                instructions_questions_jComboBoxActionPerformed(evt);
+            }
+        });
+        instructions_UI_jPanel.add(instructions_questions_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 530, -1));
+
+        instructions_body_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        instructions_body_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        instructions_body_question_jLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        instructions_body_question_jLabel.setText("How do I add a customer's name to a specific time slot?");
+        instructions_body_jPanel.add(instructions_body_question_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        instructions_body_answer_jLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        instructions_body_answer_jLabel.setText("<html>Order Tracker saves time slot data when the window is closed. If Order Tracker is not closed,<br>then time slot data will not be saved nor be shared. Share will save all time slot data and share it with<br>other local Order Tracker's on the fly!");
+        instructions_body_jPanel.add(instructions_body_answer_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        instructions_UI_jPanel.add(instructions_body_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 850, 190));
+
+        UI_jPanel.add(instructions_UI_jPanel, "card2");
+
         getContentPane().add(UI_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 970, 350));
 
         pack();
@@ -573,6 +610,10 @@ public class Home extends javax.swing.JFrame {
     private void complete_order_CN_jTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_complete_order_CN_jTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_complete_order_CN_jTextFieldActionPerformed
+
+    private void instructions_questions_jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_instructions_questions_jComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_instructions_questions_jComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -649,8 +690,14 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel home_UI_jPanel;
     private javax.swing.JLabel home_jLabel;
     private javax.swing.JPanel home_title_jPanel;
+    private javax.swing.JPanel instructions_UI_jPanel;
+    private javax.swing.JLabel instructions_body_answer_jLabel;
+    private javax.swing.JPanel instructions_body_jPanel;
+    private javax.swing.JLabel instructions_body_question_jLabel;
     private javax.swing.JLabel instructions_description_jLabel;
+    private javax.swing.JLabel instructions_howto_jLabel;
     private javax.swing.JLabel instructions_icon_jLabel;
+    private javax.swing.JComboBox<String> instructions_questions_jComboBox;
     private javax.swing.JLabel instructions_title_jLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
