@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 /**
  *
@@ -546,16 +547,22 @@ public class Home extends javax.swing.JFrame {
 
         instructions_questions_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         instructions_questions_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "How do I add a customer's name to a specific time slot?", "How do I remove completed orders from a time slot?", "How do I view all time slot data?", "How do I share all time slot data with other local Order Trackers?", "What do I do if I don't know the customer's name and I want to complete their order?", "Why doesn't Order Tracker let me add more than three orders in each hour increment?" }));
-        instuctions_questions_jComboBox.addItemListener(new ItemListener() {
+        instructions_questions_jComboBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent event) {
-                if (event.getStateChanged() == ItemEvent.SELECTED) {
+                if (event.getStateChange() == ItemEvent.SELECTED) {
                     Object item = event.getItem();
 
                     if (item.toString().equals("How do I add a customer's name to a specific time slot?")) {
-
+                        instructions_body_jPanel.removeAll();
+                        instructions_body_jPanel.add(instructions_add_jPanel);
+                        instructions_body_jPanel.repaint();
+                        instructions_body_jPanel.revalidate();
                     }
                     else if (item.toString().equals("How do I remove completed orders from a time slot?")) {
-
+                        instructions_body_jPanel.removeAll();
+                        instructions_body_jPanel.add(instructions_complete_jPanel);
+                        instructions_body_jPanel.repaint();
+                        instructions_body_jPanel.revalidate();
                     }
                 }
             }
@@ -602,7 +609,7 @@ public class Home extends javax.swing.JFrame {
 
         instructions_body_jPanel.add(instructions_complete_jPanel, "card2");
 
-        instructions_UI_jPanel.add(instructions_body_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 850, 190));
+        instructions_UI_jPanel.add(instructions_body_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 850, 190));
 
         UI_jPanel.add(instructions_UI_jPanel, "card2");
 
