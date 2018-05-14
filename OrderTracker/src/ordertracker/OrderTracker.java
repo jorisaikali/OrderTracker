@@ -125,7 +125,25 @@ public class OrderTracker {
 	catch(IOException ex) {
             System.out.println("Error reading file.");
 	}
-		
+	
+        while(gfx.running) {
+            //System.out.println("gfx.action: " + gfx.action);
+            
+            if (gfx.action.equals("")) {
+                continue;
+            }
+            else {
+                if (gfx.action.equals("add_user_submit")) {
+                    System.out.println("USER ADDED");
+                    gfx.action = "";
+                }
+            }
+            
+        }
+        
+        /*
+        CONSOLE BASED
+        
 	while(true) {
             String[] data = cons.RunInterfaceConsole(todaysOrders, tomorrowsOrders);
 			
@@ -218,7 +236,7 @@ public class OrderTracker {
 		return;
             }
 	}
-		
+	*/	
     }
 
 }

@@ -11,6 +11,8 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import javafx.scene.input.KeyCode;
 
 /**
  *
@@ -18,6 +20,9 @@ import java.awt.event.ItemListener;
  */
 public class Home extends javax.swing.JFrame {
 
+    public String action = "";
+    public boolean running = false;
+    
     /**
      * Creates new form Home
      */
@@ -26,10 +31,11 @@ public class Home extends javax.swing.JFrame {
         this.setLocation(300,100);
         this.setSize(1029, 657);
         initialize();
+        running = true;
     }
 
     private void initialize() {
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("verified-notes-symbol.png")));
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("resources/verified-notes-symbol.png")));
     }
     
     /**
@@ -78,6 +84,9 @@ public class Home extends javax.swing.JFrame {
         credits_title_jPanel = new javax.swing.JPanel();
         credits_subtitle_jLabel = new javax.swing.JLabel();
         credits_main_title_jLabel = new javax.swing.JLabel();
+        search_title_jPanel = new javax.swing.JPanel();
+        search_subtitle_jLabel = new javax.swing.JLabel();
+        search_main_title_jLabel = new javax.swing.JLabel();
         UI_jPanel = new javax.swing.JPanel();
         home_UI_jPanel = new javax.swing.JPanel();
         thumbs_up_jLabel = new javax.swing.JLabel();
@@ -90,15 +99,6 @@ public class Home extends javax.swing.JFrame {
         credits_description_jLabel = new javax.swing.JLabel();
         instructions_description_jLabel = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
-        add_user_UI_jPanel = new javax.swing.JPanel();
-        add_user_TS_jLabel = new javax.swing.JLabel();
-        add_user_CN_jLabel = new javax.swing.JLabel();
-        add_user_TT_jLabel = new javax.swing.JLabel();
-        add_user_CN_jTextField = new javax.swing.JTextField();
-        jSeparator7 = new javax.swing.JSeparator();
-        add_user_TT_jComboBox = new javax.swing.JComboBox<>();
-        add_user_TS_jComboBox = new javax.swing.JComboBox<>();
-        add_user_submit_jLabel = new javax.swing.JLabel();
         complete_order_UI_jPanel = new javax.swing.JPanel();
         complete_order_CN_jLabel = new javax.swing.JLabel();
         complete_order_CN_jTextField = new javax.swing.JTextField();
@@ -146,6 +146,18 @@ public class Home extends javax.swing.JFrame {
         credits_body_title_jLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         credits_jTextArea = new javax.swing.JTextArea();
+        search_UI_jPanel = new javax.swing.JPanel();
+        search_body_title_jLabel = new javax.swing.JLabel();
+        search_results_jPanel = new javax.swing.JPanel();
+        add_user_UI_jPanel = new javax.swing.JPanel();
+        add_user_TS_jLabel = new javax.swing.JLabel();
+        add_user_CN_jLabel = new javax.swing.JLabel();
+        add_user_TT_jLabel = new javax.swing.JLabel();
+        add_user_CN_jTextField = new javax.swing.JTextField();
+        jSeparator7 = new javax.swing.JSeparator();
+        add_user_TT_jComboBox = new javax.swing.JComboBox<>();
+        add_user_TS_jComboBox = new javax.swing.JComboBox<>();
+        add_user_submit_jLabel = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -174,7 +186,7 @@ public class Home extends javax.swing.JFrame {
         toolbar_jPanel.setLayout(new java.awt.GridLayout(5, 1));
 
         home_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        home_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/house-black-silhouette-without-door.png"))); // NOI18N
+        home_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/house-black-silhouette-without-door.png"))); // NOI18N
         home_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 home_jLabelMouseClicked(evt);
@@ -183,7 +195,7 @@ public class Home extends javax.swing.JFrame {
         toolbar_jPanel.add(home_jLabel);
 
         add_user_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add_user_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/new-user.png"))); // NOI18N
+        add_user_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/new-user.png"))); // NOI18N
         add_user_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 add_user_jLabelMouseClicked(evt);
@@ -192,7 +204,7 @@ public class Home extends javax.swing.JFrame {
         toolbar_jPanel.add(add_user_jLabel);
 
         complete_order_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        complete_order_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/checked.png"))); // NOI18N
+        complete_order_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/checked.png"))); // NOI18N
         complete_order_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 complete_order_jLabelMouseClicked(evt);
@@ -201,7 +213,7 @@ public class Home extends javax.swing.JFrame {
         toolbar_jPanel.add(complete_order_jLabel);
 
         calendar_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        calendar_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/calendar.png"))); // NOI18N
+        calendar_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/calendar.png"))); // NOI18N
         calendar_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 calendar_jLabelMouseClicked(evt);
@@ -210,7 +222,7 @@ public class Home extends javax.swing.JFrame {
         toolbar_jPanel.add(calendar_jLabel);
 
         share_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        share_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/local-network.png"))); // NOI18N
+        share_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/local-network.png"))); // NOI18N
         share_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 share_jLabelMouseClicked(evt);
@@ -239,17 +251,22 @@ public class Home extends javax.swing.JFrame {
         search_area_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         search_icon_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        search_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/search.png"))); // NOI18N
+        search_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/search.png"))); // NOI18N
         search_area_jPanel.add(search_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 0, 48, 50));
 
         search_jTextField.setBackground(new java.awt.Color(0, 0, 0));
         search_jTextField.setBorder(null);
         search_jTextField.setOpaque(false);
         search_jTextField.setBackground(new Color(0,0,0,0));
+        search_jTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                search_jTextFieldKeyPressed(evt);
+            }
+        });
         search_area_jPanel.add(search_jTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 11, 531, 28));
         search_area_jPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 37, 531, -1));
 
-        staples_logo_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/staples--english-french-logo-2.png"))); // NOI18N
+        staples_logo_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/staples--english-french-logo-2.png"))); // NOI18N
         search_area_jPanel.add(staples_logo_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(813, 11, -1, -1));
 
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -257,7 +274,7 @@ public class Home extends javax.swing.JFrame {
 
         getContentPane().add(search_area_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 0, 980, 50));
 
-        title_jPanel.setBackground(new java.awt.Color(224, 31, 31));
+        title_jPanel.setBackground(new java.awt.Color(255, 255, 255));
         title_jPanel.setLayout(new java.awt.CardLayout());
 
         home_title_jPanel.setBackground(new java.awt.Color(224, 31, 31));
@@ -365,6 +382,21 @@ public class Home extends javax.swing.JFrame {
 
         title_jPanel.add(credits_title_jPanel, "card2");
 
+        search_title_jPanel.setBackground(new java.awt.Color(224, 31, 31));
+        search_title_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        search_subtitle_jLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        search_subtitle_jLabel.setForeground(new java.awt.Color(255, 255, 255));
+        search_subtitle_jLabel.setText("An easy way to find customers and other things!");
+        search_title_jPanel.add(search_subtitle_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 900, -1));
+
+        search_main_title_jLabel.setFont(new java.awt.Font("Tahoma", 0, 78)); // NOI18N
+        search_main_title_jLabel.setForeground(new java.awt.Color(255, 255, 255));
+        search_main_title_jLabel.setText("Search");
+        search_title_jPanel.add(search_main_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 570, -1));
+
+        title_jPanel.add(search_title_jPanel, "card2");
+
         getContentPane().add(title_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 980, 260));
 
         UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
@@ -374,7 +406,7 @@ public class Home extends javax.swing.JFrame {
         home_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         thumbs_up_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        thumbs_up_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/thumbs-up.png"))); // NOI18N
+        thumbs_up_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/thumbs-up.png"))); // NOI18N
         thumbs_up_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 thumbs_up_jLabelMouseClicked(evt);
@@ -383,7 +415,7 @@ public class Home extends javax.swing.JFrame {
         home_UI_jPanel.add(thumbs_up_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 88, -1, -1));
 
         instructions_icon_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        instructions_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/instructions.png"))); // NOI18N
+        instructions_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/instructions.png"))); // NOI18N
         instructions_icon_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 instructions_icon_jLabelMouseClicked(evt);
@@ -419,47 +451,6 @@ public class Home extends javax.swing.JFrame {
 
         UI_jPanel.add(home_UI_jPanel, "card2");
 
-        add_user_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
-        add_user_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        add_user_TS_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        add_user_TS_jLabel.setText("Time Slot:");
-        add_user_UI_jPanel.add(add_user_TS_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 178, -1, -1));
-
-        add_user_CN_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        add_user_CN_jLabel.setText("Customer's Name:");
-        add_user_UI_jPanel.add(add_user_CN_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
-
-        add_user_TT_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        add_user_TT_jLabel.setText("Today/Tomorrow:");
-        add_user_UI_jPanel.add(add_user_TT_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 128, -1, -1));
-
-        add_user_CN_jTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        add_user_CN_jTextField.setBorder(null);
-        add_user_CN_jTextField.setOpaque(false);
-        add_user_CN_jTextField.setBackground(new Color(0,0,0,0));
-
-        add_user_CN_jTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_user_CN_jTextFieldActionPerformed(evt);
-            }
-        });
-        add_user_UI_jPanel.add(add_user_CN_jTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 66, 340, 30));
-        add_user_UI_jPanel.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 96, 340, -1));
-
-        add_user_TT_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        add_user_TT_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Today", "Tomorrow" }));
-        add_user_UI_jPanel.add(add_user_TT_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 170, -1));
-
-        add_user_TS_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        add_user_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
-        add_user_UI_jPanel.add(add_user_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 170, -1));
-
-        add_user_submit_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
-        add_user_UI_jPanel.add(add_user_submit_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
-
-        UI_jPanel.add(add_user_UI_jPanel, "card2");
-
         complete_order_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
         complete_order_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -491,7 +482,7 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setText("<html>Need help finding a customer's name?<br>Search by time slot!</html>");
         complete_order_UI_jPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
-        complete_order_submit_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
+        complete_order_submit_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
         complete_order_UI_jPanel.add(complete_order_submit_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
 
         UI_jPanel.add(complete_order_UI_jPanel, "card2");
@@ -574,7 +565,7 @@ public class Home extends javax.swing.JFrame {
         share_body_description_jLabel.setText("<html>Order Tracker saves time slot data when the window is closed. If Order Tracker is not closed,<br>then time slot data will not be saved nor be shared. Share will save all time slot data and share it with<br>other local Order Tracker's on the fly!");
         share_UI_jPanel.add(share_body_description_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
 
-        share_submit_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
+        share_submit_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
         share_UI_jPanel.add(share_submit_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
 
         UI_jPanel.add(share_UI_jPanel, "card2");
@@ -653,7 +644,7 @@ public class Home extends javax.swing.JFrame {
         instructions_body_answer_jLabel.setText("<html>Click the Add Customer icon on the toolbar. This will bring you to the add customer page. Fill in<br>\nthe customer's name and choose whether you would like to add their name to today's time slots or<br>\ntomorrow's time slots. Once decided, choose the time slot you and the customer agreed on for pick-up.<br>\nAfter all information is filled out, click the green checkmark button to submit your addition.</html>");
         instructions_add_jPanel.add(instructions_body_answer_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        instructions_add_user_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/add_user.PNG"))); // NOI18N
+        instructions_add_user_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_user.PNG"))); // NOI18N
         instructions_add_jPanel.add(instructions_add_user_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
 
         instructions_body_jPanel.add(instructions_add_jPanel, "card2");
@@ -669,7 +660,7 @@ public class Home extends javax.swing.JFrame {
         instructions_body_answer_jLabel2.setText("<html>\nWhen an order is completed, click the Complete Order button in the toolbar. This will bring you to the<br>\nComplete Order page. If you know the customer's name, fill in the name in the designated area. If you<br>\ndo not know the customer's name, you can search for the customer's name with a given time slot. This<br>\nwill display all customer's name on that specific time slot to help you when searching. Once the customer's<br>\nname is filled in, press the green button with the checkmark to submit your completion.\n</html>");
         instructions_complete_jPanel.add(instructions_body_answer_jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        instructions_complete_order_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/complete_order.PNG"))); // NOI18N
+        instructions_complete_order_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/complete_order.PNG"))); // NOI18N
         instructions_complete_jPanel.add(instructions_complete_order_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
 
         instructions_body_jPanel.add(instructions_complete_jPanel, "card2");
@@ -685,7 +676,7 @@ public class Home extends javax.swing.JFrame {
         instructions_body_answer_jLabel3.setText("<html>\nTo view time slot data, click the View Time Slots button. This will take you to a page with a table with<br>\ntime slot data. To view today's time slots, select Today from the choice box, vice versa to view tomorrow's<br>\ntime slot data.\n</html>");
         instructions_view_jPanel.add(instructions_body_answer_jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        instructions_view_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/view_time_slots.PNG"))); // NOI18N
+        instructions_view_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/view_time_slots.PNG"))); // NOI18N
         instructions_view_jPanel.add(instructions_view_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
 
         instructions_body_jPanel.add(instructions_view_jPanel, "card2");
@@ -701,7 +692,7 @@ public class Home extends javax.swing.JFrame {
         instructions_body_answer_jLabel4.setText("<html>\nThere are two ways to share time slot data to other local Order Trackers. The first being the 'X' close<br>\nbutton in the top right corner like a normal window. The second way is manually through the Share button<br>\nin the toolbar. Press the green chechmark to share manually. The reason for the second option is if it is<br>\ndesired for Order Tracker to remain open. If Order Tracker is never closed, time slot data will not be shared,<br>\nhence why the second option exists.\n</html>");
         instructions_share_jPanel.add(instructions_body_answer_jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        instructions_share_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/share.PNG"))); // NOI18N
+        instructions_share_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/share.PNG"))); // NOI18N
         instructions_share_jPanel.add(instructions_share_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
 
         instructions_body_jPanel.add(instructions_share_jPanel, "card2");
@@ -755,6 +746,65 @@ public class Home extends javax.swing.JFrame {
         credits_UI_jPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 860, 190));
 
         UI_jPanel.add(credits_UI_jPanel, "card2");
+
+        search_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        search_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        search_body_title_jLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        search_body_title_jLabel.setText("Results");
+        search_UI_jPanel.add(search_body_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
+
+        search_results_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        search_results_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        search_UI_jPanel.add(search_results_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 870, 190));
+
+        UI_jPanel.add(search_UI_jPanel, "card2");
+
+        add_user_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        add_user_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        add_user_TS_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add_user_TS_jLabel.setText("Time Slot:");
+        add_user_UI_jPanel.add(add_user_TS_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 178, -1, -1));
+
+        add_user_CN_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add_user_CN_jLabel.setText("Customer's Name:");
+        add_user_UI_jPanel.add(add_user_CN_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
+
+        add_user_TT_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add_user_TT_jLabel.setText("Today/Tomorrow:");
+        add_user_UI_jPanel.add(add_user_TT_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 128, -1, -1));
+
+        add_user_CN_jTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add_user_CN_jTextField.setBorder(null);
+        add_user_CN_jTextField.setOpaque(false);
+        add_user_CN_jTextField.setBackground(new Color(0,0,0,0));
+
+        add_user_CN_jTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_user_CN_jTextFieldActionPerformed(evt);
+            }
+        });
+        add_user_UI_jPanel.add(add_user_CN_jTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 66, 340, 30));
+        add_user_UI_jPanel.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 96, 340, -1));
+
+        add_user_TT_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        add_user_TT_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Today", "Tomorrow" }));
+        add_user_UI_jPanel.add(add_user_TT_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 170, -1));
+
+        add_user_TS_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        add_user_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
+        add_user_UI_jPanel.add(add_user_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 170, -1));
+
+        add_user_submit_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
+        add_user_submit_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_user_submit_jLabelMouseClicked(evt);
+            }
+        });
+        add_user_UI_jPanel.add(add_user_submit_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
+
+        UI_jPanel.add(add_user_UI_jPanel, "card2");
 
         getContentPane().add(UI_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 970, 350));
 
@@ -857,6 +907,28 @@ public class Home extends javax.swing.JFrame {
         title_jPanel.revalidate();
     }//GEN-LAST:event_thumbs_up_jLabelMouseClicked
 
+    private void search_jTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_search_jTextFieldKeyPressed
+       if (evt.getKeyCode() == 10) {
+           // Search
+           UI_jPanel.removeAll();
+           UI_jPanel.add(search_UI_jPanel);
+           UI_jPanel.repaint();
+           UI_jPanel.revalidate();
+
+           title_jPanel.removeAll();
+           title_jPanel.add(search_title_jPanel);
+           title_jPanel.repaint();
+           title_jPanel.revalidate();
+       }
+    }//GEN-LAST:event_search_jTextFieldKeyPressed
+
+    private void add_user_submit_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_user_submit_jLabelMouseClicked
+        System.out.println("pressed");
+        this.action = "add_user_submit";
+        System.out.println(action);
+    }//GEN-LAST:event_add_user_submit_jLabelMouseClicked
+
+    
     /**
      * @param args the command line arguments
      */
@@ -893,6 +965,10 @@ public class Home extends javax.swing.JFrame {
                 new Home().setVisible(true);
             }
         });
+    }
+    
+    public void AddLinkToResults() {
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -984,9 +1060,15 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel order_tracker_jLabel;
+    private javax.swing.JPanel search_UI_jPanel;
     private javax.swing.JPanel search_area_jPanel;
+    private javax.swing.JLabel search_body_title_jLabel;
     private javax.swing.JLabel search_icon_jLabel;
     private javax.swing.JTextField search_jTextField;
+    private javax.swing.JLabel search_main_title_jLabel;
+    private javax.swing.JPanel search_results_jPanel;
+    private javax.swing.JLabel search_subtitle_jLabel;
+    private javax.swing.JPanel search_title_jPanel;
     private javax.swing.JPanel share_UI_jPanel;
     private javax.swing.JLabel share_body_description_jLabel;
     private javax.swing.JLabel share_body_title_jLabel;
