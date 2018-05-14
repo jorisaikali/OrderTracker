@@ -75,6 +75,9 @@ public class Home extends javax.swing.JFrame {
         instructions_title_jPanel = new javax.swing.JPanel();
         instructions_subtitle_jLabel = new javax.swing.JLabel();
         instructions_main_title_jLabel = new javax.swing.JLabel();
+        credits_title_jPanel = new javax.swing.JPanel();
+        credits_subtitle_jLabel = new javax.swing.JLabel();
+        credits_main_title_jLabel = new javax.swing.JLabel();
         UI_jPanel = new javax.swing.JPanel();
         home_UI_jPanel = new javax.swing.JPanel();
         thumbs_up_jLabel = new javax.swing.JLabel();
@@ -139,6 +142,10 @@ public class Home extends javax.swing.JFrame {
         instructions_max_jPanel = new javax.swing.JPanel();
         instructions_body_question_jLabel6 = new javax.swing.JLabel();
         instructions_body_answer_jLabel6 = new javax.swing.JLabel();
+        credits_UI_jPanel = new javax.swing.JPanel();
+        credits_body_title_jLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        credits_jTextArea = new javax.swing.JTextArea();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -343,6 +350,21 @@ public class Home extends javax.swing.JFrame {
 
         title_jPanel.add(instructions_title_jPanel, "card2");
 
+        credits_title_jPanel.setBackground(new java.awt.Color(224, 31, 31));
+        credits_title_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        credits_subtitle_jLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        credits_subtitle_jLabel.setForeground(new java.awt.Color(255, 255, 255));
+        credits_subtitle_jLabel.setText("Credits given to those who made Order Tracker possible");
+        credits_title_jPanel.add(credits_subtitle_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 900, -1));
+
+        credits_main_title_jLabel.setFont(new java.awt.Font("Tahoma", 0, 78)); // NOI18N
+        credits_main_title_jLabel.setForeground(new java.awt.Color(255, 255, 255));
+        credits_main_title_jLabel.setText("Credits");
+        credits_title_jPanel.add(credits_main_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 570, -1));
+
+        title_jPanel.add(credits_title_jPanel, "card2");
+
         getContentPane().add(title_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 980, 260));
 
         UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
@@ -353,6 +375,11 @@ public class Home extends javax.swing.JFrame {
 
         thumbs_up_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         thumbs_up_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ordertracker/thumbs-up.png"))); // NOI18N
+        thumbs_up_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                thumbs_up_jLabelMouseClicked(evt);
+            }
+        });
         home_UI_jPanel.add(thumbs_up_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 88, -1, -1));
 
         instructions_icon_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -709,6 +736,26 @@ public class Home extends javax.swing.JFrame {
 
         UI_jPanel.add(instructions_UI_jPanel, "card2");
 
+        credits_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        credits_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        credits_body_title_jLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        credits_body_title_jLabel.setText("Thank you to all who made Order Tracker possible!");
+        credits_UI_jPanel.add(credits_body_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
+
+        credits_jTextArea.setEditable(false);
+        credits_jTextArea.setBackground(new java.awt.Color(185, 185, 185));
+        credits_jTextArea.setColumns(20);
+        credits_jTextArea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        credits_jTextArea.setRows(5);
+        credits_jTextArea.setText("Developed by Jori El-Saikali.\n\nA special thanks to all the staff at store 16! Without them I would have never created Order Tracker. Thank you all!\n\nResource Credits:\n\nHouse black silhouette without door icon made by Freepik from www.flaticon.com\nNew user free icon made by Freepik from www.flaticon.com\nChecked free icon made by Smashicons from www.flaticon.com\nCalendar free icon made by Smashicons from www.flaticon.com\nLocal network free icon made by Nikita Golubev from www.flaticon.com\nSearch free icon made by Smashicons from www.flaticon.com\nThumbs up free icon made by Dave Gandy from www.flaticon.com\nInstructions free icon made by Smashicons from www.flaticon.com\nVerified notes symbol free icon made by Freepik from www.flaticon.com");
+        credits_jTextArea.setCaretPosition(0);
+        jScrollPane1.setViewportView(credits_jTextArea);
+
+        credits_UI_jPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 860, 190));
+
+        UI_jPanel.add(credits_UI_jPanel, "card2");
+
         getContentPane().add(UI_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 970, 350));
 
         pack();
@@ -798,6 +845,18 @@ public class Home extends javax.swing.JFrame {
         title_jPanel.revalidate();
     }//GEN-LAST:event_instructions_icon_jLabelMouseClicked
 
+    private void thumbs_up_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thumbs_up_jLabelMouseClicked
+        UI_jPanel.removeAll();
+        UI_jPanel.add(credits_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
+        title_jPanel.removeAll();
+        title_jPanel.add(credits_title_jPanel);
+        title_jPanel.repaint();
+        title_jPanel.revalidate();
+    }//GEN-LAST:event_thumbs_up_jLabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -868,8 +927,14 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel complete_order_subtitle_jLabel1;
     private javax.swing.JLabel complete_order_title_jLabel1;
     private javax.swing.JPanel complete_order_title_jPanel;
+    private javax.swing.JPanel credits_UI_jPanel;
+    private javax.swing.JLabel credits_body_title_jLabel;
     private javax.swing.JLabel credits_description_jLabel;
+    private javax.swing.JTextArea credits_jTextArea;
+    private javax.swing.JLabel credits_main_title_jLabel;
+    private javax.swing.JLabel credits_subtitle_jLabel;
     private javax.swing.JLabel credits_title_jLabel;
+    private javax.swing.JPanel credits_title_jPanel;
     private javax.swing.JPanel home_UI_jPanel;
     private javax.swing.JLabel home_jLabel;
     private javax.swing.JPanel home_title_jPanel;
@@ -906,6 +971,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel instructions_view_icon_jLabel;
     private javax.swing.JPanel instructions_view_jPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
