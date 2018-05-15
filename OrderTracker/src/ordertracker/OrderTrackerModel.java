@@ -28,6 +28,9 @@ public class OrderTrackerModel {
         this.tomorrowsOrders = initTimeSlots();
     }
     
+    public TimeSlot[] getTodaysOrders() { return this.todaysOrders; }
+    public TimeSlot[] getTomorrowsOrders() { return this.tomorrowsOrders; }
+    
     public boolean addCustomer(String customerName, String todayOrTomorrow, String time) {
         
         boolean added = false;
@@ -79,6 +82,15 @@ public class OrderTrackerModel {
         }
                     
         return found;
+    }
+    
+    public boolean checkOrderMax(String time, String todayOrTomorrow) {             
+        if (todayOrTomorrow.equals("Today")) {
+            return checkMax(todaysOrders, time);
+        }
+        else {
+            return checkMax(tomorrowsOrders, time);
+        }
     }
     
     public void writePersistantData() throws FileNotFoundException, UnsupportedEncodingException {
@@ -201,6 +213,37 @@ public class OrderTrackerModel {
 				
             count++;
         }
+    }
+    
+    private boolean checkMax(TimeSlot[] slots, String time) {
+        TimeSlot currSlot = null;
+        int index = 0, count = 0;
+        
+        for (TimeSlot slot : slots) {
+            currSlot = slot;
+            if (slot.GetTime().equals(time)) {
+                break;
+            }
+                
+            index++;
+        }
+                
+        if (currSlot.GetTime().contains("00")) {
+            for (int i = index; i < index + 5; i++) {
+                if (this.todaysOrders[i].GetCustomerName() != null) {
+                    count++;
+                }
+            }
+        }
+        else if (currSlot.GetTime().contains("30")) {
+            for (int i = index - 3; i < index + 2; i++) {
+                if (this.todaysOrders[i].GetCustomerName() != null) {
+                    count++;
+                }
+            }
+        }
+            
+        return count == 5;
     }
     
 }

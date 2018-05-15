@@ -491,7 +491,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         complete_order_UI_jPanel.add(complete_order_TS_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
 
         complete_order_TS_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        complete_order_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
+        complete_order_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
         complete_order_UI_jPanel.add(complete_order_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 170, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -912,11 +912,11 @@ public class OrderTrackerView extends javax.swing.JFrame {
     
     public void updateCalendarTable(TimeSlot[] timeslots) {
         
-        int count = 0, i = 0;
+        int count = 1, i = 0;
         for (TimeSlot slot : timeslots) {
-            if (count == 3) {
+            if (count == 4) {
                 i++;
-                count = 0;
+                count = 1;
             }
             
             calendar_jTable.setValueAt(slot.GetCustomerName(), i, count);
@@ -933,6 +933,14 @@ public class OrderTrackerView extends javax.swing.JFrame {
     
     public void addCompleteOrderButtonListener(ActionListener listener) {
         complete_order_submit_jButton.addActionListener(listener);
+    }
+    
+    public void addCalendarToolbarButtonListener(ActionListener listener) {
+        toolbar_calendar_jButton.addActionListener(listener);
+    }
+    
+    public void addCalendarTTActionListener(ActionListener listener) {
+        calendar_TT_jComboBox.addActionListener(listener);
     }
     
     public void addShareButtonListener(ActionListener listener) {
@@ -1041,7 +1049,11 @@ public class OrderTrackerView extends javax.swing.JFrame {
     }
     // ------------------------------------------------------ //
     
-    // -------------------- Error Message function ------------------ //
+    // -------------------- Success/Error Message function ------------------ //
+    public void displaySuccess() {
+        JOptionPane.showMessageDialog(this, "Operation successful.");
+    }
+    
     public void displayError() {
         JOptionPane.showMessageDialog(this, "Error has occured.");
     }
