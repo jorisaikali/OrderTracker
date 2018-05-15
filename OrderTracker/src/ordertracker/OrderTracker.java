@@ -13,7 +13,9 @@ public class OrderTracker {
     
     public static void main(String[] args) {
         OrderTrackerView otView = new OrderTrackerView();
-
-        otView.runGFX();
+        OrderTrackerModel otModel = new OrderTrackerModel();
+        OrderTrackerController otController = new OrderTrackerController(otView, otModel);
+        
+        otController.runGFX();
     }
 }
