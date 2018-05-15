@@ -1,4 +1,4 @@
-package ordertracker;
+package ordertracker_old;
 import java.util.Scanner;
 
 public class ConsoleBased {
@@ -20,7 +20,7 @@ public class ConsoleBased {
 			
             switch(n) {
 		case 1:
-                    // Print today's orders
+                    // PRINT TODAY'S ORDERS
                     System.out.println("\nToday's Orders:\n");
 					
                     for (int i = 0; i < todaysOrders.length; i += 3) {
@@ -35,7 +35,7 @@ public class ConsoleBased {
                     break;
 					
 		case 2:
-                    // Print tomorrow's orders
+                    // PRINT TOMORROW'S ORDERS
                     System.out.println("\nTomorrow's Orders:\n");
 					
                     for (int i = 0; i < tomorrowsOrders.length; i += 3) {
@@ -50,6 +50,7 @@ public class ConsoleBased {
                     break;
 			
 		case 3:
+                    // ADD CUSTOMER TO TODAY
                     customerName = GetCustomerNameConsole();
                     String slot[] = GetTimeSlot();
 					
@@ -59,6 +60,7 @@ public class ConsoleBased {
                     return new String[] {customerName, timeSlot, meridiem, "today"};
 					
 		case 4:
+                    // ADD CUSTOMER TO TOMORROW
                     customerName = GetCustomerNameConsole();
                     String slotTomorrow[] = GetTimeSlot();
 					
@@ -68,11 +70,13 @@ public class ConsoleBased {
                     return new String[] {customerName, timeSlot, meridiemTomorrow, "tomorrow"};
 				
 		case 5:
+                    // COMPLETE ORDER
                     customerName = GetCustomerNameConsole();
 					
                     return new String[] {customerName};
 					
 		case 6:
+                    // EXIT
                     return new String[] {"EXIT"};
 							
                 default:			

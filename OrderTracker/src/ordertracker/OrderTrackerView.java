@@ -6,32 +6,26 @@
 package ordertracker;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.KeyEvent;
-import javafx.scene.input.KeyCode;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Jori El-Saikali
  */
-public class Home extends javax.swing.JFrame {
+public class OrderTrackerView extends javax.swing.JFrame {
 
-    public String action = "";
-    public boolean running = false;
-    
     /**
      * Creates new form Home
      */
-    public Home() {
+    public OrderTrackerView() {
         initComponents();
         this.setLocation(300,100);
         this.setSize(1029, 657);
         initialize();
-        running = true;
     }
 
     private void initialize() {
@@ -50,11 +44,11 @@ public class Home extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         toolbar_jPanel = new javax.swing.JPanel();
-        home_jLabel = new javax.swing.JLabel();
-        add_user_jLabel = new javax.swing.JLabel();
-        complete_order_jLabel = new javax.swing.JLabel();
-        calendar_jLabel = new javax.swing.JLabel();
-        share_jLabel = new javax.swing.JLabel();
+        toolbar_home_jButton = new javax.swing.JButton();
+        toolbar_add_user_jButton = new javax.swing.JButton();
+        toolbar_complete_order_jButton = new javax.swing.JButton();
+        toolbar_calendar_jButton = new javax.swing.JButton();
+        toolbar_share_jButton = new javax.swing.JButton();
         toolbar_blank_jPanel = new javax.swing.JPanel();
         search_area_jPanel = new javax.swing.JPanel();
         search_icon_jLabel = new javax.swing.JLabel();
@@ -89,8 +83,6 @@ public class Home extends javax.swing.JFrame {
         search_main_title_jLabel = new javax.swing.JLabel();
         UI_jPanel = new javax.swing.JPanel();
         home_UI_jPanel = new javax.swing.JPanel();
-        thumbs_up_jLabel = new javax.swing.JLabel();
-        instructions_icon_jLabel = new javax.swing.JLabel();
         instructions_title_jLabel = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -99,6 +91,8 @@ public class Home extends javax.swing.JFrame {
         credits_description_jLabel = new javax.swing.JLabel();
         instructions_description_jLabel = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
+        home_instructions_jButton = new javax.swing.JButton();
+        home_credits_jButton = new javax.swing.JButton();
         complete_order_UI_jPanel = new javax.swing.JPanel();
         complete_order_CN_jLabel = new javax.swing.JLabel();
         complete_order_CN_jTextField = new javax.swing.JTextField();
@@ -106,7 +100,7 @@ public class Home extends javax.swing.JFrame {
         complete_order_TS_jLabel = new javax.swing.JLabel();
         complete_order_TS_jComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        complete_order_submit_jLabel = new javax.swing.JLabel();
+        complete_order_submit_jButton = new javax.swing.JButton();
         calendar_UI_jPanel = new javax.swing.JPanel();
         calendar_TT_jLabel = new javax.swing.JLabel();
         calendar_TT_jComboBox = new javax.swing.JComboBox<>();
@@ -115,7 +109,7 @@ public class Home extends javax.swing.JFrame {
         share_UI_jPanel = new javax.swing.JPanel();
         share_body_title_jLabel = new javax.swing.JLabel();
         share_body_description_jLabel = new javax.swing.JLabel();
-        share_submit_jLabel = new javax.swing.JLabel();
+        share_submit_jButton = new javax.swing.JButton();
         instructions_UI_jPanel = new javax.swing.JPanel();
         instructions_howto_jLabel = new javax.swing.JLabel();
         instructions_questions_jComboBox = new javax.swing.JComboBox<>();
@@ -157,7 +151,7 @@ public class Home extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         add_user_TT_jComboBox = new javax.swing.JComboBox<>();
         add_user_TS_jComboBox = new javax.swing.JComboBox<>();
-        add_user_submit_jLabel = new javax.swing.JLabel();
+        add_user_submit_jButton = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -178,57 +172,76 @@ public class Home extends javax.swing.JFrame {
         setForeground(java.awt.Color.white);
         setMinimumSize(new java.awt.Dimension(1029, 657));
         setName("main_frame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1029, 657));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         toolbar_jPanel.setBackground(new java.awt.Color(104, 100, 100));
         toolbar_jPanel.setLayout(new java.awt.GridLayout(5, 1));
 
-        home_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        home_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/house-black-silhouette-without-door.png"))); // NOI18N
-        home_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                home_jLabelMouseClicked(evt);
+        toolbar_home_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        toolbar_home_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/house-black-silhouette-without-door.png"))); // NOI18N
+        toolbar_home_jButton.setBorder(null);
+        toolbar_home_jButton.setBorderPainted(false);
+        toolbar_home_jButton.setContentAreaFilled(false);
+        toolbar_home_jButton.setFocusPainted(false);
+        toolbar_home_jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toolbar_home_jButtonActionPerformed(evt);
             }
         });
-        toolbar_jPanel.add(home_jLabel);
+        toolbar_jPanel.add(toolbar_home_jButton);
 
-        add_user_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add_user_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/new-user.png"))); // NOI18N
-        add_user_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                add_user_jLabelMouseClicked(evt);
+        toolbar_add_user_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        toolbar_add_user_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/new-user.png"))); // NOI18N
+        toolbar_add_user_jButton.setBorder(null);
+        toolbar_add_user_jButton.setBorderPainted(false);
+        toolbar_add_user_jButton.setContentAreaFilled(false);
+        toolbar_add_user_jButton.setFocusPainted(false);
+        toolbar_add_user_jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toolbar_add_user_jButtonActionPerformed(evt);
             }
         });
-        toolbar_jPanel.add(add_user_jLabel);
+        toolbar_jPanel.add(toolbar_add_user_jButton);
 
-        complete_order_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        complete_order_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/checked.png"))); // NOI18N
-        complete_order_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                complete_order_jLabelMouseClicked(evt);
+        toolbar_complete_order_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        toolbar_complete_order_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/checked.png"))); // NOI18N
+        toolbar_complete_order_jButton.setBorder(null);
+        toolbar_complete_order_jButton.setBorderPainted(false);
+        toolbar_complete_order_jButton.setContentAreaFilled(false);
+        toolbar_complete_order_jButton.setFocusPainted(false);
+        toolbar_complete_order_jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toolbar_complete_order_jButtonActionPerformed(evt);
             }
         });
-        toolbar_jPanel.add(complete_order_jLabel);
+        toolbar_jPanel.add(toolbar_complete_order_jButton);
 
-        calendar_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        calendar_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/calendar.png"))); // NOI18N
-        calendar_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                calendar_jLabelMouseClicked(evt);
+        toolbar_calendar_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        toolbar_calendar_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/calendar.png"))); // NOI18N
+        toolbar_calendar_jButton.setBorder(null);
+        toolbar_calendar_jButton.setBorderPainted(false);
+        toolbar_calendar_jButton.setContentAreaFilled(false);
+        toolbar_calendar_jButton.setFocusPainted(false);
+        toolbar_calendar_jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toolbar_calendar_jButtonActionPerformed(evt);
             }
         });
-        toolbar_jPanel.add(calendar_jLabel);
+        toolbar_jPanel.add(toolbar_calendar_jButton);
 
-        share_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        share_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/local-network.png"))); // NOI18N
-        share_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                share_jLabelMouseClicked(evt);
+        toolbar_share_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        toolbar_share_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/local-network.png"))); // NOI18N
+        toolbar_share_jButton.setBorder(null);
+        toolbar_share_jButton.setBorderPainted(false);
+        toolbar_share_jButton.setContentAreaFilled(false);
+        toolbar_share_jButton.setFocusPainted(false);
+        toolbar_share_jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toolbar_share_jButtonActionPerformed(evt);
             }
         });
-        toolbar_jPanel.add(share_jLabel);
+        toolbar_jPanel.add(toolbar_share_jButton);
 
         getContentPane().add(toolbar_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 460));
 
@@ -405,24 +418,6 @@ public class Home extends javax.swing.JFrame {
         home_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
         home_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        thumbs_up_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        thumbs_up_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/thumbs-up.png"))); // NOI18N
-        thumbs_up_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                thumbs_up_jLabelMouseClicked(evt);
-            }
-        });
-        home_UI_jPanel.add(thumbs_up_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 88, -1, -1));
-
-        instructions_icon_jLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        instructions_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/instructions.png"))); // NOI18N
-        instructions_icon_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                instructions_icon_jLabelMouseClicked(evt);
-            }
-        });
-        home_UI_jPanel.add(instructions_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 88, -1, -1));
-
         instructions_title_jLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         instructions_title_jLabel.setText("Instructions");
         home_UI_jPanel.add(instructions_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 170, -1, -1));
@@ -449,6 +444,32 @@ public class Home extends javax.swing.JFrame {
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
         home_UI_jPanel.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, 240));
 
+        home_instructions_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        home_instructions_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/instructions.png"))); // NOI18N
+        home_instructions_jButton.setBorder(null);
+        home_instructions_jButton.setBorderPainted(false);
+        home_instructions_jButton.setContentAreaFilled(false);
+        home_instructions_jButton.setFocusPainted(false);
+        home_instructions_jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                home_instructions_jButtonActionPerformed(evt);
+            }
+        });
+        home_UI_jPanel.add(home_instructions_jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 84, 70, 70));
+
+        home_credits_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        home_credits_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/thumbs-up.png"))); // NOI18N
+        home_credits_jButton.setBorder(null);
+        home_credits_jButton.setBorderPainted(false);
+        home_credits_jButton.setContentAreaFilled(false);
+        home_credits_jButton.setFocusPainted(false);
+        home_credits_jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                home_credits_jButtonActionPerformed(evt);
+            }
+        });
+        home_UI_jPanel.add(home_credits_jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 84, 70, 70));
+
         UI_jPanel.add(home_UI_jPanel, "card2");
 
         complete_order_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
@@ -462,11 +483,6 @@ public class Home extends javax.swing.JFrame {
         complete_order_CN_jTextField.setBorder(null);
         complete_order_CN_jTextField.setOpaque(false);
         complete_order_CN_jTextField.setBackground(new Color(0,0,0,0));
-        complete_order_CN_jTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                complete_order_CN_jTextFieldActionPerformed(evt);
-            }
-        });
         complete_order_UI_jPanel.add(complete_order_CN_jTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 340, 30));
         complete_order_UI_jPanel.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 340, -1));
 
@@ -482,8 +498,14 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setText("<html>Need help finding a customer's name?<br>Search by time slot!</html>");
         complete_order_UI_jPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
-        complete_order_submit_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
-        complete_order_UI_jPanel.add(complete_order_submit_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
+        complete_order_submit_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        complete_order_submit_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
+        complete_order_submit_jButton.setBorder(null);
+        complete_order_submit_jButton.setBorderPainted(false);
+        complete_order_submit_jButton.setContentAreaFilled(false);
+        complete_order_submit_jButton.setFocusPainted(false);
+        complete_order_submit_jButton.setVerifyInputWhenFocusTarget(false);
+        complete_order_UI_jPanel.add(complete_order_submit_jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
 
         UI_jPanel.add(complete_order_UI_jPanel, "card2");
 
@@ -546,6 +568,8 @@ public class Home extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        calendar_jTable.setFocusable(false);
+        calendar_jTable.setRowSelectionAllowed(false);
         calendar_jTable.getTableHeader().setResizingAllowed(false);
         calendar_jTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(calendar_jTable);
@@ -565,8 +589,14 @@ public class Home extends javax.swing.JFrame {
         share_body_description_jLabel.setText("<html>Order Tracker saves time slot data when the window is closed. If Order Tracker is not closed,<br>then time slot data will not be saved nor be shared. Share will save all time slot data and share it with<br>other local Order Tracker's on the fly!");
         share_UI_jPanel.add(share_body_description_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
 
-        share_submit_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
-        share_UI_jPanel.add(share_submit_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
+        share_submit_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        share_submit_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
+        share_submit_jButton.setBorder(null);
+        share_submit_jButton.setBorderPainted(false);
+        share_submit_jButton.setContentAreaFilled(false);
+        share_submit_jButton.setFocusPainted(false);
+        share_submit_jButton.setVerifyInputWhenFocusTarget(false);
+        share_UI_jPanel.add(share_submit_jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
 
         UI_jPanel.add(share_UI_jPanel, "card2");
 
@@ -621,11 +651,6 @@ public class Home extends javax.swing.JFrame {
                         instructions_body_jPanel.revalidate();
                     }
                 }
-            }
-        });
-        instructions_questions_jComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                instructions_questions_jComboBoxActionPerformed(evt);
             }
         });
         instructions_UI_jPanel.add(instructions_questions_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 530, -1));
@@ -780,11 +805,6 @@ public class Home extends javax.swing.JFrame {
         add_user_CN_jTextField.setOpaque(false);
         add_user_CN_jTextField.setBackground(new Color(0,0,0,0));
 
-        add_user_CN_jTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_user_CN_jTextFieldActionPerformed(evt);
-            }
-        });
         add_user_UI_jPanel.add(add_user_CN_jTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 66, 340, 30));
         add_user_UI_jPanel.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 96, 340, -1));
 
@@ -796,13 +816,14 @@ public class Home extends javax.swing.JFrame {
         add_user_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
         add_user_UI_jPanel.add(add_user_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 170, -1));
 
-        add_user_submit_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
-        add_user_submit_jLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                add_user_submit_jLabelMouseClicked(evt);
-            }
-        });
-        add_user_UI_jPanel.add(add_user_submit_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
+        add_user_submit_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        add_user_submit_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
+        add_user_submit_jButton.setBorder(null);
+        add_user_submit_jButton.setBorderPainted(false);
+        add_user_submit_jButton.setContentAreaFilled(false);
+        add_user_submit_jButton.setFocusPainted(false);
+        add_user_submit_jButton.setVerifyInputWhenFocusTarget(false);
+        add_user_UI_jPanel.add(add_user_submit_jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
 
         UI_jPanel.add(add_user_UI_jPanel, "card2");
 
@@ -811,129 +832,44 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void home_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_home_jLabelMouseClicked
-        UI_jPanel.removeAll();
-        UI_jPanel.add(home_UI_jPanel);
-        UI_jPanel.repaint();
-        UI_jPanel.revalidate();
-        
-        title_jPanel.removeAll();
-        title_jPanel.add(home_title_jPanel);
-        title_jPanel.repaint();
-        title_jPanel.revalidate();
-    }//GEN-LAST:event_home_jLabelMouseClicked
-
-    private void add_user_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_user_jLabelMouseClicked
-        UI_jPanel.removeAll();
-        UI_jPanel.add(add_user_UI_jPanel);
-        UI_jPanel.repaint();
-        UI_jPanel.revalidate();
-        
-        title_jPanel.removeAll();
-        title_jPanel.add(add_user_title_jPanel);
-        title_jPanel.repaint();
-        title_jPanel.revalidate();
-    }//GEN-LAST:event_add_user_jLabelMouseClicked
-
-    private void complete_order_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_complete_order_jLabelMouseClicked
-        UI_jPanel.removeAll();
-        UI_jPanel.add(complete_order_UI_jPanel);
-        UI_jPanel.repaint();
-        UI_jPanel.revalidate();
-        
-        title_jPanel.removeAll();
-        title_jPanel.add(complete_order_title_jPanel);
-        title_jPanel.repaint();
-        title_jPanel.revalidate();
-    }//GEN-LAST:event_complete_order_jLabelMouseClicked
-
-    private void calendar_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calendar_jLabelMouseClicked
-        UI_jPanel.removeAll();
-        UI_jPanel.add(calendar_UI_jPanel);
-        UI_jPanel.repaint();
-        UI_jPanel.revalidate();
-        
-        title_jPanel.removeAll();
-        title_jPanel.add(calendar_title_jPanel);
-        title_jPanel.repaint();
-        title_jPanel.revalidate();
-    }//GEN-LAST:event_calendar_jLabelMouseClicked
-
-    private void share_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_share_jLabelMouseClicked
-        UI_jPanel.removeAll();
-        UI_jPanel.add(share_UI_jPanel);
-        UI_jPanel.repaint();
-        UI_jPanel.revalidate();
-        
-        title_jPanel.removeAll();
-        title_jPanel.add(share_title_jPanel);
-        title_jPanel.repaint();
-        title_jPanel.revalidate();
-    }//GEN-LAST:event_share_jLabelMouseClicked
-
-    private void add_user_CN_jTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_user_CN_jTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_add_user_CN_jTextFieldActionPerformed
-
-    private void complete_order_CN_jTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_complete_order_CN_jTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_complete_order_CN_jTextFieldActionPerformed
-
-    private void instructions_questions_jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_instructions_questions_jComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_instructions_questions_jComboBoxActionPerformed
-
-    private void instructions_icon_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instructions_icon_jLabelMouseClicked
-        UI_jPanel.removeAll();
-        UI_jPanel.add(instructions_UI_jPanel);
-        UI_jPanel.repaint();
-        UI_jPanel.revalidate();
-        
-        title_jPanel.removeAll();
-        title_jPanel.add(instructions_title_jPanel);
-        title_jPanel.repaint();
-        title_jPanel.revalidate();
-    }//GEN-LAST:event_instructions_icon_jLabelMouseClicked
-
-    private void thumbs_up_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thumbs_up_jLabelMouseClicked
-        UI_jPanel.removeAll();
-        UI_jPanel.add(credits_UI_jPanel);
-        UI_jPanel.repaint();
-        UI_jPanel.revalidate();
-        
-        title_jPanel.removeAll();
-        title_jPanel.add(credits_title_jPanel);
-        title_jPanel.repaint();
-        title_jPanel.revalidate();
-    }//GEN-LAST:event_thumbs_up_jLabelMouseClicked
-
     private void search_jTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_search_jTextFieldKeyPressed
-       if (evt.getKeyCode() == 10) {
-           // Search
-           UI_jPanel.removeAll();
-           UI_jPanel.add(search_UI_jPanel);
-           UI_jPanel.repaint();
-           UI_jPanel.revalidate();
-
-           title_jPanel.removeAll();
-           title_jPanel.add(search_title_jPanel);
-           title_jPanel.repaint();
-           title_jPanel.revalidate();
-       }
+       transitionToSearch(evt);
     }//GEN-LAST:event_search_jTextFieldKeyPressed
 
-    private void add_user_submit_jLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_user_submit_jLabelMouseClicked
-        System.out.println("pressed");
-        this.action = "add_user_submit";
-        System.out.println(action);
-    }//GEN-LAST:event_add_user_submit_jLabelMouseClicked
+    private void home_instructions_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_home_instructions_jButtonActionPerformed
+        transitionToInstructions();
+    }//GEN-LAST:event_home_instructions_jButtonActionPerformed
+
+    private void home_credits_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_home_credits_jButtonActionPerformed
+        transitionToCredits();
+    }//GEN-LAST:event_home_credits_jButtonActionPerformed
+
+    private void toolbar_home_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toolbar_home_jButtonActionPerformed
+        transitionToHome();
+    }//GEN-LAST:event_toolbar_home_jButtonActionPerformed
+
+    private void toolbar_add_user_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toolbar_add_user_jButtonActionPerformed
+        transitionToAddUser();
+    }//GEN-LAST:event_toolbar_add_user_jButtonActionPerformed
+
+    private void toolbar_complete_order_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toolbar_complete_order_jButtonActionPerformed
+        transitionToCompleteOrder();
+    }//GEN-LAST:event_toolbar_complete_order_jButtonActionPerformed
+
+    private void toolbar_calendar_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toolbar_calendar_jButtonActionPerformed
+        transitionToCalendar();
+    }//GEN-LAST:event_toolbar_calendar_jButtonActionPerformed
+
+    private void toolbar_share_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toolbar_share_jButtonActionPerformed
+        transitionToShare();
+    }//GEN-LAST:event_toolbar_share_jButtonActionPerformed
 
     
     /**
      * @param args the command line arguments
      */
-    public void RunGFX() {
-        /* Set the Nimbus look and feel */
+    public void runGFX() {
+        /* Set the Windows look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -946,31 +882,171 @@ public class Home extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrderTrackerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrderTrackerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrderTrackerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrderTrackerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Home().setVisible(true);
-            }
-        });
+        this.setVisible(true);
     }
     
-    public void AddLinkToResults() {
+    // ---------------- Adding Customer functions ----------------- //
+    public String getAddUserCN() { return add_user_CN_jTextField.getText(); }
+    public String getAddUserTT() { return add_user_TT_jComboBox.getSelectedItem().toString(); }
+    public String getAddUserTS() { return add_user_TT_jComboBox.getSelectedItem().toString(); }
+    // ------------------------------------------------------------ //
+    
+    // ---------------- Completing Order functions ---------------- //
+    public String getCompleteOrderCN() { return complete_order_CN_jTextField.getText(); }
+    public String getCompleteOrderTS() { return complete_order_TS_jComboBox.getSelectedItem().toString(); }
+    // ------------------------------------------------------------ //
+    
+    // ---------------- Calendar functions ---------------- //
+    public String getCalendarTT() { return calendar_TT_jComboBox.getSelectedItem().toString(); }
+    
+    public void updateCalendarTable(TimeSlot[] timeslots) {
+        
+        int count = 0, i = 0;
+        for (TimeSlot slot : timeslots) {
+            if (count == 3) {
+                i++;
+                count = 0;
+            }
+            
+            calendar_jTable.setValueAt(slot.GetCustomerName(), i, count);
+            count++;
+        }
         
     }
+    // ---------------------------------------------------- //
+    
+    // ------------------ Adding Listeners ------------------- //
+    public void addAddCustomerButtonListener(ActionListener listener) {
+        add_user_submit_jButton.addActionListener(listener);
+    }
+    
+    public void addCompleteOrderButtonListener(ActionListener listener) {
+        complete_order_submit_jButton.addActionListener(listener);
+    }
+    
+    public void addShareButtonListener(ActionListener listener) {
+        share_submit_jButton.addActionListener(listener);
+    }
+    // ------------------------------------------------------- //
+    
+    // ---------------- Transition functions ---------------- //
+    public void transitionToHome() {
+        UI_jPanel.removeAll();
+        UI_jPanel.add(home_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
+        title_jPanel.removeAll();
+        title_jPanel.add(home_title_jPanel);
+        title_jPanel.repaint();
+        title_jPanel.revalidate();
+    }
+    
+    public void transitionToAddUser() {
+        UI_jPanel.removeAll();
+        UI_jPanel.add(add_user_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
+        title_jPanel.removeAll();
+        title_jPanel.add(add_user_title_jPanel);
+        title_jPanel.repaint();
+        title_jPanel.revalidate();
+    }
+    
+    public void transitionToCompleteOrder() {
+        UI_jPanel.removeAll();
+        UI_jPanel.add(complete_order_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
+        title_jPanel.removeAll();
+        title_jPanel.add(complete_order_title_jPanel);
+        title_jPanel.repaint();
+        title_jPanel.revalidate();
+    }
+    
+    public void transitionToCalendar() {
+        UI_jPanel.removeAll();
+        UI_jPanel.add(calendar_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
+        title_jPanel.removeAll();
+        title_jPanel.add(calendar_title_jPanel);
+        title_jPanel.repaint();
+        title_jPanel.revalidate();
+    }
+    
+    public void transitionToShare() {
+        UI_jPanel.removeAll();
+        UI_jPanel.add(share_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
+        title_jPanel.removeAll();
+        title_jPanel.add(share_title_jPanel);
+        title_jPanel.repaint();
+        title_jPanel.revalidate();
+    }
+    
+    public void transitionToInstructions() {
+        UI_jPanel.removeAll();
+        UI_jPanel.add(instructions_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
+        title_jPanel.removeAll();
+        title_jPanel.add(instructions_title_jPanel);
+        title_jPanel.repaint();
+        title_jPanel.revalidate();
+    }
+    
+    public void transitionToCredits() {
+        UI_jPanel.removeAll();
+        UI_jPanel.add(credits_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
+        title_jPanel.removeAll();
+        title_jPanel.add(credits_title_jPanel);
+        title_jPanel.repaint();
+        title_jPanel.revalidate();
+    }
+    
+    public void transitionToSearch(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == 10) {
+           // Search
+           UI_jPanel.removeAll();
+           UI_jPanel.add(search_UI_jPanel);
+           UI_jPanel.repaint();
+           UI_jPanel.revalidate();
 
+           title_jPanel.removeAll();
+           title_jPanel.add(search_title_jPanel);
+           title_jPanel.repaint();
+           title_jPanel.revalidate();
+       }
+    }
+    // ------------------------------------------------------ //
+    
+    // -------------------- Error Message function ------------------ //
+    public void displayError() {
+        JOptionPane.showMessageDialog(this, "Error has occured.");
+    }
+    // -------------------------------------------------------------- //
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel UI_jPanel;
     private javax.swing.JLabel add_user_CN_jLabel;
@@ -980,15 +1056,13 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> add_user_TT_jComboBox;
     private javax.swing.JLabel add_user_TT_jLabel;
     private javax.swing.JPanel add_user_UI_jPanel;
-    private javax.swing.JLabel add_user_jLabel;
-    private javax.swing.JLabel add_user_submit_jLabel;
+    private javax.swing.JButton add_user_submit_jButton;
     private javax.swing.JLabel add_user_subtitle_jLabel;
     private javax.swing.JLabel add_user_title_jLabel;
     private javax.swing.JPanel add_user_title_jPanel;
     private javax.swing.JComboBox<String> calendar_TT_jComboBox;
     private javax.swing.JLabel calendar_TT_jLabel;
     private javax.swing.JPanel calendar_UI_jPanel;
-    private javax.swing.JLabel calendar_jLabel;
     private javax.swing.JTable calendar_jTable;
     private javax.swing.JLabel calendar_subtitle_jLabel;
     private javax.swing.JLabel calendar_title_jLabel;
@@ -998,8 +1072,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> complete_order_TS_jComboBox;
     private javax.swing.JLabel complete_order_TS_jLabel;
     private javax.swing.JPanel complete_order_UI_jPanel;
-    private javax.swing.JLabel complete_order_jLabel;
-    private javax.swing.JLabel complete_order_submit_jLabel;
+    private javax.swing.JButton complete_order_submit_jButton;
     private javax.swing.JLabel complete_order_subtitle_jLabel1;
     private javax.swing.JLabel complete_order_title_jLabel1;
     private javax.swing.JPanel complete_order_title_jPanel;
@@ -1012,7 +1085,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel credits_title_jLabel;
     private javax.swing.JPanel credits_title_jPanel;
     private javax.swing.JPanel home_UI_jPanel;
-    private javax.swing.JLabel home_jLabel;
+    private javax.swing.JButton home_credits_jButton;
+    private javax.swing.JButton home_instructions_jButton;
     private javax.swing.JPanel home_title_jPanel;
     private javax.swing.JPanel instructions_UI_jPanel;
     private javax.swing.JPanel instructions_add_jPanel;
@@ -1035,7 +1109,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel instructions_description_jLabel;
     private javax.swing.JPanel instructions_dkcn_jPanel;
     private javax.swing.JLabel instructions_howto_jLabel;
-    private javax.swing.JLabel instructions_icon_jLabel;
     private javax.swing.JLabel instructions_main_title_jLabel;
     private javax.swing.JPanel instructions_max_jPanel;
     private javax.swing.JComboBox<String> instructions_questions_jComboBox;
@@ -1072,16 +1145,19 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel share_UI_jPanel;
     private javax.swing.JLabel share_body_description_jLabel;
     private javax.swing.JLabel share_body_title_jLabel;
-    private javax.swing.JLabel share_jLabel;
-    private javax.swing.JLabel share_submit_jLabel;
+    private javax.swing.JButton share_submit_jButton;
     private javax.swing.JLabel share_subtitle_jLabel;
     private javax.swing.JLabel share_title_jLabel;
     private javax.swing.JPanel share_title_jPanel;
     private javax.swing.JLabel staples_logo_jLabel;
-    private javax.swing.JLabel thumbs_up_jLabel;
     private javax.swing.JPanel title_jPanel;
+    private javax.swing.JButton toolbar_add_user_jButton;
     private javax.swing.JPanel toolbar_blank_jPanel;
+    private javax.swing.JButton toolbar_calendar_jButton;
+    private javax.swing.JButton toolbar_complete_order_jButton;
+    private javax.swing.JButton toolbar_home_jButton;
     private javax.swing.JPanel toolbar_jPanel;
+    private javax.swing.JButton toolbar_share_jButton;
     private javax.swing.JLabel welcome_jLabel;
     // End of variables declaration//GEN-END:variables
 }

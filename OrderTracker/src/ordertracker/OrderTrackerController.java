@@ -9,11 +9,6 @@ package ordertracker;
  *
  * @author Jori El-Saikali
  */
-public class OrderTracker {
+public class OrderTrackerController {
     
-    public static void main(String[] args) {
-        OrderTrackerView otView = new OrderTrackerView();
-
-        otView.runGFX();
-    }
 }
