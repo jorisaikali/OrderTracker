@@ -17,8 +17,8 @@ package ordertracker;
 public class OrderTracker {
     
     public static void main(String[] args) {
-        OrderTrackerView otView = new OrderTrackerView();
         OrderTrackerModel otModel = new OrderTrackerModel();
+        OrderTrackerView otView = new OrderTrackerView(otModel);
         OrderTrackerController otController = new OrderTrackerController(otView, otModel);
         
         otController.runGFX();

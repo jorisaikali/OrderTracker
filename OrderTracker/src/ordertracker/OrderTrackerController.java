@@ -7,6 +7,7 @@ package ordertracker;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 //import java.util.logging.Level;
@@ -30,6 +31,15 @@ public class OrderTrackerController {
         this.view.addCalendarToolbarButtonListener(new CalendarListener());
         this.view.addCalendarTTActionListener(new CalendarListener());
         this.view.addShareButtonListener(new ShareListener());
+        
+        this.view.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                System.exit(0);
+            }
+        });
+        
+        this.model.openPersistantData();
     }
     
     public void runGFX() {
@@ -45,7 +55,7 @@ public class OrderTrackerController {
             String todayOrTomorrow = view.getAddUserTT();
             String time = view.getAddUserTS();
             
-            if (model.checkOrderMax(time, todayOrTomorrow)) {
+            if (!model.checkOrderMax(time, todayOrTomorrow)) {
                 model.addCustomer(customerName, todayOrTomorrow, time);
                 view.displaySuccess();
             }
@@ -89,20 +99,6 @@ public class OrderTrackerController {
             }
         } 
     }
-    
-    /*
-    class CalendarTTListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (view.getCalendarTT().equals("Today")) {
-                view.updateCalendarTable(model.getTodaysOrders());
-            }
-            else {
-                
-            }
-        }
-    }
-    */
     
     class ShareListener implements ActionListener {
         @Override

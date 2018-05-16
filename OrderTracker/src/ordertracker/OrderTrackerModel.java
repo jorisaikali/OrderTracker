@@ -227,23 +227,25 @@ public class OrderTrackerModel {
                 
             index++;
         }
-                
+        
         if (currSlot.GetTime().contains("00")) {
-            for (int i = index; i < index + 5; i++) {
-                if (this.todaysOrders[i].GetCustomerName() != null) {
+            for (int i = index; i < index + 6; i++) {
+                System.out.println("i: " + i);
+                
+                if (slots[i].GetCustomerName() != null) {
                     count++;
                 }
             }
         }
         else if (currSlot.GetTime().contains("30")) {
-            for (int i = index - 3; i < index + 2; i++) {
-                if (this.todaysOrders[i].GetCustomerName() != null) {
+            for (int i = index - 3; i < index + 3; i++) {
+                if (slots[i].GetCustomerName() != null) {
                     count++;
                 }
             }
         }
-            
-        return count == 5;
+        
+        return count == 3;
     }
     
 }

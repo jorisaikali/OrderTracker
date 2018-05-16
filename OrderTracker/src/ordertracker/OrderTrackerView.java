@@ -10,7 +10,16 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -18,10 +27,14 @@ import javax.swing.JOptionPane;
  */
 public class OrderTrackerView extends javax.swing.JFrame {
 
+    private OrderTrackerModel model;
+    
     /**
      * Creates new form Home
+     * @param m
      */
-    public OrderTrackerView() {
+    public OrderTrackerView(OrderTrackerModel m) {
+        this.model = m;
         initComponents();
         this.setLocation(300,100);
         this.setSize(1029, 657);
@@ -30,6 +43,17 @@ public class OrderTrackerView extends javax.swing.JFrame {
 
     private void initialize() {
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("resources/verified-notes-symbol.png")));
+        
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                try {
+                    model.writePersistantData();
+                } catch (FileNotFoundException | UnsupportedEncodingException ex) {
+                    displayError();
+                }
+            }
+        });
     }
     
     /**
@@ -166,7 +190,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("OrderTracker");
         setBackground(new java.awt.Color(51, 51, 51));
         setForeground(java.awt.Color.white);
@@ -899,7 +923,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
     // ---------------- Adding Customer functions ----------------- //
     public String getAddUserCN() { return add_user_CN_jTextField.getText(); }
     public String getAddUserTT() { return add_user_TT_jComboBox.getSelectedItem().toString(); }
-    public String getAddUserTS() { return add_user_TT_jComboBox.getSelectedItem().toString(); }
+    public String getAddUserTS() { return add_user_TS_jComboBox.getSelectedItem().toString(); }
     // ------------------------------------------------------------ //
     
     // ---------------- Completing Order functions ---------------- //
@@ -919,10 +943,24 @@ public class OrderTrackerView extends javax.swing.JFrame {
                 count = 1;
             }
             
+            //if (!"null".equals(slot.GetCustomerName())) {
             calendar_jTable.setValueAt(slot.GetCustomerName(), i, count);
+            //}
+            
             count++;
         }
         
+        TableModel tableModel = calendar_jTable.getModel();
+        
+        for (int row = 0; row < calendar_jTable.getRowCount(); row++) {
+            for (int column = 1; column < 4; column++) {
+                String selected = tableModel.getValueAt(row, column).toString();
+            
+                if (selected.equals("null")) {
+                    calendar_jTable.setValueAt("", row, column);
+                }
+            }
+        }
     }
     // ---------------------------------------------------- //
     
@@ -971,6 +1009,10 @@ public class OrderTrackerView extends javax.swing.JFrame {
         title_jPanel.add(add_user_title_jPanel);
         title_jPanel.repaint();
         title_jPanel.revalidate();
+        
+        add_user_CN_jTextField.setText("");
+        add_user_TT_jComboBox.setSelectedIndex(0);
+        add_user_TS_jComboBox.setSelectedIndex(0);
     }
     
     public void transitionToCompleteOrder() {
@@ -983,6 +1025,9 @@ public class OrderTrackerView extends javax.swing.JFrame {
         title_jPanel.add(complete_order_title_jPanel);
         title_jPanel.repaint();
         title_jPanel.revalidate();
+        
+        complete_order_CN_jTextField.setText("");
+        complete_order_TS_jComboBox.setSelectedIndex(0);
     }
     
     public void transitionToCalendar() {
@@ -995,6 +1040,8 @@ public class OrderTrackerView extends javax.swing.JFrame {
         title_jPanel.add(calendar_title_jPanel);
         title_jPanel.repaint();
         title_jPanel.revalidate();
+        
+        calendar_TT_jComboBox.setSelectedIndex(0);
     }
     
     public void transitionToShare() {
