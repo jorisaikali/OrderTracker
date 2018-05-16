@@ -121,10 +121,14 @@ public class OrderTrackerView extends javax.swing.JFrame {
         complete_order_CN_jLabel = new javax.swing.JLabel();
         complete_order_CN_jTextField = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
-        complete_order_TS_jLabel = new javax.swing.JLabel();
+        complete_order_TT_jLabel = new javax.swing.JLabel();
         complete_order_TS_jComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         complete_order_submit_jButton = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        complete_order_CN_jTable = new javax.swing.JTable();
+        complete_order_TS_jLabel = new javax.swing.JLabel();
+        complete_order_TT_jComboBox = new javax.swing.JComboBox<>();
         calendar_UI_jPanel = new javax.swing.JPanel();
         calendar_TT_jLabel = new javax.swing.JLabel();
         calendar_TT_jComboBox = new javax.swing.JComboBox<>();
@@ -510,12 +514,43 @@ public class OrderTrackerView extends javax.swing.JFrame {
         complete_order_UI_jPanel.add(complete_order_CN_jTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 340, 30));
         complete_order_UI_jPanel.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 340, -1));
 
-        complete_order_TS_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        complete_order_TS_jLabel.setText("Time Slot:");
-        complete_order_UI_jPanel.add(complete_order_TS_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
+        complete_order_TT_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        complete_order_TT_jLabel.setText("Today/Tomorrow:");
+        complete_order_UI_jPanel.add(complete_order_TT_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, -1));
 
         complete_order_TS_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         complete_order_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
+        complete_order_TS_jComboBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent event) {
+                if (event.getStateChange() == ItemEvent.SELECTED) {
+                    Object item = event.getItem();
+
+                    if (item.toString().equals("None")) {
+                        jScrollPane4.setVisible(false);
+                        complete_order_CN_jTable.setVisible(false);
+                    }
+                    else {
+                        jScrollPane4.setVisible(true);
+                        complete_order_CN_jTable.setVisible(true);
+
+                        String time = complete_order_TS_jComboBox.getSelectedItem().toString();
+                        String todayOrTomorrow = complete_order_TT_jComboBox.getSelectedItem().toString();
+
+                        TimeSlot[] row = model.getRow(time, todayOrTomorrow);
+
+                        complete_order_CN_jTable.setValueAt(row[0].GetCustomerName(), 0, 0);
+                        complete_order_CN_jTable.setValueAt(row[1].GetCustomerName(), 0, 1);
+                        complete_order_CN_jTable.setValueAt(row[2].GetCustomerName(), 0, 2);
+
+                        for (int i = 0; i < complete_order_CN_jTable.getColumnCount(); i++) {
+                            if (complete_order_CN_jTable.getValueAt(0, i).equals("null")) {
+                                complete_order_CN_jTable.setValueAt("", 0, i);
+                            }
+                        }
+                    }
+                }
+            }
+        });
         complete_order_UI_jPanel.add(complete_order_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 170, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -530,6 +565,67 @@ public class OrderTrackerView extends javax.swing.JFrame {
         complete_order_submit_jButton.setFocusPainted(false);
         complete_order_submit_jButton.setVerifyInputWhenFocusTarget(false);
         complete_order_UI_jPanel.add(complete_order_submit_jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
+
+        complete_order_CN_jTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null}
+            },
+            new String [] {
+                "Customer Name", "Customer Name", "Customer Name"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        complete_order_CN_jTable.setFocusable(false);
+        complete_order_CN_jTable.setRowSelectionAllowed(false);
+        complete_order_CN_jTable.getTableHeader().setResizingAllowed(false);
+        complete_order_CN_jTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setVisible(false);
+        complete_order_CN_jTable.setVisible(false);
+        jScrollPane4.setViewportView(complete_order_CN_jTable);
+
+        complete_order_UI_jPanel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 520, 39));
+
+        complete_order_TS_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        complete_order_TS_jLabel.setText("Time Slot:");
+        complete_order_UI_jPanel.add(complete_order_TS_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
+
+        complete_order_TT_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        complete_order_TT_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Today", "Tomorrow" }));
+        complete_order_TT_jComboBox.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent event) {
+                Object item = event.getItem();
+
+                String time = complete_order_TS_jComboBox.getSelectedItem().toString();
+                String todayOrTomorrow = complete_order_TT_jComboBox.getSelectedItem().toString();
+
+                TimeSlot[] row = model.getRow(time, todayOrTomorrow);
+
+                complete_order_CN_jTable.setValueAt(row[0].GetCustomerName(), 0, 0);
+                complete_order_CN_jTable.setValueAt(row[1].GetCustomerName(), 0, 1);
+                complete_order_CN_jTable.setValueAt(row[2].GetCustomerName(), 0, 2);
+
+                for (int i = 0; i < complete_order_CN_jTable.getColumnCount(); i++) {
+                    if (complete_order_CN_jTable.getValueAt(0, i).equals("null")) {
+                        complete_order_CN_jTable.setValueAt("", 0, i);
+                    }
+                }  
+            }
+        });
+        complete_order_UI_jPanel.add(complete_order_TT_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 170, -1));
 
         UI_jPanel.add(complete_order_UI_jPanel, "card2");
 
@@ -1127,9 +1223,12 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JLabel calendar_title_jLabel;
     private javax.swing.JPanel calendar_title_jPanel;
     private javax.swing.JLabel complete_order_CN_jLabel;
+    private javax.swing.JTable complete_order_CN_jTable;
     private javax.swing.JTextField complete_order_CN_jTextField;
     private javax.swing.JComboBox<String> complete_order_TS_jComboBox;
     private javax.swing.JLabel complete_order_TS_jLabel;
+    private javax.swing.JComboBox<String> complete_order_TT_jComboBox;
+    private javax.swing.JLabel complete_order_TT_jLabel;
     private javax.swing.JPanel complete_order_UI_jPanel;
     private javax.swing.JButton complete_order_submit_jButton;
     private javax.swing.JLabel complete_order_subtitle_jLabel1;
@@ -1182,6 +1281,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

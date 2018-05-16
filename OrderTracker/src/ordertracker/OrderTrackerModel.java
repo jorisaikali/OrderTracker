@@ -93,6 +93,28 @@ public class OrderTrackerModel {
         }
     }
     
+    public TimeSlot[] getRow(String time, String todayOrTomorrow) {
+        
+        if (todayOrTomorrow.equals("Today")) {
+            for (int i = 0; i < this.todaysOrders.length; i++) {
+                if (this.todaysOrders[i].GetTime().equals(time)) {
+                    TimeSlot[] row = { this.todaysOrders[i], this.todaysOrders[i+1], this.todaysOrders[i+2] };
+                    return row;
+                }
+            }
+        }
+        else {
+            for (int i = 0; i < this.tomorrowsOrders.length; i++) {
+                if (this.tomorrowsOrders[i].GetTime().equals(time)) {
+                    TimeSlot[] row = { this.tomorrowsOrders[i], this.tomorrowsOrders[i+1], this.tomorrowsOrders[i+2] };
+                    return row;
+                }
+            }
+        }
+        
+        return null;
+    }
+    
     public void writePersistantData() throws FileNotFoundException, UnsupportedEncodingException {
         // Write all elements from list to file
         PrintWriter writerToday = new PrintWriter("data/persistantDataToday.txt", "UTF-8");
