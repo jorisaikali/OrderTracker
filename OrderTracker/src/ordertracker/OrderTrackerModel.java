@@ -6,6 +6,7 @@
 package ordertracker;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -132,23 +133,35 @@ public class OrderTrackerModel {
         return null;
     }
     
-    public void writePersistantData() throws FileNotFoundException, UnsupportedEncodingException {
+    public void writePersistantData() throws FileNotFoundException, UnsupportedEncodingException, IOException {
         // Write all elements from list to file
-        PrintWriter writerToday = new PrintWriter("data/persistantDataToday.txt", "UTF-8");
+        File todaysFile = new File("data/persistantDataToday.txt");
+        todaysFile.setWritable(true);
+        
+        PrintWriter writerToday = new PrintWriter(todaysFile);
 					
         for (TimeSlot slot : this.todaysOrders) {
             writerToday.println(slot.WriteTimeSlot());
         }
-					
+	
+        todaysFile.setWritable(false);
+        todaysFile.setReadOnly();
         writerToday.close();
-					
-        PrintWriter writerTomorrow = new PrintWriter("data/persistantDataTomorrow.txt", "UTF-8");
+	
+        File tomorrowsFile = new File("data/persistantDataTomorrow.txt");
+        tomorrowsFile.setWritable(true);
+        
+        PrintWriter writerTomorrow = new PrintWriter(tomorrowsFile);
 					
         for (TimeSlot slot : this.tomorrowsOrders) {
             writerTomorrow.println(slot.WriteTimeSlot());
         }
-					
+	
+        tomorrowsFile.setWritable(false);
+        tomorrowsFile.setReadOnly();
         writerTomorrow.close();
+    
+        Runtime.getRuntime().exec("attrib +H data");
     }
     
     public boolean openPersistantData() {

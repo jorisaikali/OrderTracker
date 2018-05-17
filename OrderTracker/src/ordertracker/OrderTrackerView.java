@@ -14,6 +14,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,6 +53,8 @@ public class OrderTrackerView extends javax.swing.JFrame {
                 try {
                     model.writePersistantData();
                 } catch (FileNotFoundException | UnsupportedEncodingException ex) {
+                    displayError(ex.toString());
+                } catch (IOException ex) {
                     displayError(ex.toString());
                 }
             }

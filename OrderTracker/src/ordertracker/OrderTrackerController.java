@@ -9,7 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 
@@ -116,6 +119,8 @@ public class OrderTrackerController {
                 view.displaySuccess();
             } catch (FileNotFoundException | UnsupportedEncodingException ex) {
                 //Logger.getLogger(OrderTrackerController.class.getName()).log(Level.SEVERE, null, ex);
+                view.displayError(ex.toString());
+            } catch (IOException ex) {
                 view.displayError(ex.toString());
             }
         }
