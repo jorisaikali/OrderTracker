@@ -18,7 +18,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.TableModel;
 
 /**
@@ -899,7 +901,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         search_body_title_jLabel.setText("Results");
         search_UI_jPanel.add(search_body_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
-        search_results_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        search_results_jPanel.setBackground(new java.awt.Color(255, 255, 255));
         search_results_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         search_UI_jPanel.add(search_results_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 870, 190));
 
@@ -1020,11 +1022,15 @@ public class OrderTrackerView extends javax.swing.JFrame {
     public String getAddUserCN() { return add_user_CN_jTextField.getText(); }
     public String getAddUserTT() { return add_user_TT_jComboBox.getSelectedItem().toString(); }
     public String getAddUserTS() { return add_user_TS_jComboBox.getSelectedItem().toString(); }
+    
+    public void clearAddUserCN() { add_user_CN_jTextField.setText(""); }
     // ------------------------------------------------------------ //
     
     // ---------------- Completing Order functions ---------------- //
     public String getCompleteOrderCN() { return complete_order_CN_jTextField.getText(); }
     public String getCompleteOrderTS() { return complete_order_TS_jComboBox.getSelectedItem().toString(); }
+    
+    public void clearCompleteOrderCN() { complete_order_CN_jTextField.setText(""); }
     // ------------------------------------------------------------ //
     
     // ---------------- Calendar functions ---------------- //
@@ -1050,7 +1056,10 @@ public class OrderTrackerView extends javax.swing.JFrame {
         
         for (int row = 0; row < calendar_jTable.getRowCount(); row++) {
             for (int column = 1; column < 4; column++) {
-                String selected = tableModel.getValueAt(row, column).toString();
+                String selected = "";
+                if (tableModel.getValueAt(row, column) != null) {
+                    selected = tableModel.getValueAt(row, column).toString();
+                }
             
                 if (selected.equals("null")) {
                     calendar_jTable.setValueAt("", row, column);
@@ -1059,6 +1068,10 @@ public class OrderTrackerView extends javax.swing.JFrame {
         }
     }
     // ---------------------------------------------------- //
+    
+    // --------------------- Search function -------------------- //
+    public void clearSearch() { search_jTextField.setText(""); }
+    // ---------------------------------------------------------- //
     
     // ------------------ Adding Listeners ------------------- //
     public void addAddCustomerButtonListener(ActionListener listener) {
@@ -1093,6 +1106,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         title_jPanel.add(home_title_jPanel);
         title_jPanel.repaint();
         title_jPanel.revalidate();
+        clearSearch();
     }
     
     public void transitionToAddUser() {
@@ -1109,6 +1123,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         add_user_CN_jTextField.setText("");
         add_user_TT_jComboBox.setSelectedIndex(0);
         add_user_TS_jComboBox.setSelectedIndex(0);
+        clearSearch();
     }
     
     public void transitionToCompleteOrder() {
@@ -1124,6 +1139,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         
         complete_order_CN_jTextField.setText("");
         complete_order_TS_jComboBox.setSelectedIndex(0);
+        clearSearch();
     }
     
     public void transitionToCalendar() {
@@ -1138,6 +1154,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         title_jPanel.revalidate();
         
         calendar_TT_jComboBox.setSelectedIndex(0);
+        clearSearch();
     }
     
     public void transitionToShare() {
@@ -1150,6 +1167,8 @@ public class OrderTrackerView extends javax.swing.JFrame {
         title_jPanel.add(share_title_jPanel);
         title_jPanel.repaint();
         title_jPanel.revalidate();
+        
+        clearSearch();
     }
     
     public void transitionToInstructions() {
@@ -1162,6 +1181,8 @@ public class OrderTrackerView extends javax.swing.JFrame {
         title_jPanel.add(instructions_title_jPanel);
         title_jPanel.repaint();
         title_jPanel.revalidate();
+        
+        clearSearch();
     }
     
     public void transitionToCredits() {
@@ -1174,11 +1195,22 @@ public class OrderTrackerView extends javax.swing.JFrame {
         title_jPanel.add(credits_title_jPanel);
         title_jPanel.repaint();
         title_jPanel.revalidate();
+        
+        clearSearch();
     }
     
     public void transitionToSearch(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == 10) {
            // Search
+           
+           String searched = search_jTextField.getText();
+           
+           if (searched.contains("<html>")) {
+               clearSearch();
+               displayError();
+               return;
+           }
+           
            UI_jPanel.removeAll();
            UI_jPanel.add(search_UI_jPanel);
            UI_jPanel.repaint();
@@ -1188,6 +1220,17 @@ public class OrderTrackerView extends javax.swing.JFrame {
            title_jPanel.add(search_title_jPanel);
            title_jPanel.repaint();
            title_jPanel.revalidate();
+           
+           if (model.hasCustomer(searched)) {
+               transitionToCompleteOrder();
+               complete_order_CN_jTextField.setText(searched);
+               search_jTextField.setText(searched);
+           }
+           else {
+               transitionToAddUser();
+               add_user_CN_jTextField.setText(searched);
+               search_jTextField.setText(searched);
+           }
        }
     }
     // ------------------------------------------------------ //

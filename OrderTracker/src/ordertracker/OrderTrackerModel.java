@@ -31,6 +31,23 @@ public class OrderTrackerModel {
     public TimeSlot[] getTodaysOrders() { return this.todaysOrders; }
     public TimeSlot[] getTomorrowsOrders() { return this.tomorrowsOrders; }
     
+    public boolean hasCustomer(String customerName) {
+        				
+        for (TimeSlot slot : this.todaysOrders) {
+            if (slot.GetCustomerName() != null && slot.GetCustomerName().equals(customerName)) {						
+                return true;
+            }
+        }
+					
+        for (TimeSlot slot : this.tomorrowsOrders) {
+            if (slot.GetCustomerName() != null && slot.GetCustomerName().equals(customerName)) {						
+                return true;
+            }
+        }
+             
+        return false;
+    }
+    
     public boolean addCustomer(String customerName, String todayOrTomorrow, String time) {
         
         boolean added = false;
@@ -251,9 +268,7 @@ public class OrderTrackerModel {
         }
         
         if (currSlot.GetTime().contains("00")) {
-            for (int i = index; i < index + 6; i++) {
-                System.out.println("i: " + i);
-                
+            for (int i = index; i < index + 6; i++) {               
                 if (slots[i].GetCustomerName() != null) {
                     count++;
                 }

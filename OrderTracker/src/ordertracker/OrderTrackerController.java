@@ -49,15 +49,20 @@ public class OrderTrackerController {
     class AddCustomerListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Add Customer Submitted");
-            
             String customerName = view.getAddUserCN();
             String todayOrTomorrow = view.getAddUserTT();
             String time = view.getAddUserTS();
             
+            if (customerName.contains("<html>") || customerName.equals("")) {
+                view.clearAddUserCN();
+                view.displayError();
+                return;
+            }
+            
             if (!model.checkOrderMax(time, todayOrTomorrow)) {
                 model.addCustomer(customerName, todayOrTomorrow, time);
                 view.displaySuccess();
+                view.clearAddUserCN();
             }
             else {
                 view.displayError();
@@ -67,15 +72,20 @@ public class OrderTrackerController {
     
     class CompleteOrderListener implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("Complete Submitted");
-            
+        public void actionPerformed(ActionEvent e) {      
             String customerName = view.getCompleteOrderCN();
             String time = view.getCompleteOrderTS();
+            
+            if (customerName.contains("<html>") || customerName.equals("")) {
+                view.clearCompleteOrderCN();
+                view.displayError();
+                return;
+            }
             
             if (time.equals("None")) {
                 if (model.removeCustomer(customerName)) {
                     view.displaySuccess();
+                    view.clearCompleteOrderCN();
                 } else {
                     view.displayError();
                 }
@@ -88,9 +98,7 @@ public class OrderTrackerController {
     
     class CalendarListener implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("Updating table");
-            
+        public void actionPerformed(ActionEvent e) {            
             if (view.getCalendarTT().equals("Today")) {
                 view.updateCalendarTable(model.getTodaysOrders());
             }
@@ -103,8 +111,6 @@ public class OrderTrackerController {
     class ShareListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Share Submitted");
-            
             try {
                 model.writePersistantData();
                 view.displaySuccess();
