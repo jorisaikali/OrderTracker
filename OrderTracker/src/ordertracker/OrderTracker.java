@@ -20,7 +20,7 @@ public class OrderTracker {
         OrderTrackerModel otModel = new OrderTrackerModel();
         OrderTrackerView otView = new OrderTrackerView(otModel);
         OrderTrackerController otController = new OrderTrackerController(otView, otModel);
-        
+
         otController.runGFX();
     }
 }

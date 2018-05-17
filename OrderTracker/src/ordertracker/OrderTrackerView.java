@@ -70,8 +70,6 @@ public class OrderTrackerView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         toolbar_jPanel = new javax.swing.JPanel();
         toolbar_home_jButton = new javax.swing.JButton();
         toolbar_add_user_jButton = new javax.swing.JButton();
@@ -130,14 +128,14 @@ public class OrderTrackerView extends javax.swing.JFrame {
         complete_order_TS_jComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         complete_order_submit_jButton = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        complete_order_jScrollPane = new javax.swing.JScrollPane();
         complete_order_CN_jTable = new javax.swing.JTable();
         complete_order_TS_jLabel = new javax.swing.JLabel();
         complete_order_TT_jComboBox = new javax.swing.JComboBox<>();
         calendar_UI_jPanel = new javax.swing.JPanel();
         calendar_TT_jLabel = new javax.swing.JLabel();
         calendar_TT_jComboBox = new javax.swing.JComboBox<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        calendar_jScrollPane = new javax.swing.JScrollPane();
         calendar_jTable = new javax.swing.JTable();
         share_UI_jPanel = new javax.swing.JPanel();
         share_body_title_jLabel = new javax.swing.JLabel();
@@ -151,10 +149,14 @@ public class OrderTrackerView extends javax.swing.JFrame {
         instructions_body_question_jLabel = new javax.swing.JLabel();
         instructions_body_answer_jLabel = new javax.swing.JLabel();
         instructions_add_user_icon_jLabel = new javax.swing.JLabel();
+        instructions_add_user_tip_jLabel = new javax.swing.JLabel();
+        instructions_add_user_tipbody_jLabel = new javax.swing.JLabel();
         instructions_complete_jPanel = new javax.swing.JPanel();
         instructions_body_question_jLabel2 = new javax.swing.JLabel();
         instructions_body_answer_jLabel2 = new javax.swing.JLabel();
         instructions_complete_order_icon_jLabel = new javax.swing.JLabel();
+        instructions_complete_order_tip_jLabel = new javax.swing.JLabel();
+        instructions_complete_order_tipbody_jLabel = new javax.swing.JLabel();
         instructions_view_jPanel = new javax.swing.JPanel();
         instructions_body_question_jLabel3 = new javax.swing.JLabel();
         instructions_body_answer_jLabel3 = new javax.swing.JLabel();
@@ -171,7 +173,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         instructions_body_answer_jLabel6 = new javax.swing.JLabel();
         credits_UI_jPanel = new javax.swing.JPanel();
         credits_body_title_jLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        credits_jScrollPane = new javax.swing.JScrollPane();
         credits_jTextArea = new javax.swing.JTextArea();
         search_UI_jPanel = new javax.swing.JPanel();
         search_body_title_jLabel = new javax.swing.JLabel();
@@ -185,19 +187,6 @@ public class OrderTrackerView extends javax.swing.JFrame {
         add_user_TT_jComboBox = new javax.swing.JComboBox<>();
         add_user_TS_jComboBox = new javax.swing.JComboBox<>();
         add_user_submit_jButton = new javax.swing.JButton();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("OrderTracker");
@@ -301,9 +290,16 @@ public class OrderTrackerView extends javax.swing.JFrame {
         search_area_jPanel.add(search_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 0, 48, 50));
 
         search_jTextField.setBackground(new java.awt.Color(0, 0, 0));
+        search_jTextField.setForeground(new java.awt.Color(102, 102, 102));
+        search_jTextField.setText("Search a non-existing or existing customer name for quick addition or completion");
         search_jTextField.setBorder(null);
         search_jTextField.setOpaque(false);
         search_jTextField.setBackground(new Color(0,0,0,0));
+        search_jTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                search_jTextFieldMouseClicked(evt);
+            }
+        });
         search_jTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 search_jTextFieldKeyPressed(evt);
@@ -531,11 +527,11 @@ public class OrderTrackerView extends javax.swing.JFrame {
                     Object item = event.getItem();
 
                     if (item.toString().equals("None")) {
-                        jScrollPane4.setVisible(false);
+                        complete_order_jScrollPane.setVisible(false);
                         complete_order_CN_jTable.setVisible(false);
                     }
                     else {
-                        jScrollPane4.setVisible(true);
+                        complete_order_jScrollPane.setVisible(true);
                         complete_order_CN_jTable.setVisible(true);
 
                         String time = complete_order_TS_jComboBox.getSelectedItem().toString();
@@ -598,11 +594,11 @@ public class OrderTrackerView extends javax.swing.JFrame {
         complete_order_CN_jTable.setRowSelectionAllowed(false);
         complete_order_CN_jTable.getTableHeader().setResizingAllowed(false);
         complete_order_CN_jTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setVisible(false);
+        complete_order_jScrollPane.setVisible(false);
         complete_order_CN_jTable.setVisible(false);
-        jScrollPane4.setViewportView(complete_order_CN_jTable);
+        complete_order_jScrollPane.setViewportView(complete_order_CN_jTable);
 
-        complete_order_UI_jPanel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 520, 39));
+        complete_order_UI_jPanel.add(complete_order_jScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 520, 39));
 
         complete_order_TS_jLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         complete_order_TS_jLabel.setText("Time Slot:");
@@ -697,9 +693,9 @@ public class OrderTrackerView extends javax.swing.JFrame {
         calendar_jTable.setRowSelectionAllowed(false);
         calendar_jTable.getTableHeader().setResizingAllowed(false);
         calendar_jTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(calendar_jTable);
+        calendar_jScrollPane.setViewportView(calendar_jTable);
 
-        calendar_UI_jPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 850, 210));
+        calendar_UI_jPanel.add(calendar_jScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 850, 210));
 
         UI_jPanel.add(calendar_UI_jPanel, "card2");
 
@@ -791,11 +787,19 @@ public class OrderTrackerView extends javax.swing.JFrame {
         instructions_add_jPanel.add(instructions_body_question_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         instructions_body_answer_jLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        instructions_body_answer_jLabel.setText("<html>Click the Add Customer icon on the toolbar. This will bring you to the add customer page. Fill in<br>\nthe customer's name and choose whether you would like to add their name to today's time slots or<br>\ntomorrow's time slots. Once decided, choose the time slot you and the customer agreed on for pick-up.<br>\nAfter all information is filled out, click the green checkmark button to submit your addition.</html>");
+        instructions_body_answer_jLabel.setText("<html>Click the Add Customer icon on the toolbar. This will bring you to the add customer page. Fill in<br> the customer's name and choose whether you would like to add their name to today's time slots or<br> tomorrow's time slots. Once decided, choose the time slot you and the customer agreed on for pick-up.<br> After all information is filled out, click the green checkmark button to submit your addition.</html>");
         instructions_add_jPanel.add(instructions_body_answer_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         instructions_add_user_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add_user.PNG"))); // NOI18N
         instructions_add_jPanel.add(instructions_add_user_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
+
+        instructions_add_user_tip_jLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        instructions_add_user_tip_jLabel.setText("Tip:");
+        instructions_add_jPanel.add(instructions_add_user_tip_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 141, -1, -1));
+
+        instructions_add_user_tipbody_jLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        instructions_add_user_tipbody_jLabel.setText("<html>You can quickly search a non-existing customer name in the search bar to bring you to the Add Customer<br>section with the customer name already filled in.</html>");
+        instructions_add_jPanel.add(instructions_add_user_tipbody_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 141, -1, -1));
 
         instructions_body_jPanel.add(instructions_add_jPanel, "card2");
 
@@ -812,6 +816,14 @@ public class OrderTrackerView extends javax.swing.JFrame {
 
         instructions_complete_order_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/complete_order.PNG"))); // NOI18N
         instructions_complete_jPanel.add(instructions_complete_order_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
+
+        instructions_complete_order_tip_jLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        instructions_complete_order_tip_jLabel.setText("Tip:");
+        instructions_complete_jPanel.add(instructions_complete_order_tip_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 158, -1, -1));
+
+        instructions_complete_order_tipbody_jLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        instructions_complete_order_tipbody_jLabel.setText("<html>You can quickly search a non-existing customer name in the search bar to bring you to the Add Customer<br>section with the customer name already filled in.</html>");
+        instructions_complete_jPanel.add(instructions_complete_order_tipbody_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 158, -1, -1));
 
         instructions_body_jPanel.add(instructions_complete_jPanel, "card2");
 
@@ -891,9 +903,9 @@ public class OrderTrackerView extends javax.swing.JFrame {
         credits_jTextArea.setRows(5);
         credits_jTextArea.setText("Developed by Jori El-Saikali.\n\nA special thanks to all the staff at store 16! Without them I would have never created Order Tracker. Thank you all!\n\nResource Credits:\n\nHouse black silhouette without door icon made by Freepik from www.flaticon.com\nNew user free icon made by Freepik from www.flaticon.com\nChecked free icon made by Smashicons from www.flaticon.com\nCalendar free icon made by Smashicons from www.flaticon.com\nLocal network free icon made by Nikita Golubev from www.flaticon.com\nSearch free icon made by Smashicons from www.flaticon.com\nThumbs up free icon made by Dave Gandy from www.flaticon.com\nInstructions free icon made by Smashicons from www.flaticon.com\nVerified notes symbol free icon made by Freepik from www.flaticon.com");
         credits_jTextArea.setCaretPosition(0);
-        jScrollPane1.setViewportView(credits_jTextArea);
+        credits_jScrollPane.setViewportView(credits_jTextArea);
 
-        credits_UI_jPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 860, 190));
+        credits_UI_jPanel.add(credits_jScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 860, 190));
 
         UI_jPanel.add(credits_UI_jPanel, "card2");
 
@@ -989,6 +1001,12 @@ public class OrderTrackerView extends javax.swing.JFrame {
         transitionToShare();
     }//GEN-LAST:event_toolbar_share_jButtonActionPerformed
 
+    private void search_jTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_search_jTextFieldMouseClicked
+        if (search_jTextField.getText().equals("Search a non-existing or existing customer name for quick addition or completion")) {
+            clearSearch();
+        }
+    }//GEN-LAST:event_search_jTextFieldMouseClicked
+
     
     /**
      * @param args the command line arguments
@@ -1074,6 +1092,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
     
     // --------------------- Search function -------------------- //
     public void clearSearch() { search_jTextField.setText(""); }
+    public void setToSearchDefault() { search_jTextField.setText("Search a non-existing or existing customer name for quick addition or completion"); }
     // ---------------------------------------------------------- //
     
     // ------------------ Adding Listeners ------------------- //
@@ -1109,7 +1128,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         title_jPanel.add(home_title_jPanel);
         title_jPanel.repaint();
         title_jPanel.revalidate();
-        clearSearch();
+        setToSearchDefault();
     }
     
     public void transitionToAddUser() {
@@ -1126,7 +1145,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         add_user_CN_jTextField.setText("");
         add_user_TT_jComboBox.setSelectedIndex(0);
         add_user_TS_jComboBox.setSelectedIndex(0);
-        clearSearch();
+        setToSearchDefault();
     }
     
     public void transitionToCompleteOrder() {
@@ -1142,7 +1161,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         
         complete_order_CN_jTextField.setText("");
         complete_order_TS_jComboBox.setSelectedIndex(0);
-        clearSearch();
+        setToSearchDefault();
     }
     
     public void transitionToCalendar() {
@@ -1157,7 +1176,8 @@ public class OrderTrackerView extends javax.swing.JFrame {
         title_jPanel.revalidate();
         
         calendar_TT_jComboBox.setSelectedIndex(0);
-        clearSearch();
+        
+        setToSearchDefault();
     }
     
     public void transitionToShare() {
@@ -1171,7 +1191,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         title_jPanel.repaint();
         title_jPanel.revalidate();
         
-        clearSearch();
+        setToSearchDefault();
     }
     
     public void transitionToInstructions() {
@@ -1185,7 +1205,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         title_jPanel.repaint();
         title_jPanel.revalidate();
         
-        clearSearch();
+        setToSearchDefault();
     }
     
     public void transitionToCredits() {
@@ -1199,7 +1219,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         title_jPanel.repaint();
         title_jPanel.revalidate();
         
-        clearSearch();
+        setToSearchDefault();
     }
     
     public void transitionToSearch(java.awt.event.KeyEvent evt) {
@@ -1264,6 +1284,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> calendar_TT_jComboBox;
     private javax.swing.JLabel calendar_TT_jLabel;
     private javax.swing.JPanel calendar_UI_jPanel;
+    private javax.swing.JScrollPane calendar_jScrollPane;
     private javax.swing.JTable calendar_jTable;
     private javax.swing.JLabel calendar_subtitle_jLabel;
     private javax.swing.JLabel calendar_title_jLabel;
@@ -1276,6 +1297,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> complete_order_TT_jComboBox;
     private javax.swing.JLabel complete_order_TT_jLabel;
     private javax.swing.JPanel complete_order_UI_jPanel;
+    private javax.swing.JScrollPane complete_order_jScrollPane;
     private javax.swing.JButton complete_order_submit_jButton;
     private javax.swing.JLabel complete_order_subtitle_jLabel1;
     private javax.swing.JLabel complete_order_title_jLabel1;
@@ -1283,6 +1305,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JPanel credits_UI_jPanel;
     private javax.swing.JLabel credits_body_title_jLabel;
     private javax.swing.JLabel credits_description_jLabel;
+    private javax.swing.JScrollPane credits_jScrollPane;
     private javax.swing.JTextArea credits_jTextArea;
     private javax.swing.JLabel credits_main_title_jLabel;
     private javax.swing.JLabel credits_subtitle_jLabel;
@@ -1295,6 +1318,8 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JPanel instructions_UI_jPanel;
     private javax.swing.JPanel instructions_add_jPanel;
     private javax.swing.JLabel instructions_add_user_icon_jLabel;
+    private javax.swing.JLabel instructions_add_user_tip_jLabel;
+    private javax.swing.JLabel instructions_add_user_tipbody_jLabel;
     private javax.swing.JLabel instructions_body_answer_jLabel;
     private javax.swing.JLabel instructions_body_answer_jLabel2;
     private javax.swing.JLabel instructions_body_answer_jLabel3;
@@ -1310,6 +1335,8 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JLabel instructions_body_question_jLabel6;
     private javax.swing.JPanel instructions_complete_jPanel;
     private javax.swing.JLabel instructions_complete_order_icon_jLabel;
+    private javax.swing.JLabel instructions_complete_order_tip_jLabel;
+    private javax.swing.JLabel instructions_complete_order_tipbody_jLabel;
     private javax.swing.JLabel instructions_description_jLabel;
     private javax.swing.JPanel instructions_dkcn_jPanel;
     private javax.swing.JLabel instructions_howto_jLabel;
@@ -1324,10 +1351,6 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JLabel instructions_view_icon_jLabel;
     private javax.swing.JPanel instructions_view_jPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -1336,7 +1359,6 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel order_tracker_jLabel;
     private javax.swing.JPanel search_UI_jPanel;
     private javax.swing.JPanel search_area_jPanel;

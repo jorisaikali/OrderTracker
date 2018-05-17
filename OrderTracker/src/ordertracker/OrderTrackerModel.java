@@ -135,7 +135,7 @@ public class OrderTrackerModel {
     
     public void writePersistantData() throws FileNotFoundException, UnsupportedEncodingException, IOException {
         // Write all elements from list to file
-        File todaysFile = new File("data/persistantDataToday.txt");
+        File todaysFile = new File(todayFilename);
         todaysFile.setWritable(true);
         
         PrintWriter writerToday = new PrintWriter(todaysFile);
@@ -148,7 +148,7 @@ public class OrderTrackerModel {
         todaysFile.setReadOnly();
         writerToday.close();
 	
-        File tomorrowsFile = new File("data/persistantDataTomorrow.txt");
+        File tomorrowsFile = new File(tomorrowFilename);
         tomorrowsFile.setWritable(true);
         
         PrintWriter writerTomorrow = new PrintWriter(tomorrowsFile);

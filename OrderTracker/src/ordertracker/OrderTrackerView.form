@@ -1,29 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
-          <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                <Column editable="true" title="Title 4" type="java.lang.Object"/>
-              </Table>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="0"/>
     <Property name="title" type="java.lang.String" value="OrderTracker"/>
@@ -233,12 +210,17 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="66" red="66" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Search a non-existing or existing customer name for quick addition or completion"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="search_jTextFieldMouseClicked"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="search_jTextFieldKeyPressed"/>
           </Events>
           <AuxValues>
@@ -970,7 +952,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="complete_order_TS_jComboBox.addItemListener(new ItemListener() {&#xd;&#xa;        public void itemStateChanged(ItemEvent event) {&#xd;&#xa;            if (event.getStateChange() == ItemEvent.SELECTED) {&#xd;&#xa;                Object item = event.getItem();&#xd;&#xa;&#xd;&#xa;                if (item.toString().equals(&quot;None&quot;)) {&#xd;&#xa;                    jScrollPane4.setVisible(false);&#xd;&#xa;                    complete_order_CN_jTable.setVisible(false);&#xd;&#xa;                }&#xd;&#xa;                else {&#xd;&#xa;                    jScrollPane4.setVisible(true);&#xd;&#xa;                    complete_order_CN_jTable.setVisible(true);&#xd;&#xa;&#xd;&#xa;                    String time = complete_order_TS_jComboBox.getSelectedItem().toString();&#xd;&#xa;                    String todayOrTomorrow = complete_order_TT_jComboBox.getSelectedItem().toString();&#xd;&#xa;&#xd;&#xa;                    TimeSlot[] row = model.getRow(time, todayOrTomorrow);&#xd;&#xa;&#xd;&#xa;                    complete_order_CN_jTable.setValueAt(row[0].GetCustomerName(), 0, 0);&#xd;&#xa;                    complete_order_CN_jTable.setValueAt(row[1].GetCustomerName(), 0, 1);&#xd;&#xa;                    complete_order_CN_jTable.setValueAt(row[2].GetCustomerName(), 0, 2);&#xd;&#xa;&#xd;&#xa;                    for (int i = 0; i &lt; complete_order_CN_jTable.getColumnCount(); i++) {&#xd;&#xa;                        if (complete_order_CN_jTable.getValueAt(0, i).equals(&quot;null&quot;)) {&#xd;&#xa;                            complete_order_CN_jTable.setValueAt(&quot;&quot;, 0, i);&#xd;&#xa;                        }&#xd;&#xa;                    }&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;    });"/>
+                <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="complete_order_TS_jComboBox.addItemListener(new ItemListener() {&#xd;&#xa;        public void itemStateChanged(ItemEvent event) {&#xd;&#xa;            if (event.getStateChange() == ItemEvent.SELECTED) {&#xd;&#xa;                Object item = event.getItem();&#xd;&#xa;&#xd;&#xa;                if (item.toString().equals(&quot;None&quot;)) {&#xd;&#xa;                    complete_order_jScrollPane.setVisible(false);&#xd;&#xa;                    complete_order_CN_jTable.setVisible(false);&#xd;&#xa;                }&#xd;&#xa;                else {&#xd;&#xa;                    complete_order_jScrollPane.setVisible(true);&#xd;&#xa;                    complete_order_CN_jTable.setVisible(true);&#xd;&#xa;&#xd;&#xa;                    String time = complete_order_TS_jComboBox.getSelectedItem().toString();&#xd;&#xa;                    String todayOrTomorrow = complete_order_TT_jComboBox.getSelectedItem().toString();&#xd;&#xa;&#xd;&#xa;                    TimeSlot[] row = model.getRow(time, todayOrTomorrow);&#xd;&#xa;&#xd;&#xa;                    complete_order_CN_jTable.setValueAt(row[0].GetCustomerName(), 0, 0);&#xd;&#xa;                    complete_order_CN_jTable.setValueAt(row[1].GetCustomerName(), 0, 1);&#xd;&#xa;                    complete_order_CN_jTable.setValueAt(row[2].GetCustomerName(), 0, 2);&#xd;&#xa;&#xd;&#xa;                    for (int i = 0; i &lt; complete_order_CN_jTable.getColumnCount(); i++) {&#xd;&#xa;                        if (complete_order_CN_jTable.getValueAt(0, i).equals(&quot;null&quot;)) {&#xd;&#xa;                            complete_order_CN_jTable.setValueAt(&quot;&quot;, 0, i);&#xd;&#xa;                        }&#xd;&#xa;                    }&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;    });"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
               <Constraints>
@@ -1014,7 +996,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+            <Container class="javax.swing.JScrollPane" name="complete_order_jScrollPane">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
@@ -1042,7 +1024,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jScrollPane4.setVisible(false);&#xd;&#xa;complete_order_CN_jTable.setVisible(false);&#xd;&#xa;"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="complete_order_jScrollPane.setVisible(false);&#xd;&#xa;complete_order_CN_jTable.setVisible(false);&#xd;&#xa;"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -1134,7 +1116,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+            <Container class="javax.swing.JScrollPane" name="calendar_jScrollPane">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
@@ -1363,7 +1345,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;Click the Add Customer icon on the toolbar. This will bring you to the add customer page. Fill in&lt;br&gt;&#xa;the customer&apos;s name and choose whether you would like to add their name to today&apos;s time slots or&lt;br&gt;&#xa;tomorrow&apos;s time slots. Once decided, choose the time slot you and the customer agreed on for pick-up.&lt;br&gt;&#xa;After all information is filled out, click the green checkmark button to submit your addition.&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;Click the Add Customer icon on the toolbar. This will bring you to the add customer page. Fill in&lt;br&gt; the customer&apos;s name and choose whether you would like to add their name to today&apos;s time slots or&lt;br&gt; tomorrow&apos;s time slots. Once decided, choose the time slot you and the customer agreed on for pick-up.&lt;br&gt; After all information is filled out, click the green checkmark button to submit your addition.&lt;/html&gt;"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1380,6 +1362,32 @@
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="740" y="60" width="-1" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="instructions_add_user_tip_jLabel">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Tip:"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="20" y="141" width="-1" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="instructions_add_user_tipbody_jLabel">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;You can quickly search a non-existing customer name in the search bar to bring you to the Add Customer&lt;br&gt;section with the customer name already filled in.&lt;/html&gt;"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="50" y="141" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1436,6 +1444,32 @@
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="740" y="60" width="-1" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="instructions_complete_order_tip_jLabel">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Tip:"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="20" y="158" width="-1" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="instructions_complete_order_tipbody_jLabel">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;You can quickly search a non-existing customer name in the search bar to bring you to the Add Customer&lt;br&gt;section with the customer name already filled in.&lt;/html&gt;"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="50" y="158" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1674,7 +1708,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+            <Container class="javax.swing.JScrollPane" name="credits_jScrollPane">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
