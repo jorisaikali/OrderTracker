@@ -55,7 +55,7 @@ public class OrderTrackerController {
             
             if (customerName.contains("<html>") || customerName.equals("")) {
                 view.clearAddUserCN();
-                view.displayError();
+                view.displayError("Customer name contains html code. This is not allowed.");
                 return;
             }
             
@@ -65,7 +65,7 @@ public class OrderTrackerController {
                 view.clearAddUserCN();
             }
             else {
-                view.displayError();
+                view.displayError("This time slot is already at it's maximum capacity.");
             }     
         }
     }
@@ -78,7 +78,7 @@ public class OrderTrackerController {
             
             if (customerName.contains("<html>") || customerName.equals("")) {
                 view.clearCompleteOrderCN();
-                view.displayError();
+                view.displayError("Customer name contains html code. This is not allowed.");
                 return;
             }
             
@@ -87,7 +87,7 @@ public class OrderTrackerController {
                     view.displaySuccess();
                     view.clearCompleteOrderCN();
                 } else {
-                    view.displayError();
+                    view.displayError("Customer was not found.");
                 }
             }
             else {
@@ -116,7 +116,7 @@ public class OrderTrackerController {
                 view.displaySuccess();
             } catch (FileNotFoundException | UnsupportedEncodingException ex) {
                 //Logger.getLogger(OrderTrackerController.class.getName()).log(Level.SEVERE, null, ex);
-                view.displayError();
+                view.displayError(ex.toString());
             }
         }
     }

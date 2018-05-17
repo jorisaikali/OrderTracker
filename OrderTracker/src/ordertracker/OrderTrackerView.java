@@ -52,7 +52,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
                 try {
                     model.writePersistantData();
                 } catch (FileNotFoundException | UnsupportedEncodingException ex) {
-                    displayError();
+                    displayError(ex.toString());
                 }
             }
         });
@@ -1207,7 +1207,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
            
            if (searched.contains("<html>")) {
                clearSearch();
-               displayError();
+               displayError("Search contains html code. This is not allowed.");
                return;
            }
            
@@ -1240,8 +1240,8 @@ public class OrderTrackerView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Operation successful.");
     }
     
-    public void displayError() {
-        JOptionPane.showMessageDialog(this, "Error has occured.");
+    public void displayError(String error) {
+        JOptionPane.showMessageDialog(this, "Error has occured.\n" + error);
     }
     // -------------------------------------------------------------- //
     
