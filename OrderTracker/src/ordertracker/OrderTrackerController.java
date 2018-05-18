@@ -7,14 +7,9 @@ package ordertracker;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
 
 /**
  *
@@ -34,6 +29,7 @@ public class OrderTrackerController {
         this.view.addCalendarToolbarButtonListener(new CalendarListener());
         this.view.addCalendarTTActionListener(new CalendarListener());
         this.view.addShareButtonListener(new ShareListener());
+        this.view.addShiftButtonListener(new ShiftListener());
         
         this.view.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -122,6 +118,19 @@ public class OrderTrackerController {
                 view.displayError(ex.toString());
             } catch (IOException ex) {
                 view.displayError(ex.toString());
+            }
+        }
+    }
+    
+    class ShiftListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int response = view.confirmDialogBox("Are you sure you would like to shift the time slot data? This means today's orders will be deleted. This cannot be undone.");
+            if (response == 0) {
+                model.shiftTimeSlots();
+                view.displaySuccess();
+            } else {
+                view.displayError("You have cancelled shifting time slot data.");
             }
         }
     }

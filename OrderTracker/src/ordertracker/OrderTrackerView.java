@@ -6,6 +6,7 @@
 package ordertracker;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -76,6 +77,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         toolbar_complete_order_jButton = new javax.swing.JButton();
         toolbar_calendar_jButton = new javax.swing.JButton();
         toolbar_share_jButton = new javax.swing.JButton();
+        toolbar_shift_jButton = new javax.swing.JButton();
         toolbar_blank_jPanel = new javax.swing.JPanel();
         search_area_jPanel = new javax.swing.JPanel();
         search_icon_jLabel = new javax.swing.JLabel();
@@ -99,6 +101,9 @@ public class OrderTrackerView extends javax.swing.JFrame {
         share_title_jPanel = new javax.swing.JPanel();
         share_subtitle_jLabel = new javax.swing.JLabel();
         share_title_jLabel = new javax.swing.JLabel();
+        shift_title_jPanel = new javax.swing.JPanel();
+        shift_subtitle_jLabel = new javax.swing.JLabel();
+        shift_main_title_jLabel = new javax.swing.JLabel();
         instructions_title_jPanel = new javax.swing.JPanel();
         instructions_subtitle_jLabel = new javax.swing.JLabel();
         instructions_main_title_jLabel = new javax.swing.JLabel();
@@ -165,6 +170,10 @@ public class OrderTrackerView extends javax.swing.JFrame {
         instructions_body_question_jLabel4 = new javax.swing.JLabel();
         instructions_body_answer_jLabel4 = new javax.swing.JLabel();
         instructions_share_icon_jLabel = new javax.swing.JLabel();
+        instructions_shift_jPanel = new javax.swing.JPanel();
+        instructions_body_question_jLabel7 = new javax.swing.JLabel();
+        instructions_body_answer_jLabel7 = new javax.swing.JLabel();
+        instructions_shift_icon_jLabel = new javax.swing.JLabel();
         instructions_dkcn_jPanel = new javax.swing.JPanel();
         instructions_body_question_jLabel5 = new javax.swing.JLabel();
         instructions_body_answer_jLabel5 = new javax.swing.JLabel();
@@ -187,6 +196,10 @@ public class OrderTrackerView extends javax.swing.JFrame {
         add_user_TT_jComboBox = new javax.swing.JComboBox<>();
         add_user_TS_jComboBox = new javax.swing.JComboBox<>();
         add_user_submit_jButton = new javax.swing.JButton();
+        shift_UI_jPanel = new javax.swing.JPanel();
+        shift_body_title_jLabel = new javax.swing.JLabel();
+        shift_body_description_jLabel = new javax.swing.JLabel();
+        shift_submit_jButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("OrderTracker");
@@ -198,7 +211,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         toolbar_jPanel.setBackground(new java.awt.Color(104, 100, 100));
-        toolbar_jPanel.setLayout(new java.awt.GridLayout(5, 1));
+        toolbar_jPanel.setLayout(new java.awt.GridLayout(6, 1));
 
         toolbar_home_jButton.setBackground(new java.awt.Color(192, 192, 192));
         toolbar_home_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/house-black-silhouette-without-door.png"))); // NOI18N
@@ -264,6 +277,19 @@ public class OrderTrackerView extends javax.swing.JFrame {
             }
         });
         toolbar_jPanel.add(toolbar_share_jButton);
+
+        toolbar_shift_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        toolbar_shift_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/shift-keyboard-key.png"))); // NOI18N
+        toolbar_shift_jButton.setBorder(null);
+        toolbar_shift_jButton.setBorderPainted(false);
+        toolbar_shift_jButton.setContentAreaFilled(false);
+        toolbar_shift_jButton.setFocusPainted(false);
+        toolbar_shift_jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toolbar_shift_jButtonActionPerformed(evt);
+            }
+        });
+        toolbar_jPanel.add(toolbar_shift_jButton);
 
         getContentPane().add(toolbar_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 460));
 
@@ -393,6 +419,21 @@ public class OrderTrackerView extends javax.swing.JFrame {
         share_title_jPanel.add(share_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 550, -1));
 
         title_jPanel.add(share_title_jPanel, "card2");
+
+        shift_title_jPanel.setBackground(new java.awt.Color(224, 31, 31));
+        shift_title_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        shift_subtitle_jLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        shift_subtitle_jLabel.setForeground(new java.awt.Color(255, 255, 255));
+        shift_subtitle_jLabel.setText("Shift orders in a press of a button");
+        shift_title_jPanel.add(shift_subtitle_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 900, -1));
+
+        shift_main_title_jLabel.setFont(new java.awt.Font("Tahoma", 0, 78)); // NOI18N
+        shift_main_title_jLabel.setForeground(new java.awt.Color(255, 255, 255));
+        shift_main_title_jLabel.setText("Shift Orders");
+        shift_title_jPanel.add(shift_main_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 570, -1));
+
+        title_jPanel.add(shift_title_jPanel, "card2");
 
         instructions_title_jPanel.setBackground(new java.awt.Color(224, 31, 31));
         instructions_title_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -729,7 +770,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         instructions_UI_jPanel.add(instructions_howto_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
 
         instructions_questions_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        instructions_questions_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "How do I add a customer's name to a specific time slot?", "How do I remove completed orders from a time slot?", "How do I view all time slot data?", "How do I share all time slot data with other local Order Trackers?", "What do I do if I don't know the customer's name and I want to complete their order?", "Why doesn't Order Tracker let me add more than three orders in each hour increment?" }));
+        instructions_questions_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "How do I add a customer's name to a specific time slot?", "How do I remove completed orders from a time slot?", "How do I view all time slot data?", "How do I share all time slot data with other local Order Trackers?", "It's the morning, how do I shift all time slot data from tomorrow's orders to today's orders?", "What do I do if I don't know the customer's name and I want to complete their order?", "Why doesn't Order Tracker let me add more than three orders in each hour increment?" }));
         instructions_questions_jComboBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent event) {
                 if (event.getStateChange() == ItemEvent.SELECTED) {
@@ -756,6 +797,12 @@ public class OrderTrackerView extends javax.swing.JFrame {
                     else if (item.toString().equals("How do I share all time slot data with other local Order Trackers?")) {
                         instructions_body_jPanel.removeAll();
                         instructions_body_jPanel.add(instructions_share_jPanel);
+                        instructions_body_jPanel.repaint();
+                        instructions_body_jPanel.revalidate();
+                    }
+                    else if (item.toString().equals("It's the morning, how do I shift all time slot data from tomorrow's orders to today's orders?")) {
+                        instructions_body_jPanel.removeAll();
+                        instructions_body_jPanel.add(instructions_shift_jPanel);
                         instructions_body_jPanel.repaint();
                         instructions_body_jPanel.revalidate();
                     }
@@ -851,13 +898,29 @@ public class OrderTrackerView extends javax.swing.JFrame {
         instructions_share_jPanel.add(instructions_body_question_jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         instructions_body_answer_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        instructions_body_answer_jLabel4.setText("<html>\nThere are two ways to share time slot data to other local Order Trackers. The first being the 'X' close<br>\nbutton in the top right corner like a normal window. The second way is manually through the Share button<br>\nin the toolbar. Press the green chechmark to share manually. The reason for the second option is if it is<br>\ndesired for Order Tracker to remain open. If Order Tracker is never closed, time slot data will not be shared,<br>\nhence why the second option exists.\n</html>");
+        instructions_body_answer_jLabel4.setText("<html>\nThere are two ways to share time slot data to other local Order Trackers. The first being closing the Order<br>\nTracker window with the close button. The second way is manually through the Share button in the toolbar.<br>\nPress the green chechmark to share manually. The reason for the second option is if it is desired for Order<br>\nTracker to remain open. If Order Tracker is never closed, time slot data will not be shared, hence why the<br>\nsecond option exists.\n</html>");
         instructions_share_jPanel.add(instructions_body_answer_jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         instructions_share_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/share.PNG"))); // NOI18N
         instructions_share_jPanel.add(instructions_share_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
 
         instructions_body_jPanel.add(instructions_share_jPanel, "card2");
+
+        instructions_shift_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        instructions_shift_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        instructions_body_question_jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        instructions_body_question_jLabel7.setText("<html>It's the morning, how do I shift all time slot data from tomorrow's<br>orders to today's orders?</html>");
+        instructions_shift_jPanel.add(instructions_body_question_jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        instructions_body_answer_jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        instructions_body_answer_jLabel7.setText("<html>\nOrder Tracker does not shift time slot data automatically. It does however shift it for you if requested<br>\nto do so. Click the Shift button in the toolbar. This will bring you to the Shift Orders section. Press the<br>\ngreen checkmark to shift orders. You will need to confirm your choice. Asking to confirm your choice is <br>\nthe way Order Tracker knows this is really what you want to do and it is not an accidental click. This is <br>\nbecause when this operation is complete, you cannot retrieve the old today's orders. They are permanently<br>\ndeleted from Order Tracker.\n</html>");
+        instructions_shift_jPanel.add(instructions_body_answer_jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+        instructions_shift_icon_jLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/shift.PNG"))); // NOI18N
+        instructions_shift_jPanel.add(instructions_shift_icon_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, -1));
+
+        instructions_body_jPanel.add(instructions_shift_jPanel, "card2");
 
         instructions_dkcn_jPanel.setBackground(new java.awt.Color(192, 192, 192));
         instructions_dkcn_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -964,6 +1027,28 @@ public class OrderTrackerView extends javax.swing.JFrame {
 
         UI_jPanel.add(add_user_UI_jPanel, "card2");
 
+        shift_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        shift_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        shift_body_title_jLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        shift_body_title_jLabel.setText("This must be done every morning when Order Tracker is first opened.");
+        shift_UI_jPanel.add(shift_body_title_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
+
+        shift_body_description_jLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        shift_body_description_jLabel.setText("<html>\nOrder Tracker does not automatically shift orders from tomorrow's orders to today's orders. This means<br>\nthat orders must manually be shifted. But don't worry! Order Tracker still makes this easy for you! By just <br>\npressing the submit button and confirming, Order Tracker will shift all orders for you!\n</html>");
+        shift_UI_jPanel.add(shift_body_description_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+
+        shift_submit_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        shift_submit_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
+        shift_submit_jButton.setBorder(null);
+        shift_submit_jButton.setBorderPainted(false);
+        shift_submit_jButton.setContentAreaFilled(false);
+        shift_submit_jButton.setFocusPainted(false);
+        shift_submit_jButton.setVerifyInputWhenFocusTarget(false);
+        shift_UI_jPanel.add(shift_submit_jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
+
+        UI_jPanel.add(shift_UI_jPanel, "card2");
+
         getContentPane().add(UI_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 970, 350));
 
         pack();
@@ -1006,6 +1091,10 @@ public class OrderTrackerView extends javax.swing.JFrame {
             clearSearch();
         }
     }//GEN-LAST:event_search_jTextFieldMouseClicked
+
+    private void toolbar_shift_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toolbar_shift_jButtonActionPerformed
+        transitionToShift();
+    }//GEN-LAST:event_toolbar_shift_jButtonActionPerformed
 
     
     /**
@@ -1090,6 +1179,21 @@ public class OrderTrackerView extends javax.swing.JFrame {
     }
     // ---------------------------------------------------- //
     
+    // --------------------- Shift function ---------------------- //
+    public int confirmDialogBox(String message) {
+        JFrame frame = new JFrame();
+        int answer = JOptionPane.showConfirmDialog(frame, message);
+        if (answer == JOptionPane.YES_OPTION) {
+            return 0;
+        }
+        else if (answer == JOptionPane.NO_OPTION) {
+            return 1;
+        }
+        
+        return -1;
+    }
+    // ----------------------------------------------------------- //
+    
     // --------------------- Search function -------------------- //
     public void clearSearch() { search_jTextField.setText(""); }
     public void setToSearchDefault() { search_jTextField.setText("Search a non-existing or existing customer name for quick addition or completion"); }
@@ -1114,6 +1218,10 @@ public class OrderTrackerView extends javax.swing.JFrame {
     
     public void addShareButtonListener(ActionListener listener) {
         share_submit_jButton.addActionListener(listener);
+    }
+    
+    public void addShiftButtonListener(ActionListener listener) {
+        shift_submit_jButton.addActionListener(listener);
     }
     // ------------------------------------------------------- //
     
@@ -1188,6 +1296,20 @@ public class OrderTrackerView extends javax.swing.JFrame {
         
         title_jPanel.removeAll();
         title_jPanel.add(share_title_jPanel);
+        title_jPanel.repaint();
+        title_jPanel.revalidate();
+        
+        setToSearchDefault();
+    }
+    
+    public void transitionToShift() {
+        UI_jPanel.removeAll();
+        UI_jPanel.add(shift_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
+        title_jPanel.removeAll();
+        title_jPanel.add(shift_title_jPanel);
         title_jPanel.repaint();
         title_jPanel.revalidate();
         
@@ -1326,6 +1448,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JLabel instructions_body_answer_jLabel4;
     private javax.swing.JLabel instructions_body_answer_jLabel5;
     private javax.swing.JLabel instructions_body_answer_jLabel6;
+    private javax.swing.JLabel instructions_body_answer_jLabel7;
     private javax.swing.JPanel instructions_body_jPanel;
     private javax.swing.JLabel instructions_body_question_jLabel;
     private javax.swing.JLabel instructions_body_question_jLabel2;
@@ -1333,6 +1456,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JLabel instructions_body_question_jLabel4;
     private javax.swing.JLabel instructions_body_question_jLabel5;
     private javax.swing.JLabel instructions_body_question_jLabel6;
+    private javax.swing.JLabel instructions_body_question_jLabel7;
     private javax.swing.JPanel instructions_complete_jPanel;
     private javax.swing.JLabel instructions_complete_order_icon_jLabel;
     private javax.swing.JLabel instructions_complete_order_tip_jLabel;
@@ -1345,6 +1469,8 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> instructions_questions_jComboBox;
     private javax.swing.JLabel instructions_share_icon_jLabel;
     private javax.swing.JPanel instructions_share_jPanel;
+    private javax.swing.JLabel instructions_shift_icon_jLabel;
+    private javax.swing.JPanel instructions_shift_jPanel;
     private javax.swing.JLabel instructions_subtitle_jLabel;
     private javax.swing.JLabel instructions_title_jLabel;
     private javax.swing.JPanel instructions_title_jPanel;
@@ -1376,6 +1502,13 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JLabel share_subtitle_jLabel;
     private javax.swing.JLabel share_title_jLabel;
     private javax.swing.JPanel share_title_jPanel;
+    private javax.swing.JPanel shift_UI_jPanel;
+    private javax.swing.JLabel shift_body_description_jLabel;
+    private javax.swing.JLabel shift_body_title_jLabel;
+    private javax.swing.JLabel shift_main_title_jLabel;
+    private javax.swing.JButton shift_submit_jButton;
+    private javax.swing.JLabel shift_subtitle_jLabel;
+    private javax.swing.JPanel shift_title_jPanel;
     private javax.swing.JLabel staples_logo_jLabel;
     private javax.swing.JPanel title_jPanel;
     private javax.swing.JButton toolbar_add_user_jButton;
@@ -1385,6 +1518,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JButton toolbar_home_jButton;
     private javax.swing.JPanel toolbar_jPanel;
     private javax.swing.JButton toolbar_share_jButton;
+    private javax.swing.JButton toolbar_shift_jButton;
     private javax.swing.JLabel welcome_jLabel;
     // End of variables declaration//GEN-END:variables
 }
