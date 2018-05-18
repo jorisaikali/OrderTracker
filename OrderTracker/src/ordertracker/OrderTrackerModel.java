@@ -21,8 +21,8 @@ public class OrderTrackerModel {
     
     private TimeSlot[] todaysOrders;
     private TimeSlot[] tomorrowsOrders;
-    private final String todayFilename = "data/persistantDataToday.txt";
-    private final String tomorrowFilename = "data/persistantDataTomorrow.txt";
+    private final String todayFilename = "data/persistentDataToday.txt";
+    private final String tomorrowFilename = "data/persistentDataTomorrow.txt";
     
     public OrderTrackerModel() {
         this.todaysOrders = initTimeSlots();
@@ -194,27 +194,6 @@ public class OrderTrackerModel {
 	catch(IOException ex) {
             return false;
 	}
-        
-        /* CODE MAY BE NEEDED IN THE FUTURE IF PROCESSFILE() DOESN'T WORK
-            while((line = bufferedReader.readLine()) != null) {
-                if (line.equals("")) {
-                    continue;
-                }
-
-                String[] splitLines = line.split(" ");
-                String name = splitLines[2].replace(';', ' ');
-
-                if (name.equals("null") == false) {
-                    this.todaysOrders[count].AddCustomer(name);
-                }
-                else {
-                    count++;
-                    continue;
-                }
-
-                count++;
-            }
-        */
     }
     
     private TimeSlot[] initTimeSlots() {
