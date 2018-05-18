@@ -165,8 +165,6 @@ public class OrderTrackerModel {
         tomorrowsFile.setWritable(false);
         tomorrowsFile.setReadOnly();
         writerTomorrow.close();
-    
-        Runtime.getRuntime().exec("attrib +H data");
     }
     
     public boolean openPersistantData() {
