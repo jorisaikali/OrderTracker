@@ -133,6 +133,11 @@ public class OrderTrackerModel {
         return null;
     }
     
+    public void shiftTimeSlots() {
+        this.todaysOrders = this.tomorrowsOrders.clone();
+        this.tomorrowsOrders = initTimeSlots();     
+    }
+    
     public void writePersistantData() throws FileNotFoundException, UnsupportedEncodingException, IOException {
         // Write all elements from list to file
         File todaysFile = new File(todayFilename);
