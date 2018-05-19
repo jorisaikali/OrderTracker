@@ -1,6 +1,6 @@
 /*
     BUG REPORT:
-        - When adding a customer to a time slot with "30", get ArrayIndexOutOfBoundsException on OrderTrackerModel.checkMax() on line 240
+        - When completing an order, if the time slot is not set to null (i.e. showing the row in the table), it does not allow the user to press the checkmark
 */
 
 /*

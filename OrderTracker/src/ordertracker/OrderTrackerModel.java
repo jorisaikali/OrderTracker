@@ -21,12 +21,21 @@ public class OrderTrackerModel {
     
     private TimeSlot[] todaysOrders;
     private TimeSlot[] tomorrowsOrders;
-    private final String todayFilename = "data/persistentDataToday.txt";
-    private final String tomorrowFilename = "data/persistentDataTomorrow.txt";
+    private final String todayFilename = "persistentDataToday.txt";
+    private final String tomorrowFilename = "persistentDataTomorrow.txt";
+    private final String appDataDirectory;
+    private File path;
+    private File dataPath;
     
     public OrderTrackerModel() {
         this.todaysOrders = initTimeSlots();
         this.tomorrowsOrders = initTimeSlots();
+        this.appDataDirectory = System.getenv("APPDATA");
+        
+        this.path = new File(appDataDirectory + "\\OrderTracker");
+        this.path.mkdir();
+        this.dataPath = new File(path.toString() + "\\data");
+        this.dataPath.mkdir();
     }
     
     public TimeSlot[] getTodaysOrders() { return this.todaysOrders; }
@@ -140,16 +149,11 @@ public class OrderTrackerModel {
     
     public void writePersistantData() throws FileNotFoundException, UnsupportedEncodingException, IOException {
         // Write all elements from list to file
-        File todaysFile = new File(todayFilename);
-        OrderTrackerView v = new OrderTrackerView(this);
-        
-        v.displayError("Is Execute allowed: " + todaysFile.canExecute() + ", is write allowed: " + todaysFile.canWrite() + ", is read allowed: " + todaysFile.canRead());
+        File todaysFile = new File(dataPath, todayFilename);
         
         todaysFile.setReadable(true, false);
         todaysFile.setWritable(true, false);
-        
-        v.displayError("Is Execute allowed: " + todaysFile.canExecute() + ", is write allowed: " + todaysFile.canWrite() + ", is read allowed: " + todaysFile.canRead());
-        
+
         try (PrintWriter writerToday = new PrintWriter(todaysFile)) {
             for (TimeSlot slot : this.todaysOrders) {
                 writerToday.println(slot.WriteTimeSlot());
@@ -159,7 +163,7 @@ public class OrderTrackerModel {
             todaysFile.setWritable(false, false);
         }
 	
-        File tomorrowsFile = new File(tomorrowFilename);
+        File tomorrowsFile = new File(dataPath, tomorrowFilename);
         
         tomorrowsFile.setReadable(true, false);
         tomorrowsFile.setWritable(true, false);
@@ -178,7 +182,7 @@ public class OrderTrackerModel {
         String line = null;
         
         try {
-            FileReader fileReaderToday = new FileReader(todayFilename);
+            FileReader fileReaderToday = new FileReader(dataPath + "/" + todayFilename);
             BufferedReader bufferedReader = new BufferedReader(fileReaderToday);
             
             int count = 0;
@@ -187,7 +191,7 @@ public class OrderTrackerModel {
             count = 0;
             bufferedReader.close();
 			
-            FileReader fileReaderTomorrow = new FileReader(tomorrowFilename);
+            FileReader fileReaderTomorrow = new FileReader(dataPath + "/" + tomorrowFilename);
             bufferedReader = new BufferedReader(fileReaderTomorrow);
 	
             processFile(line, bufferedReader, this.tomorrowsOrders, count);
@@ -271,19 +275,19 @@ public class OrderTrackerModel {
         
         if (currSlot.GetTime().contains("00")) {
             for (int i = index; i < index + 6; i++) {               
-                if (slots[i].GetCustomerName() != null) {
+                if (slots[i].GetCustomerName() != null && !"null".equals(slots[i].GetCustomerName())) {
                     count++;
                 }
             }
         }
         else if (currSlot.GetTime().contains("30")) {
             for (int i = index - 3; i < index + 3; i++) {
-                if (slots[i].GetCustomerName() != null) {
+                if (slots[i].GetCustomerName() != null && !"null".equals(slots[i].GetCustomerName())) {
                     count++;
                 }
             }
         }
-        
+
         return count == 3;
     }
     
