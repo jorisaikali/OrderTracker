@@ -555,7 +555,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         complete_order_UI_jPanel.add(complete_order_TT_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, -1));
 
         complete_order_TS_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        complete_order_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
+        complete_order_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
         complete_order_TS_jComboBox.setFocusable(false);
         complete_order_TS_jComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -967,7 +967,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         add_user_UI_jPanel.add(add_user_TT_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 170, -1));
 
         add_user_TS_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        add_user_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
+        add_user_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
         add_user_UI_jPanel.add(add_user_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 170, -1));
 
         add_user_submit_jButton.setBackground(new java.awt.Color(192, 192, 192));

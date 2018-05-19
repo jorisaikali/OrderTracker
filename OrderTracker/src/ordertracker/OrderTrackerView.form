@@ -1006,7 +1006,7 @@
                     <StringItem index="13" value="2:00 PM"/>
                     <StringItem index="14" value="2:30 PM"/>
                     <StringItem index="15" value="3:00 PM"/>
-                    <StringItem index="16" value="3:30  PM"/>
+                    <StringItem index="16" value="3:30 PM"/>
                     <StringItem index="17" value="4:00 PM"/>
                     <StringItem index="18" value="4:30 PM"/>
                     <StringItem index="19" value="5:00 PM"/>
@@ -2041,7 +2041,7 @@
                     <StringItem index="12" value="2:00 PM"/>
                     <StringItem index="13" value="2:30 PM"/>
                     <StringItem index="14" value="3:00 PM"/>
-                    <StringItem index="15" value="3:30  PM"/>
+                    <StringItem index="15" value="3:30 PM"/>
                     <StringItem index="16" value="4:00 PM"/>
                     <StringItem index="17" value="4:30 PM"/>
                     <StringItem index="18" value="5:00 PM"/>
