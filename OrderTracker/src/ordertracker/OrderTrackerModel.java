@@ -141,30 +141,37 @@ public class OrderTrackerModel {
     public void writePersistantData() throws FileNotFoundException, UnsupportedEncodingException, IOException {
         // Write all elements from list to file
         File todaysFile = new File(todayFilename);
-        todaysFile.setWritable(true);
+        OrderTrackerView v = new OrderTrackerView(this);
         
-        PrintWriter writerToday = new PrintWriter(todaysFile);
-					
-        for (TimeSlot slot : this.todaysOrders) {
-            writerToday.println(slot.WriteTimeSlot());
+        v.displayError("Is Execute allowed: " + todaysFile.canExecute() + ", is write allowed: " + todaysFile.canWrite() + ", is read allowed: " + todaysFile.canRead());
+        
+        todaysFile.setReadable(true, false);
+        todaysFile.setWritable(true, false);
+        
+        v.displayError("Is Execute allowed: " + todaysFile.canExecute() + ", is write allowed: " + todaysFile.canWrite() + ", is read allowed: " + todaysFile.canRead());
+        
+        try (PrintWriter writerToday = new PrintWriter(todaysFile)) {
+            for (TimeSlot slot : this.todaysOrders) {
+                writerToday.println(slot.WriteTimeSlot());
+            }
+            
+            todaysFile.setReadable(false, false);
+            todaysFile.setWritable(false, false);
         }
-	
-        todaysFile.setWritable(false);
-        todaysFile.setReadOnly();
-        writerToday.close();
 	
         File tomorrowsFile = new File(tomorrowFilename);
-        tomorrowsFile.setWritable(true);
         
-        PrintWriter writerTomorrow = new PrintWriter(tomorrowsFile);
-					
-        for (TimeSlot slot : this.tomorrowsOrders) {
-            writerTomorrow.println(slot.WriteTimeSlot());
+        tomorrowsFile.setReadable(true, false);
+        tomorrowsFile.setWritable(true, false);
+        
+        try (PrintWriter writerTomorrow = new PrintWriter(tomorrowsFile)) {
+            for (TimeSlot slot : this.tomorrowsOrders) {
+                writerTomorrow.println(slot.WriteTimeSlot());
+            }
+            
+            tomorrowsFile.setReadable(false, false);
+            tomorrowsFile.setWritable(false, false);
         }
-	
-        tomorrowsFile.setWritable(false);
-        tomorrowsFile.setReadOnly();
-        writerTomorrow.close();
     }
     
     public boolean openPersistantData() {
