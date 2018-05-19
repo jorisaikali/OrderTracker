@@ -6,23 +6,16 @@
 package ordertracker;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.table.TableModel;
 
 /**
@@ -31,7 +24,7 @@ import javax.swing.table.TableModel;
  */
 public class OrderTrackerView extends javax.swing.JFrame {
 
-    private OrderTrackerModel model;
+    private final OrderTrackerModel model;
     
     /**
      * Creates new form Home
@@ -40,12 +33,13 @@ public class OrderTrackerView extends javax.swing.JFrame {
     public OrderTrackerView(OrderTrackerModel m) {
         this.model = m;
         initComponents();
-        this.setLocation(300,100);
-        this.setSize(1029, 657);
         initialize();
     }
 
     private void initialize() {
+        this.setLocation(300,100);
+        this.setSize(1029, 657);
+        
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("resources/verified-notes-symbol.png")));
         
         this.addWindowListener(new WindowAdapter() {
@@ -76,8 +70,8 @@ public class OrderTrackerView extends javax.swing.JFrame {
         toolbar_add_user_jButton = new javax.swing.JButton();
         toolbar_complete_order_jButton = new javax.swing.JButton();
         toolbar_calendar_jButton = new javax.swing.JButton();
-        toolbar_share_jButton = new javax.swing.JButton();
         toolbar_shift_jButton = new javax.swing.JButton();
+        toolbar_share_jButton = new javax.swing.JButton();
         toolbar_blank_jPanel = new javax.swing.JPanel();
         search_area_jPanel = new javax.swing.JPanel();
         search_icon_jLabel = new javax.swing.JLabel();
@@ -132,11 +126,11 @@ public class OrderTrackerView extends javax.swing.JFrame {
         complete_order_TT_jLabel = new javax.swing.JLabel();
         complete_order_TS_jComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        complete_order_submit_jButton = new javax.swing.JButton();
         complete_order_jScrollPane = new javax.swing.JScrollPane();
         complete_order_CN_jTable = new javax.swing.JTable();
         complete_order_TS_jLabel = new javax.swing.JLabel();
         complete_order_TT_jComboBox = new javax.swing.JComboBox<>();
+        complete_order_submit_jButton = new javax.swing.JButton();
         calendar_UI_jPanel = new javax.swing.JPanel();
         calendar_TT_jLabel = new javax.swing.JLabel();
         calendar_TT_jComboBox = new javax.swing.JComboBox<>();
@@ -265,19 +259,6 @@ public class OrderTrackerView extends javax.swing.JFrame {
         });
         toolbar_jPanel.add(toolbar_calendar_jButton);
 
-        toolbar_share_jButton.setBackground(new java.awt.Color(192, 192, 192));
-        toolbar_share_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/local-network.png"))); // NOI18N
-        toolbar_share_jButton.setBorder(null);
-        toolbar_share_jButton.setBorderPainted(false);
-        toolbar_share_jButton.setContentAreaFilled(false);
-        toolbar_share_jButton.setFocusPainted(false);
-        toolbar_share_jButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                toolbar_share_jButtonActionPerformed(evt);
-            }
-        });
-        toolbar_jPanel.add(toolbar_share_jButton);
-
         toolbar_shift_jButton.setBackground(new java.awt.Color(192, 192, 192));
         toolbar_shift_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/shift-keyboard-key.png"))); // NOI18N
         toolbar_shift_jButton.setBorder(null);
@@ -290,6 +271,19 @@ public class OrderTrackerView extends javax.swing.JFrame {
             }
         });
         toolbar_jPanel.add(toolbar_shift_jButton);
+
+        toolbar_share_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        toolbar_share_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/local-network.png"))); // NOI18N
+        toolbar_share_jButton.setBorder(null);
+        toolbar_share_jButton.setBorderPainted(false);
+        toolbar_share_jButton.setContentAreaFilled(false);
+        toolbar_share_jButton.setFocusPainted(false);
+        toolbar_share_jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toolbar_share_jButtonActionPerformed(evt);
+            }
+        });
+        toolbar_jPanel.add(toolbar_share_jButton);
 
         getContentPane().add(toolbar_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 460));
 
@@ -562,35 +556,10 @@ public class OrderTrackerView extends javax.swing.JFrame {
 
         complete_order_TS_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         complete_order_TS_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30  PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM" }));
-        complete_order_TS_jComboBox.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent event) {
-                if (event.getStateChange() == ItemEvent.SELECTED) {
-                    Object item = event.getItem();
-
-                    if (item.toString().equals("None")) {
-                        complete_order_jScrollPane.setVisible(false);
-                        complete_order_CN_jTable.setVisible(false);
-                    }
-                    else {
-                        complete_order_jScrollPane.setVisible(true);
-                        complete_order_CN_jTable.setVisible(true);
-
-                        String time = complete_order_TS_jComboBox.getSelectedItem().toString();
-                        String todayOrTomorrow = complete_order_TT_jComboBox.getSelectedItem().toString();
-
-                        TimeSlot[] row = model.getRow(time, todayOrTomorrow);
-
-                        complete_order_CN_jTable.setValueAt(row[0].GetCustomerName(), 0, 0);
-                        complete_order_CN_jTable.setValueAt(row[1].GetCustomerName(), 0, 1);
-                        complete_order_CN_jTable.setValueAt(row[2].GetCustomerName(), 0, 2);
-
-                        for (int i = 0; i < complete_order_CN_jTable.getColumnCount(); i++) {
-                            if (complete_order_CN_jTable.getValueAt(0, i).equals("null")) {
-                                complete_order_CN_jTable.setValueAt("", 0, i);
-                            }
-                        }
-                    }
-                }
+        complete_order_TS_jComboBox.setFocusable(false);
+        complete_order_TS_jComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                complete_order_TS_jComboBoxItemStateChanged(evt);
             }
         });
         complete_order_UI_jPanel.add(complete_order_TS_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 170, -1));
@@ -598,15 +567,6 @@ public class OrderTrackerView extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("<html>Need help finding a customer's name?<br>Search by time slot!</html>");
         complete_order_UI_jPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
-
-        complete_order_submit_jButton.setBackground(new java.awt.Color(192, 192, 192));
-        complete_order_submit_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
-        complete_order_submit_jButton.setBorder(null);
-        complete_order_submit_jButton.setBorderPainted(false);
-        complete_order_submit_jButton.setContentAreaFilled(false);
-        complete_order_submit_jButton.setFocusPainted(false);
-        complete_order_submit_jButton.setVerifyInputWhenFocusTarget(false);
-        complete_order_UI_jPanel.add(complete_order_submit_jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
 
         complete_order_CN_jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -647,27 +607,22 @@ public class OrderTrackerView extends javax.swing.JFrame {
 
         complete_order_TT_jComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         complete_order_TT_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Today", "Tomorrow" }));
-        complete_order_TT_jComboBox.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent event) {
-                Object item = event.getItem();
-
-                String time = complete_order_TS_jComboBox.getSelectedItem().toString();
-                String todayOrTomorrow = complete_order_TT_jComboBox.getSelectedItem().toString();
-
-                TimeSlot[] row = model.getRow(time, todayOrTomorrow);
-
-                complete_order_CN_jTable.setValueAt(row[0].GetCustomerName(), 0, 0);
-                complete_order_CN_jTable.setValueAt(row[1].GetCustomerName(), 0, 1);
-                complete_order_CN_jTable.setValueAt(row[2].GetCustomerName(), 0, 2);
-
-                for (int i = 0; i < complete_order_CN_jTable.getColumnCount(); i++) {
-                    if (complete_order_CN_jTable.getValueAt(0, i).equals("null")) {
-                        complete_order_CN_jTable.setValueAt("", 0, i);
-                    }
-                }  
+        complete_order_TT_jComboBox.setFocusable(false);
+        complete_order_TT_jComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                complete_order_TT_jComboBoxItemStateChanged(evt);
             }
         });
         complete_order_UI_jPanel.add(complete_order_TT_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 170, -1));
+
+        complete_order_submit_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        complete_order_submit_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
+        complete_order_submit_jButton.setBorder(null);
+        complete_order_submit_jButton.setBorderPainted(false);
+        complete_order_submit_jButton.setContentAreaFilled(false);
+        complete_order_submit_jButton.setFocusPainted(false);
+        complete_order_submit_jButton.setVerifyInputWhenFocusTarget(false);
+        complete_order_UI_jPanel.add(complete_order_submit_jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
 
         UI_jPanel.add(complete_order_UI_jPanel, "card2");
 
@@ -1095,10 +1050,49 @@ public class OrderTrackerView extends javax.swing.JFrame {
         transitionToShift();
     }//GEN-LAST:event_toolbar_shift_jButtonActionPerformed
 
+    private void complete_order_TS_jComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_complete_order_TS_jComboBoxItemStateChanged
+        complete_order_TS_jComboBox.addItemListener((ItemEvent event) -> {
+            if (event.getStateChange() == ItemEvent.SELECTED) {
+                Object item = event.getItem();
+                
+                if (item.toString().equals("None")) {
+                    complete_order_jScrollPane.setVisible(false);
+                    complete_order_CN_jTable.setVisible(false);
+                }
+                else {
+                    complete_order_jScrollPane.setVisible(true);
+                    complete_order_CN_jTable.setVisible(true);
+                    
+                    updateRow();
+                }
+            }
+        });
+    }//GEN-LAST:event_complete_order_TS_jComboBoxItemStateChanged
+
+    private void complete_order_TT_jComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_complete_order_TT_jComboBoxItemStateChanged
+        complete_order_TT_jComboBox.addItemListener((ItemEvent event) -> {
+            if (isRowVisible()) {
+                Object item = event.getItem();
+
+                String time = complete_order_TS_jComboBox.getSelectedItem().toString();
+                String todayOrTomorrow = complete_order_TT_jComboBox.getSelectedItem().toString();
+
+                TimeSlot[] row = model.getRow(time, todayOrTomorrow);
+
+                complete_order_CN_jTable.setValueAt(row[0].GetCustomerName(), 0, 0);
+                complete_order_CN_jTable.setValueAt(row[1].GetCustomerName(), 0, 1);
+                complete_order_CN_jTable.setValueAt(row[2].GetCustomerName(), 0, 2);
+
+                for (int i = 0; i < complete_order_CN_jTable.getColumnCount(); i++) {
+                    if (complete_order_CN_jTable.getValueAt(0, i).equals("null")) {
+                        complete_order_CN_jTable.setValueAt("", 0, i);
+                    }  
+                }
+            }
+        });
+    }//GEN-LAST:event_complete_order_TT_jComboBoxItemStateChanged
+
     
-    /**
-     * @param args the command line arguments
-     */
     public void runGFX() {
         /* Set the Windows look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1140,6 +1134,24 @@ public class OrderTrackerView extends javax.swing.JFrame {
     public String getCompleteOrderTS() { return complete_order_TS_jComboBox.getSelectedItem().toString(); }
     
     public void clearCompleteOrderCN() { complete_order_CN_jTextField.setText(""); }
+    
+    public boolean isRowVisible() { return complete_order_CN_jTable.isVisible(); }
+    public void updateRow() {
+        String time = complete_order_TS_jComboBox.getSelectedItem().toString();
+        String todayOrTomorrow = complete_order_TT_jComboBox.getSelectedItem().toString();
+                    
+        TimeSlot[] row = model.getRow(time, todayOrTomorrow);
+                    
+        complete_order_CN_jTable.setValueAt(row[0].GetCustomerName(), 0, 0);
+        complete_order_CN_jTable.setValueAt(row[1].GetCustomerName(), 0, 1);
+        complete_order_CN_jTable.setValueAt(row[2].GetCustomerName(), 0, 2);
+                    
+        for (int i = 0; i < complete_order_CN_jTable.getColumnCount(); i++) {
+            if (complete_order_CN_jTable.getValueAt(0, i) == null || complete_order_CN_jTable.getValueAt(0, i).equals("null")) {
+                complete_order_CN_jTable.setValueAt("", 0, i);
+            }
+        }
+    }
     // ------------------------------------------------------------ //
     
     // ---------------- Calendar functions ---------------- //
@@ -1154,10 +1166,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
                 count = 1;
             }
             
-            //if (!"null".equals(slot.GetCustomerName())) {
             calendar_jTable.setValueAt(slot.GetCustomerName(), i, count);
-            //}
-            
             count++;
         }
         
@@ -1181,7 +1190,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
     // --------------------- Shift function ---------------------- //
     public int confirmDialogBox(String message) {
         JFrame frame = new JFrame();
-        int answer = JOptionPane.showConfirmDialog(frame, message);
+        int answer = JOptionPane.showConfirmDialog(frame, message, "Select an Option", JOptionPane.YES_NO_OPTION);
         if (answer == JOptionPane.YES_OPTION) {
             return 0;
         }
@@ -1386,6 +1395,10 @@ public class OrderTrackerView extends javax.swing.JFrame {
     
     public void displayError(String error) {
         JOptionPane.showMessageDialog(this, "Error has occured.\n" + error);
+    }
+    
+    public void displayMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
     }
     // -------------------------------------------------------------- //
     

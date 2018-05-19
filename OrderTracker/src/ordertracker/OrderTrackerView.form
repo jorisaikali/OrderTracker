@@ -130,25 +130,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toolbar_calendar_jButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="toolbar_share_jButton">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c0" green="c0" red="c0" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/resources/local-network.png"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-            <Property name="borderPainted" type="boolean" value="false"/>
-            <Property name="contentAreaFilled" type="boolean" value="false"/>
-            <Property name="focusPainted" type="boolean" value="false"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toolbar_share_jButtonActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="toolbar_shift_jButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -166,6 +147,25 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toolbar_shift_jButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="toolbar_share_jButton">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="c0" green="c0" red="c0" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/resources/local-network.png"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toolbar_share_jButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -1019,9 +1019,12 @@
                     <StringItem index="26" value="8:30 PM"/>
                   </StringArray>
                 </Property>
+                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="complete_order_TS_jComboBoxItemStateChanged"/>
+              </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="complete_order_TS_jComboBox.addItemListener(new ItemListener() {&#xd;&#xa;        public void itemStateChanged(ItemEvent event) {&#xd;&#xa;            if (event.getStateChange() == ItemEvent.SELECTED) {&#xd;&#xa;                Object item = event.getItem();&#xd;&#xa;&#xd;&#xa;                if (item.toString().equals(&quot;None&quot;)) {&#xd;&#xa;                    complete_order_jScrollPane.setVisible(false);&#xd;&#xa;                    complete_order_CN_jTable.setVisible(false);&#xd;&#xa;                }&#xd;&#xa;                else {&#xd;&#xa;                    complete_order_jScrollPane.setVisible(true);&#xd;&#xa;                    complete_order_CN_jTable.setVisible(true);&#xd;&#xa;&#xd;&#xa;                    String time = complete_order_TS_jComboBox.getSelectedItem().toString();&#xd;&#xa;                    String todayOrTomorrow = complete_order_TT_jComboBox.getSelectedItem().toString();&#xd;&#xa;&#xd;&#xa;                    TimeSlot[] row = model.getRow(time, todayOrTomorrow);&#xd;&#xa;&#xd;&#xa;                    complete_order_CN_jTable.setValueAt(row[0].GetCustomerName(), 0, 0);&#xd;&#xa;                    complete_order_CN_jTable.setValueAt(row[1].GetCustomerName(), 0, 1);&#xd;&#xa;                    complete_order_CN_jTable.setValueAt(row[2].GetCustomerName(), 0, 2);&#xd;&#xa;&#xd;&#xa;                    for (int i = 0; i &lt; complete_order_CN_jTable.getColumnCount(); i++) {&#xd;&#xa;                        if (complete_order_CN_jTable.getValueAt(0, i).equals(&quot;null&quot;)) {&#xd;&#xa;                            complete_order_CN_jTable.setValueAt(&quot;&quot;, 0, i);&#xd;&#xa;                        }&#xd;&#xa;                    }&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;    });"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
               <Constraints>
@@ -1040,28 +1043,6 @@
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="70" y="140" width="-1" height="-1"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Component class="javax.swing.JButton" name="complete_order_submit_jButton">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="c0" green="c0" red="c0" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/227930-P1XP19-38 - Copy_1.png"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
-                <Property name="borderPainted" type="boolean" value="false"/>
-                <Property name="contentAreaFilled" type="boolean" value="false"/>
-                <Property name="focusPainted" type="boolean" value="false"/>
-                <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="850" y="210" width="80" height="80"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1122,14 +1103,39 @@
                     <StringItem index="1" value="Tomorrow"/>
                   </StringArray>
                 </Property>
+                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="complete_order_TT_jComboBoxItemStateChanged"/>
+              </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="complete_order_TT_jComboBox.addItemListener(new ItemListener() {&#xd;&#xa;        public void itemStateChanged(ItemEvent event) {&#xd;&#xa;            Object item = event.getItem();&#xd;&#xa;&#xd;&#xa;            String time = complete_order_TS_jComboBox.getSelectedItem().toString();&#xd;&#xa;            String todayOrTomorrow = complete_order_TT_jComboBox.getSelectedItem().toString();&#xd;&#xa;&#xd;&#xa;            TimeSlot[] row = model.getRow(time, todayOrTomorrow);&#xd;&#xa;&#xd;&#xa;            complete_order_CN_jTable.setValueAt(row[0].GetCustomerName(), 0, 0);&#xd;&#xa;            complete_order_CN_jTable.setValueAt(row[1].GetCustomerName(), 0, 1);&#xd;&#xa;            complete_order_CN_jTable.setValueAt(row[2].GetCustomerName(), 0, 2);&#xd;&#xa;&#xd;&#xa;            for (int i = 0; i &lt; complete_order_CN_jTable.getColumnCount(); i++) {&#xd;&#xa;                if (complete_order_CN_jTable.getValueAt(0, i).equals(&quot;null&quot;)) {&#xd;&#xa;                    complete_order_CN_jTable.setValueAt(&quot;&quot;, 0, i);&#xd;&#xa;                }&#xd;&#xa;            }  &#xd;&#xa;        }&#xd;&#xa;    });"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="570" y="200" width="170" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JButton" name="complete_order_submit_jButton">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="c0" green="c0" red="c0" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/227930-P1XP19-38 - Copy_1.png"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="focusPainted" type="boolean" value="false"/>
+                <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="850" y="210" width="80" height="80"/>
                 </Constraint>
               </Constraints>
             </Component>

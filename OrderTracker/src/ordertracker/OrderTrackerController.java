@@ -52,9 +52,15 @@ public class OrderTrackerController {
             String todayOrTomorrow = view.getAddUserTT();
             String time = view.getAddUserTS();
             
-            if (customerName.contains("<html>") || customerName.equals("")) {
+            if (customerName.contains("<html>")) {
                 view.clearAddUserCN();
                 view.displayError("Customer name contains html code. This is not allowed.");
+                return;
+            }
+            
+            if (customerName.equals("")) {
+                view.clearAddUserCN();
+                view.displayError("Customer name is empty. Please enter the customer's name.");
                 return;
             }
             
@@ -71,27 +77,33 @@ public class OrderTrackerController {
     
     class CompleteOrderListener implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {      
+        public void actionPerformed(ActionEvent e) { 
             String customerName = view.getCompleteOrderCN();
             String time = view.getCompleteOrderTS();
             
-            if (customerName.contains("<html>") || customerName.equals("")) {
+            if (customerName.contains("<html>")) {
                 view.clearCompleteOrderCN();
                 view.displayError("Customer name contains html code. This is not allowed.");
                 return;
             }
             
-            if (time.equals("None")) {
-                if (model.removeCustomer(customerName)) {
-                    view.displaySuccess();
-                    view.clearCompleteOrderCN();
-                } else {
-                    view.displayError("Customer was not found.");
+            if (customerName.equals("")) {
+                view.clearCompleteOrderCN();
+                view.displayError("Customer name is empty. Please enter the customer's name.");
+                return;
+            }
+            
+            if (model.removeCustomer(customerName)) {
+                if (view.isRowVisible()) {
+                    view.updateRow();
                 }
-            }
-            else {
-                // TODO: Display customers names when searching by time
-            }
+                
+                view.displaySuccess();
+                view.clearCompleteOrderCN();
+                
+            } else {
+                view.displayError("Customer was not found.");
+            }         
         }
     }
     
@@ -114,7 +126,6 @@ public class OrderTrackerController {
                 model.writePersistantData();
                 view.displaySuccess();
             } catch (FileNotFoundException | UnsupportedEncodingException ex) {
-                //Logger.getLogger(OrderTrackerController.class.getName()).log(Level.SEVERE, null, ex);
                 view.displayError(ex.toString());
             } catch (IOException ex) {
                 view.displayError(ex.toString());
@@ -130,7 +141,7 @@ public class OrderTrackerController {
                 model.shiftTimeSlots();
                 view.displaySuccess();
             } else {
-                view.displayError("You have cancelled shifting time slot data.");
+                view.displayMessage("You have cancelled shifting time slot data.");
             }
         }
     }
