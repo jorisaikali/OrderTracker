@@ -299,7 +299,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
 
         toolbar_support_jButton.setBackground(new java.awt.Color(192, 192, 192));
         toolbar_support_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/support.png"))); // NOI18N
-        toolbar_support_jButton.setToolTipText("Contact support at support@ordertracker.com");
+        toolbar_support_jButton.setToolTipText("Contact developer at jorielsaikali@gmail.com");
         toolbar_support_jButton.setBorder(null);
         toolbar_support_jButton.setBorderPainted(false);
         toolbar_support_jButton.setContentAreaFilled(false);
