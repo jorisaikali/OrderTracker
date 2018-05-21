@@ -45,7 +45,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="60" height="460"/>
+          <AbsoluteConstraints x="0" y="0" width="60" height="430"/>
         </Constraint>
       </Constraints>
 
@@ -62,6 +62,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/house-black-silhouette-without-door.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Home"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -81,6 +82,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/new-user.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Add Customer"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -100,6 +102,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/checked.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Complete Order"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -119,6 +122,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/calendar.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="View Time Slots"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -138,6 +142,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/shift-keyboard-key.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Shift Orders"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -157,6 +162,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/local-network.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Share"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -170,6 +176,48 @@
         </Component>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JPanel" name="toolbar_support_jPanel">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="64" green="64" red="68" type="rgb"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="565" width="60" height="60"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+        <Property name="columns" type="int" value="0"/>
+        <Property name="rows" type="int" value="1"/>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="toolbar_support_jButton">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="c0" green="c0" red="c0" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/resources/support.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Contact support at support@ordertracker.com"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toolbar_support_jButtonActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="toolbar_support_jButton.addMouseListener(new MouseAdapter() {&#xd;&#xa;    @Override&#xd;&#xa;    public void mouseEntered(MouseEvent me) {&#xd;&#xa;        ToolTipManager.sharedInstance().setInitialDelay(0);&#xd;&#xa;    }&#xd;&#xa;    &#xd;&#xa;    @Override&#xd;&#xa;    public void mouseExited(MouseEvent me) {&#xd;&#xa;        ToolTipManager.sharedInstance().setDismissDelay(ToolTipManager.sharedInstance().getDismissDelay());&#xd;&#xa;    }&#xd;&#xa;});"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
     <Container class="javax.swing.JPanel" name="toolbar_blank_jPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -178,7 +226,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="450" width="60" height="210"/>
+          <AbsoluteConstraints x="0" y="430" width="60" height="230"/>
         </Constraint>
       </Constraints>
 
@@ -190,7 +238,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="210" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="230" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -336,7 +384,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Order Tracker"/>
+                <Property name="text" type="java.lang.String" value="OrderTracker"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -520,7 +568,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Share time slot data with other local Order Trackers."/>
+                <Property name="text" type="java.lang.String" value="Share time slot data with other local OrderTrackers."/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -620,7 +668,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="The how-to&apos;s on using Order Tracker"/>
+                <Property name="text" type="java.lang.String" value="Frequently Asked Questions and Advice"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -670,7 +718,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Credits given to those who made Order Tracker possible"/>
+                <Property name="text" type="java.lang.String" value="Thank you to all who made OrderTracker possible!"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -831,7 +879,7 @@
                   <Font name="Tahoma" size="12" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Credits given to those&lt;br&gt;who made Order Tracker&lt;br&gt;possible.&lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Credits given to those&lt;br&gt;who made OrderTracker&lt;br&gt;possible.&lt;/html&gt;"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
               <Constraints>
@@ -1125,6 +1173,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/227930-P1XP19-38 - Copy_1.png"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Submit"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -1272,7 +1321,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="This must be done if Order Tracker is kept open."/>
+                <Property name="text" type="java.lang.String" value="This must be done if OrderTracker is kept open."/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1285,7 +1334,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;Order Tracker saves time slot data when the window is closed. If Order Tracker is not closed,&lt;br&gt;then time slot data will not be saved nor be shared. Share will save all time slot data and share it with&lt;br&gt;other local Order Tracker&apos;s on the fly!"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;OrderTracker saves time slot data when the window is closed. If OrderTracker is not closed,&lt;br&gt;&#xa;then time slot data will not be saved nor be shared. Share will save all time slot data and share it with&lt;br&gt;&#xa;other local OrderTrackers on the fly!&#xa;&lt;/html&gt;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1301,6 +1350,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/227930-P1XP19-38 - Copy_1.png"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Submit"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -1356,15 +1406,15 @@
                     <StringItem index="0" value="How do I add a customer&apos;s name to a specific time slot?"/>
                     <StringItem index="1" value="How do I remove completed orders from a time slot?"/>
                     <StringItem index="2" value="How do I view all time slot data?"/>
-                    <StringItem index="3" value="How do I share all time slot data with other local Order Trackers?"/>
-                    <StringItem index="4" value="It&apos;s the morning, how do I shift all time slot data from tomorrow&apos;s orders to today&apos;s orders?"/>
+                    <StringItem index="3" value="How do I share all time slot data with other local OrderTrackers?"/>
+                    <StringItem index="4" value="It&apos;s the morning shift, how do I shift all time slot data from tomorrow&apos;s orders to today&apos;s orders?"/>
                     <StringItem index="5" value="What do I do if I don&apos;t know the customer&apos;s name and I want to complete their order?"/>
-                    <StringItem index="6" value="Why doesn&apos;t Order Tracker let me add more than three orders in each hour increment?"/>
+                    <StringItem index="6" value="Why doesn&apos;t OrderTracker let me add more than three orders in each hour increment?"/>
                   </StringArray>
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="instructions_questions_jComboBox.addItemListener(new ItemListener() {&#xd;&#xa;        public void itemStateChanged(ItemEvent event) {&#xd;&#xa;            if (event.getStateChange() == ItemEvent.SELECTED) {&#xd;&#xa;                Object item = event.getItem();&#xd;&#xa;&#xd;&#xa;                if (item.toString().equals(&quot;How do I add a customer&apos;s name to a specific time slot?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_add_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;                else if (item.toString().equals(&quot;How do I remove completed orders from a time slot?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_complete_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;                else if (item.toString().equals(&quot;How do I view all time slot data?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_view_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;                else if (item.toString().equals(&quot;How do I share all time slot data with other local Order Trackers?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_share_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;                else if (item.toString().equals(&quot;It&apos;s the morning, how do I shift all time slot data from tomorrow&apos;s orders to today&apos;s orders?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_shift_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;                else if (item.toString().equals(&quot;What do I do if I don&apos;t know the customer&apos;s name and I want to complete their order?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_dkcn_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;                else if (item.toString().equals(&quot;Why doesn&apos;t Order Tracker let me add more than three orders in each hour increment?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_max_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;    });"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="instructions_questions_jComboBox.addItemListener(new ItemListener() {&#xd;&#xa;        public void itemStateChanged(ItemEvent event) {&#xd;&#xa;            if (event.getStateChange() == ItemEvent.SELECTED) {&#xd;&#xa;                Object item = event.getItem();&#xd;&#xa;&#xd;&#xa;                if (item.toString().equals(&quot;How do I add a customer&apos;s name to a specific time slot?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_add_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;                else if (item.toString().equals(&quot;How do I remove completed orders from a time slot?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_complete_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;                else if (item.toString().equals(&quot;How do I view all time slot data?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_view_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;                else if (item.toString().equals(&quot;How do I share all time slot data with other local OrderTrackers?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_share_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;                else if (item.toString().equals(&quot;It&apos;s the morning shift, how do I shift all time slot data from tomorrow&apos;s orders to today&apos;s orders?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_shift_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;                else if (item.toString().equals(&quot;What do I do if I don&apos;t know the customer&apos;s name and I want to complete their order?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_dkcn_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;                else if (item.toString().equals(&quot;Why doesn&apos;t OrderTracker let me add more than three orders in each hour increment?&quot;)) {&#xd;&#xa;                    instructions_body_jPanel.removeAll();&#xd;&#xa;                    instructions_body_jPanel.add(instructions_max_jPanel);&#xd;&#xa;                    instructions_body_jPanel.repaint();&#xd;&#xa;                    instructions_body_jPanel.revalidate();&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;    });"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
               <Constraints>
@@ -1421,7 +1471,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;Click the Add Customer icon on the toolbar. This will bring you to the add customer page. Fill in&lt;br&gt; the customer&apos;s name and choose whether you would like to add their name to today&apos;s time slots or&lt;br&gt; tomorrow&apos;s time slots. Once decided, choose the time slot you and the customer agreed on for pick-up.&lt;br&gt; After all information is filled out, click the green checkmark button to submit your addition.&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Click the Add Customer icon on the toolbar. This will bring you to the Add Customer page. Fill in&lt;br&gt;&#xa;the customer&apos;s name and choose whether you would like to add their name into a time slot for today&lt;br&gt;&#xa;or tomorrow. Once decided, choose the time slot you and the customer agreed on for pick-up.&lt;br&gt;&#xa;After all information is filled out, click the green checkmark button to submit your addition.&#xa;&lt;/html&gt;"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1503,7 +1553,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;When an order is completed, click the Complete Order button in the toolbar. This will bring you to the&lt;br&gt;&#xa;Complete Order page. If you know the customer&apos;s name, fill in the name in the designated area. If you&lt;br&gt;&#xa;do not know the customer&apos;s name, you can search for the customer&apos;s name with a given time slot. This&lt;br&gt;&#xa;will display all customer&apos;s name on that specific time slot to help you when searching. Once the customer&apos;s&lt;br&gt;&#xa;name is filled in, press the green button with the checkmark to submit your completion.&#xa;&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;When an order is completed, click the Complete Order button in the toolbar. This will bring you to the&lt;br&gt;&#xa;Complete Order page. If you know the customer&apos;s name, fill in the name in the designated area. If you&lt;br&gt;&#xa;do not know the customer&apos;s name, you can search for the customer&apos;s name with a given time slot. This&lt;br&gt;&#xa;will display all names associated with that specific time slot. Once the customer&apos;s name is filled in, press&lt;br&gt;&#xa;the green button with the checkmark to submit your completion.&#xa;&lt;/html&gt;"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1541,7 +1591,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;You can quickly search a non-existing customer name in the search bar to bring you to the Add Customer&lt;br&gt;section with the customer name already filled in.&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;You can quickly search an existing customer name in the search bar to bring you to the Complete Order&lt;br&gt;section with the customer name already filled in.&lt;/html&gt;"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1628,7 +1678,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="18" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="How do I share all time slot data with other local Order Trackers?"/>
+                        <Property name="text" type="java.lang.String" value="How do I share all time slot data with other local OrderTrackers?"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1641,7 +1691,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;There are two ways to share time slot data to other local Order Trackers. The first being closing the Order&lt;br&gt;&#xa;Tracker window with the close button. The second way is manually through the Share button in the toolbar.&lt;br&gt;&#xa;Press the green chechmark to share manually. The reason for the second option is if it is desired for Order&lt;br&gt;&#xa;Tracker to remain open. If Order Tracker is never closed, time slot data will not be shared, hence why the&lt;br&gt;&#xa;second option exists.&#xa;&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;There are two ways to share time slot data to other local OrderTrackers. The first method is by closing the&lt;br&gt;&#xa;OrderTracker window, which automatically sends time slot data to local computers. You can also click the&lt;br&gt;&#xa;Share button in the toolbar and then the green checkmark in the window to manually share time slot data.&lt;br&gt;&#xa;It is important to note that OrderTracker will not automatically send time slot data to local computers until it&lt;br&gt;&#xa;is closed, which is why the manual share option exists.&#xa;&lt;/html&gt;"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1684,7 +1734,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="18" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;It&apos;s the morning, how do I shift all time slot data from tomorrow&apos;s&lt;br&gt;orders to today&apos;s orders?&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;It&apos;s the morning shift, how do I shift all time slot data from tomorrow&apos;s&lt;br&gt;orders to today&apos;s orders?&lt;/html&gt;"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1697,7 +1747,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Order Tracker does not shift time slot data automatically. It does however shift it for you if requested&lt;br&gt;&#xa;to do so. Click the Shift button in the toolbar. This will bring you to the Shift Orders section. Press the&lt;br&gt;&#xa;green checkmark to shift orders. You will need to confirm your choice. Asking to confirm your choice is &lt;br&gt;&#xa;the way Order Tracker knows this is really what you want to do and it is not an accidental click. This is &lt;br&gt;&#xa;because when this operation is complete, you cannot retrieve the old today&apos;s orders. They are permanently&lt;br&gt;&#xa;deleted from Order Tracker.&#xa;&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;OrderTracker does not shift time slot data automatically. It does however shift it for you if request it&lt;br&gt;&#xa;to do so. Click the Shift button in the toolbar. This will bring you to the Shift Orders section. Press the&lt;br&gt;&#xa;green checkmark to shift orders. You will need to confirm your choice. Asking to confirm your choice is &lt;br&gt;&#xa;the way OrderTracker knows this is really what you want to do and it is not an accidental click. This is &lt;br&gt;&#xa;because when this operation is complete, you cannot retrieve the old today&apos;s orders. They are permanently&lt;br&gt;&#xa;deleted from OrderTracker.&#xa;&lt;/html&gt;"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1753,7 +1803,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa; If you do not know the customer&apos;s name, you can search for the customer&apos;s name with a given time slot. To do&lt;br&gt;&#xa;this, first click the Complete Order button in the toolbar. Once there, you will be present with the option to search&lt;br&gt;&#xa;by time slot. Choose the time slot you are looking for which will display all customer&apos;s name on that specific time slot&lt;br&gt;&#xa;to help you when searching. Once the customer&apos;s name is filled in, press the green button with the checkmark to&lt;br&gt;&#xa;submit your completion.&#xa;&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa; If you do not know the customer&apos;s name, you can search for the customer&apos;s name with a given time slot. To do&lt;br&gt;&#xa;this, first click the Complete Order button in the toolbar. Once there, you will be presented with the option to search&lt;br&gt;&#xa;by time slot. Choose the time slot you are looking for which will display all customer names associated with that specific&lt;br&gt;&#xa;time slot to help you when searching. Once the customer&apos;s name is filled in, press the green button with the checkmark&lt;br&gt;&#xa;to submit your completion.&#xa;&lt;/html&gt;"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1784,7 +1834,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="18" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Why doesn&apos;t Order Tracker let me add more than three orders in each hour increment?"/>
+                        <Property name="text" type="java.lang.String" value="Why doesn&apos;t OrderTracker let me add more than three orders in each hour increment?"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1797,7 +1847,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Order Tracker will only allow a maximum of three orders for each hour increment. This is due to the fact that&lt;br&gt;&#xa;overbooking is an easy and quick way to overburden you and your coworkers in the Copy &amp; Print Center. Order&lt;br&gt;&#xa;Tracker will attempt to minimize the amount of overbooking done by giving a maximum to the amount of orders that&lt;br&gt;&#xa;are allowed to be taken in a given hour.&#xa;&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;OrderTracker will only allow a maximum of three orders for each hour increment. This is due to the fact that&lt;br&gt;&#xa;overbooking is an easy and quick way to overburden you and your coworkers in the Copy &amp; Print Center.&lt;br&gt;&#xa;OrderTracker will attempt to minimize the amount of overbooking done by giving a maximum to the amount of&lt;br&gt;&#xa;orders that are allowed to be taken in a given hour.&#xa;&lt;/html&gt;"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1827,26 +1877,13 @@
             <Property name="useNullLayout" type="boolean" value="false"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="credits_body_title_jLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Thank you to all who made Order Tracker possible!"/>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="60" y="60" width="-1" height="-1"/>
-                </Constraint>
-              </Constraints>
-            </Component>
             <Container class="javax.swing.JScrollPane" name="credits_jScrollPane">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="60" y="100" width="860" height="190"/>
+                  <AbsoluteConstraints x="60" y="63" width="860" height="190"/>
                 </Constraint>
               </Constraints>
 
@@ -1863,57 +1900,10 @@
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
                     <Property name="rows" type="int" value="5"/>
-                    <Property name="text" type="java.lang.String" value="Developed by Jori El-Saikali.&#xa;&#xa;A special thanks to all the staff at store 16! Without them I would have never created Order Tracker. Thank you all!&#xa;&#xa;Resource Credits:&#xa;&#xa;House black silhouette without door icon made by Freepik from www.flaticon.com&#xa;New user free icon made by Freepik from www.flaticon.com&#xa;Checked free icon made by Smashicons from www.flaticon.com&#xa;Calendar free icon made by Smashicons from www.flaticon.com&#xa;Local network free icon made by Nikita Golubev from www.flaticon.com&#xa;Search free icon made by Smashicons from www.flaticon.com&#xa;Thumbs up free icon made by Dave Gandy from www.flaticon.com&#xa;Instructions free icon made by Smashicons from www.flaticon.com&#xa;Verified notes symbol free icon made by Freepik from www.flaticon.com&#xa;Shift keyboard key free icon made by Freepik from www.flaticon.com"/>
+                    <Property name="text" type="java.lang.String" value="Developed by Jori El-Saikali.&#xa;&#xa;A special thanks to all the staff at Store 16! Without them I would have never created OrderTracker. Thank you all!&#xa;&#xa;Thank you to my good friend Jed Lloren for testing OrderTracker as well as fixing any grammar and spelling mistakes I made.&#xa;&#xa;Resource Credits:&#xa;&#xa;House black silhouette without door icon made by Freepik from www.flaticon.com&#xa;New user free icon made by Freepik from www.flaticon.com&#xa;Checked free icon made by Smashicons from www.flaticon.com&#xa;Calendar free icon made by Smashicons from www.flaticon.com&#xa;Local network free icon made by Nikita Golubev from www.flaticon.com&#xa;Search free icon made by Smashicons from www.flaticon.com&#xa;Thumbs up free icon made by Dave Gandy from www.flaticon.com&#xa;Instructions free icon made by Smashicons from www.flaticon.com&#xa;Verified notes symbol free icon made by Freepik from www.flaticon.com&#xa;Shift keyboard key free icon made by Freepik from www.flaticon.com&#xa;Support free icon made by Good Ware from www.flaticon.com"/>
                   </Properties>
                 </Component>
               </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="search_UI_jPanel">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c0" green="c0" red="c0" type="rgb"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card2"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-            <Property name="useNullLayout" type="boolean" value="false"/>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="search_body_title_jLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Results"/>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="60" y="60" width="-1" height="-1"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Container class="javax.swing.JPanel" name="search_results_jPanel">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="60" y="100" width="870" height="190"/>
-                </Constraint>
-              </Constraints>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-                <Property name="useNullLayout" type="boolean" value="false"/>
-              </Layout>
             </Container>
           </SubComponents>
         </Container>
@@ -2072,6 +2062,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/227930-P1XP19-38 - Copy_1.png"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Submit"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -2109,7 +2100,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="This must be done every morning when Order Tracker is first opened."/>
+                <Property name="text" type="java.lang.String" value="This must be done every morning when OrderTracker is first opened."/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2122,7 +2113,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Order Tracker does not automatically shift orders from tomorrow&apos;s orders to today&apos;s orders. This means&lt;br&gt;&#xa;that orders must manually be shifted. But don&apos;t worry! Order Tracker still makes this easy for you! By just &lt;br&gt;&#xa;pressing the submit button and confirming, Order Tracker will shift all orders for you!&#xa;&lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;OrderTracker does not automatically shift orders from tomorrow&apos;s orders to today&apos;s orders. This means&lt;br&gt;&#xa;that orders must manually be shifted. But don&apos;t worry! OrderTracker still makes this easy for you! By just &lt;br&gt;&#xa;pressing the submit button and confirming, OrderTracker will shift all orders for you!&#xa;&lt;/html&gt;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2138,6 +2129,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/227930-P1XP19-38 - Copy_1.png"/>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Submit"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
