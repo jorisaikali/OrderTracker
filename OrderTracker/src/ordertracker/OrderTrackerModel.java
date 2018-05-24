@@ -26,11 +26,49 @@ public class OrderTrackerModel {
     private final String appDataDirectory;
     private File path;
     private File dataPath;
+    private int settingsOrderMax;
+    private String settingsPath;
     
     public OrderTrackerModel() {
         this.todaysOrders = initTimeSlots();
         this.tomorrowsOrders = initTimeSlots();
-        this.appDataDirectory = System.getenv("APPDATA");
+        
+        File config = new File("config.ini");
+        String line = null;
+        
+        try {
+            FileReader fileReaderConfig = new FileReader(config);
+            BufferedReader bufferedReader = new BufferedReader(fileReaderConfig);
+            
+            while((line = bufferedReader.readLine()) != null) {		
+                if (line.equals("")) {
+                    continue;
+                }
+
+                String[] splitLines = line.split(" ");
+                
+                if (splitLines[0].equals("max")) {
+                    this.settingsOrderMax = Integer.parseInt(splitLines[1]);
+                }
+                else if (splitLines[0].equals("path")) {
+                    this.settingsPath = splitLines[1];
+                }
+            }
+            
+            bufferedReader.close();
+        }
+        catch(FileNotFoundException ex) {
+            
+        }
+	catch(IOException ex) {
+            
+	}
+        
+        if (this.settingsPath.contains("APPDATA")) {
+            this.appDataDirectory = System.getenv("APPDATA");
+        } else {
+            this.appDataDirectory = this.settingsPath.replace("/", "\\");
+        }
         
         this.path = new File(appDataDirectory + "\\OrderTracker");
         this.path.mkdir();
@@ -40,6 +78,7 @@ public class OrderTrackerModel {
     
     public TimeSlot[] getTodaysOrders() { return this.todaysOrders; }
     public TimeSlot[] getTomorrowsOrders() { return this.tomorrowsOrders; }
+    public String getFinalPath() { return this.appDataDirectory + "\\OrderTracker\\data"; }
     
     public boolean hasCustomer(String customerName) {
         				
@@ -111,7 +150,9 @@ public class OrderTrackerModel {
         return found;
     }
     
-    public boolean checkOrderMax(String time, String todayOrTomorrow) {             
+    public boolean checkOrderMax(String time, String todayOrTomorrow, int max) {
+        this.settingsOrderMax = max;
+        
         if (todayOrTomorrow.equals("Today")) {
             return checkMax(todaysOrders, time);
         }
@@ -288,7 +329,7 @@ public class OrderTrackerModel {
             }
         }
 
-        return count == 3;
+        return count == this.settingsOrderMax;
     }
     
 }

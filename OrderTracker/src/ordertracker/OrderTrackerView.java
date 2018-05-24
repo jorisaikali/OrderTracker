@@ -75,6 +75,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         toolbar_calendar_jButton = new javax.swing.JButton();
         toolbar_shift_jButton = new javax.swing.JButton();
         toolbar_share_jButton = new javax.swing.JButton();
+        toolbar_settings_jButton = new javax.swing.JButton();
         toolbar_support_jPanel = new javax.swing.JPanel();
         toolbar_support_jButton = new javax.swing.JButton();
         toolbar_blank_jPanel = new javax.swing.JPanel();
@@ -112,6 +113,9 @@ public class OrderTrackerView extends javax.swing.JFrame {
         search_title_jPanel = new javax.swing.JPanel();
         search_subtitle_jLabel = new javax.swing.JLabel();
         search_main_title_jLabel = new javax.swing.JLabel();
+        settings_title_jPanel = new javax.swing.JPanel();
+        search_subtitle_jLabel1 = new javax.swing.JLabel();
+        search_main_title_jLabel1 = new javax.swing.JLabel();
         UI_jPanel = new javax.swing.JPanel();
         home_UI_jPanel = new javax.swing.JPanel();
         instructions_title_jLabel = new javax.swing.JLabel();
@@ -195,6 +199,13 @@ public class OrderTrackerView extends javax.swing.JFrame {
         shift_body_title_jLabel = new javax.swing.JLabel();
         shift_body_description_jLabel = new javax.swing.JLabel();
         shift_submit_jButton = new javax.swing.JButton();
+        settings_UI_jPanel = new javax.swing.JPanel();
+        settings_submit_jButton = new javax.swing.JButton();
+        settings_path_jLabel = new javax.swing.JLabel();
+        settings_max_jComboBox = new javax.swing.JComboBox<>();
+        settings_max_jLabel = new javax.swing.JLabel();
+        settings_path_jTextField = new javax.swing.JTextField();
+        settings_file_chooser_jButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("OrderTracker");
@@ -206,7 +217,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         toolbar_jPanel.setBackground(new java.awt.Color(104, 100, 100));
-        toolbar_jPanel.setLayout(new java.awt.GridLayout(6, 1));
+        toolbar_jPanel.setLayout(new java.awt.GridLayout(7, 1));
 
         toolbar_home_jButton.setBackground(new java.awt.Color(192, 192, 192));
         toolbar_home_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/house-black-silhouette-without-door.png"))); // NOI18N
@@ -292,10 +303,24 @@ public class OrderTrackerView extends javax.swing.JFrame {
         });
         toolbar_jPanel.add(toolbar_share_jButton);
 
+        toolbar_settings_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        toolbar_settings_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/settings-work-tool (2).png"))); // NOI18N
+        toolbar_settings_jButton.setToolTipText("Home");
+        toolbar_settings_jButton.setBorder(null);
+        toolbar_settings_jButton.setBorderPainted(false);
+        toolbar_settings_jButton.setContentAreaFilled(false);
+        toolbar_settings_jButton.setFocusPainted(false);
+        toolbar_settings_jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toolbar_settings_jButtonActionPerformed(evt);
+            }
+        });
+        toolbar_jPanel.add(toolbar_settings_jButton);
+
         getContentPane().add(toolbar_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 430));
 
         toolbar_support_jPanel.setBackground(new java.awt.Color(104, 100, 100));
-        toolbar_support_jPanel.setLayout(new java.awt.GridLayout());
+        toolbar_support_jPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         toolbar_support_jButton.setBackground(new java.awt.Color(192, 192, 192));
         toolbar_support_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/support.png"))); // NOI18N
@@ -511,6 +536,21 @@ public class OrderTrackerView extends javax.swing.JFrame {
 
         title_jPanel.add(search_title_jPanel, "card2");
 
+        settings_title_jPanel.setBackground(new java.awt.Color(224, 31, 31));
+        settings_title_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        search_subtitle_jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        search_subtitle_jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        search_subtitle_jLabel1.setText("Set OrderTracker to the way your liking");
+        settings_title_jPanel.add(search_subtitle_jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 900, -1));
+
+        search_main_title_jLabel1.setFont(new java.awt.Font("Tahoma", 0, 78)); // NOI18N
+        search_main_title_jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        search_main_title_jLabel1.setText("Settings");
+        settings_title_jPanel.add(search_main_title_jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 570, -1));
+
+        title_jPanel.add(settings_title_jPanel, "card2");
+
         getContentPane().add(title_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 980, 260));
 
         UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
@@ -543,7 +583,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         home_UI_jPanel.add(instructions_description_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        home_UI_jPanel.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, 240));
+        home_UI_jPanel.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, -1, 240));
 
         home_instructions_jButton.setBackground(new java.awt.Color(192, 192, 192));
         home_instructions_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/instructions.png"))); // NOI18N
@@ -954,7 +994,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         credits_jTextArea.setColumns(20);
         credits_jTextArea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         credits_jTextArea.setRows(5);
-        credits_jTextArea.setText("Developed by Jori El-Saikali.\n\nA special thanks to all the staff at Store 16! Without them I would have never created OrderTracker. Thank you all!\n\nThank you to my good friend Jed Lloren for testing OrderTracker as well as fixing any grammar and spelling mistakes I made.\n\nResource Credits:\n\nHouse black silhouette without door icon made by Freepik from www.flaticon.com\nNew user free icon made by Freepik from www.flaticon.com\nChecked free icon made by Smashicons from www.flaticon.com\nCalendar free icon made by Smashicons from www.flaticon.com\nLocal network free icon made by Nikita Golubev from www.flaticon.com\nSearch free icon made by Smashicons from www.flaticon.com\nThumbs up free icon made by Dave Gandy from www.flaticon.com\nInstructions free icon made by Smashicons from www.flaticon.com\nVerified notes symbol free icon made by Freepik from www.flaticon.com\nShift keyboard key free icon made by Freepik from www.flaticon.com\nSupport free icon made by Good Ware from www.flaticon.com");
+        credits_jTextArea.setText("Developed by Jori El-Saikali.\n\nA special thanks to all the staff at Store 16! Without them I would have never created OrderTracker. Thank you all!\n\nThank you to my good friend Jed Lloren for testing OrderTracker as well as fixing any grammar and spelling mistakes I made.\n\nResource Credits:\n\nHouse black silhouette without door icon made by Freepik from www.flaticon.com\nNew user free icon made by Freepik from www.flaticon.com\nChecked free icon made by Smashicons from www.flaticon.com\nCalendar free icon made by Smashicons from www.flaticon.com\nLocal network free icon made by Nikita Golubev from www.flaticon.com\nSearch free icon made by Smashicons from www.flaticon.com\nThumbs up free icon made by Dave Gandy from www.flaticon.com\nInstructions free icon made by Smashicons from www.flaticon.com\nVerified notes symbol free icon made by Freepik from www.flaticon.com\nShift keyboard key free icon made by Freepik from www.flaticon.com\nSupport free icon made by Good Ware from www.flaticon.com\nSettings Work Tool free icon made by Egor Rumyantsev from www.flaticon.com");
         credits_jScrollPane.setViewportView(credits_jTextArea);
 
         credits_UI_jPanel.add(credits_jScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 63, 860, 190));
@@ -1026,6 +1066,42 @@ public class OrderTrackerView extends javax.swing.JFrame {
         shift_UI_jPanel.add(shift_submit_jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
 
         UI_jPanel.add(shift_UI_jPanel, "card2");
+
+        settings_UI_jPanel.setBackground(new java.awt.Color(192, 192, 192));
+        settings_UI_jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        settings_submit_jButton.setBackground(new java.awt.Color(192, 192, 192));
+        settings_submit_jButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/227930-P1XP19-38 - Copy_1.png"))); // NOI18N
+        settings_submit_jButton.setToolTipText("Submit");
+        settings_submit_jButton.setBorder(null);
+        settings_submit_jButton.setBorderPainted(false);
+        settings_submit_jButton.setContentAreaFilled(false);
+        settings_submit_jButton.setFocusPainted(false);
+        settings_submit_jButton.setVerifyInputWhenFocusTarget(false);
+        settings_UI_jPanel.add(settings_submit_jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, 80, 80));
+
+        settings_path_jLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        settings_path_jLabel.setText("Path to save persistent data to:");
+        settings_UI_jPanel.add(settings_path_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 120, -1, -1));
+
+        settings_max_jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6" }));
+        settings_UI_jPanel.add(settings_max_jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 60, -1));
+
+        settings_max_jLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        settings_max_jLabel.setText("Maximum amount of orders allowed per hour:");
+        settings_UI_jPanel.add(settings_max_jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
+
+        settings_path_jTextField.setEditable(false);
+        settings_path_jTextField.setFocusable(false);
+        settings_UI_jPanel.add(settings_path_jTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 360, 20));
+
+        settings_file_chooser_jButton.setText("...");
+        settings_file_chooser_jButton.setBorder(null);
+        settings_file_chooser_jButton.setBorderPainted(false);
+        settings_file_chooser_jButton.setFocusPainted(false);
+        settings_UI_jPanel.add(settings_file_chooser_jButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, 20, 20));
+
+        UI_jPanel.add(settings_UI_jPanel, "card2");
 
         getContentPane().add(UI_jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 970, 350));
 
@@ -1119,6 +1195,10 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private void toolbar_support_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toolbar_support_jButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_toolbar_support_jButtonActionPerformed
+
+    private void toolbar_settings_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toolbar_settings_jButtonActionPerformed
+        transitionToSettings();
+    }//GEN-LAST:event_toolbar_settings_jButtonActionPerformed
 
     
     public void runGFX() {
@@ -1228,6 +1308,14 @@ public class OrderTrackerView extends javax.swing.JFrame {
         
         return -1;
     }
+    // ----------------------------------------------------------- //
+    
+    // ------------------- Settings functions -------------------- //
+    public String getSettingsMax() { return settings_max_jComboBox.getSelectedItem().toString(); }
+    public String getSettingsPath() { return settings_path_jTextField.getText(); }
+    
+    public void setSettingsMax(String max) { settings_max_jComboBox.setSelectedItem(max); }
+    public void setSettingsPath(String path) { settings_path_jTextField.setText(path); }
     // ----------------------------------------------------------- //
     
     // --------------------- Search function -------------------- //
@@ -1346,6 +1434,20 @@ public class OrderTrackerView extends javax.swing.JFrame {
         
         title_jPanel.removeAll();
         title_jPanel.add(shift_title_jPanel);
+        title_jPanel.repaint();
+        title_jPanel.revalidate();
+        
+        setToSearchDefault();
+    }
+    
+    public void transitionToSettings() { 
+        UI_jPanel.removeAll();
+        UI_jPanel.add(settings_UI_jPanel);
+        UI_jPanel.repaint();
+        UI_jPanel.revalidate();
+        
+        title_jPanel.removeAll();
+        title_jPanel.add(settings_title_jPanel);
         title_jPanel.repaint();
         title_jPanel.revalidate();
         
@@ -1519,8 +1621,18 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JLabel search_icon_jLabel;
     private javax.swing.JTextField search_jTextField;
     private javax.swing.JLabel search_main_title_jLabel;
+    private javax.swing.JLabel search_main_title_jLabel1;
     private javax.swing.JLabel search_subtitle_jLabel;
+    private javax.swing.JLabel search_subtitle_jLabel1;
     private javax.swing.JPanel search_title_jPanel;
+    private javax.swing.JPanel settings_UI_jPanel;
+    private javax.swing.JButton settings_file_chooser_jButton;
+    private javax.swing.JComboBox<String> settings_max_jComboBox;
+    private javax.swing.JLabel settings_max_jLabel;
+    private javax.swing.JLabel settings_path_jLabel;
+    private javax.swing.JTextField settings_path_jTextField;
+    private javax.swing.JButton settings_submit_jButton;
+    private javax.swing.JPanel settings_title_jPanel;
     private javax.swing.JPanel share_UI_jPanel;
     private javax.swing.JLabel share_body_description_jLabel;
     private javax.swing.JLabel share_body_title_jLabel;
@@ -1543,6 +1655,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
     private javax.swing.JButton toolbar_complete_order_jButton;
     private javax.swing.JButton toolbar_home_jButton;
     private javax.swing.JPanel toolbar_jPanel;
+    private javax.swing.JButton toolbar_settings_jButton;
     private javax.swing.JButton toolbar_share_jButton;
     private javax.swing.JButton toolbar_shift_jButton;
     private javax.swing.JButton toolbar_support_jButton;

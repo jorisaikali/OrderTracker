@@ -64,7 +64,7 @@ public class OrderTrackerController {
                 return;
             }
             
-            if (!model.checkOrderMax(time, todayOrTomorrow)) {
+            if (!model.checkOrderMax(time, todayOrTomorrow, Integer.parseInt(view.getSettingsMax()))) {
                 model.addCustomer(customerName, todayOrTomorrow, time);
                 view.displaySuccess();
                 view.clearAddUserCN();
