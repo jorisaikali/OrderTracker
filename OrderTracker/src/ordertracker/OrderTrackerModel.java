@@ -27,14 +27,14 @@ public class OrderTrackerModel {
     private File path;
     private File dataPath;
     private int settingsOrderMax;
-    private String settingsPath;
+    //private String settingsPath;
     
     public OrderTrackerModel() {
         this.todaysOrders = initTimeSlots();
         this.tomorrowsOrders = initTimeSlots();
         
         File config = new File("config.ini");
-        String line = null;
+        String line;
         
         try {
             FileReader fileReaderConfig = new FileReader(config);
@@ -50,9 +50,11 @@ public class OrderTrackerModel {
                 if (splitLines[0].equals("max")) {
                     this.settingsOrderMax = Integer.parseInt(splitLines[1]);
                 }
+                /*
                 else if (splitLines[0].equals("path")) {
                     this.settingsPath = splitLines[1];
                 }
+                */
             }
             
             bufferedReader.close();
@@ -64,11 +66,15 @@ public class OrderTrackerModel {
             
 	}
         
+        /*
         if (this.settingsPath.contains("APPDATA")) {
             this.appDataDirectory = System.getenv("APPDATA");
         } else {
             this.appDataDirectory = this.settingsPath.replace("/", "\\");
         }
+        */
+        
+        this.appDataDirectory = System.getenv("APPDATA");
         
         this.path = new File(appDataDirectory + "\\OrderTracker");
         this.path.mkdir();
@@ -78,7 +84,10 @@ public class OrderTrackerModel {
     
     public TimeSlot[] getTodaysOrders() { return this.todaysOrders; }
     public TimeSlot[] getTomorrowsOrders() { return this.tomorrowsOrders; }
-    public String getFinalPath() { return this.appDataDirectory + "\\OrderTracker\\data"; }
+    public int getSettingsMax() { return this.settingsOrderMax; }
+    //public String getFinalPath() { return this.appDataDirectory + "\\OrderTracker\\data"; }
+    
+    public void setSettingsMax(int max) { this.settingsOrderMax = max; }
     
     public boolean hasCustomer(String customerName) {
         				
@@ -98,6 +107,8 @@ public class OrderTrackerModel {
     }
     
     public boolean addCustomer(String customerName, String todayOrTomorrow, String time) {
+        
+        System.out.println("orderMax: " + this.settingsOrderMax);
         
         boolean added = false;
 				
@@ -248,6 +259,16 @@ public class OrderTrackerModel {
 	}
     }
     
+    public void writeConfigFile() throws FileNotFoundException {
+        File configFile = new File("config.ini");
+        
+        System.out.println("settingsOrderMax: " + this.settingsOrderMax);
+        
+        try (PrintWriter configWriter = new PrintWriter(configFile)) {
+            configWriter.println("max " + String.valueOf(this.settingsOrderMax));
+        }
+    }
+    
     private TimeSlot[] initTimeSlots() {
 		
         TimeSlot[] timeSlots = {new TimeSlot("8:00 AM"), new TimeSlot("8:00 AM"), new TimeSlot("8:00 AM"), 
@@ -329,7 +350,7 @@ public class OrderTrackerModel {
             }
         }
 
-        return count == this.settingsOrderMax;
+        return count >= this.settingsOrderMax;
     }
     
 }

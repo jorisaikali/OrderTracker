@@ -30,6 +30,8 @@ public class OrderTrackerController {
         this.view.addCalendarTTActionListener(new CalendarListener());
         this.view.addShareButtonListener(new ShareListener());
         this.view.addShiftButtonListener(new ShiftListener());
+        this.view.addSettingsToolbarButtonListener(new SettingsToolbarListener());
+        this.view.addSettingsButtonListener(new SettingsListener());
         
         this.view.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -144,5 +146,27 @@ public class OrderTrackerController {
                 view.displayMessage("You have cancelled shifting time slot data.");
             }
         }
+    }
+    
+    class SettingsToolbarListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int orderMax = model.getSettingsMax();
+            view.setSettingsMax(String.valueOf(orderMax));
+        }
+    }
+    
+    class SettingsListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                model.setSettingsMax(Integer.parseInt(view.getSettingsMax()));
+                model.writeConfigFile();
+                //view.rebuildTable(Integer.parseInt(view.getSettingsMax()));
+                view.displaySuccess();
+            } catch (FileNotFoundException ex) {
+                view.displayError(ex.toString());
+            }
+        }        
     }
 }

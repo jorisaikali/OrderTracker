@@ -19,6 +19,7 @@ import java.io.UnsupportedEncodingException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ToolTipManager;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
 /**
@@ -1265,6 +1266,18 @@ public class OrderTrackerView extends javax.swing.JFrame {
     // ---------------- Calendar functions ---------------- //
     public String getCalendarTT() { return calendar_TT_jComboBox.getSelectedItem().toString(); }
     
+    public void rebuildTable(int range) {
+        for (int i = 0; i < calendar_jTable.getColumnCount()-1; i++) {
+            calendar_jTable.removeColumn(calendar_jTable.getColumn("Customer Name"));
+        }
+        
+        for (int i = 0; i <= range; i++) {
+            TableColumn col = new TableColumn();
+            col.setHeaderValue("Customer Name");
+            calendar_jTable.addColumn(col);
+        }
+    }
+    
     public void updateCalendarTable(TimeSlot[] timeslots) {
         
         int count = 1, i = 0;
@@ -1312,10 +1325,10 @@ public class OrderTrackerView extends javax.swing.JFrame {
     
     // ------------------- Settings functions -------------------- //
     public String getSettingsMax() { return settings_max_jComboBox.getSelectedItem().toString(); }
-    public String getSettingsPath() { return settings_path_jTextField.getText(); }
+    //public String getSettingsPath() { return settings_path_jTextField.getText(); }
     
     public void setSettingsMax(String max) { settings_max_jComboBox.setSelectedItem(max); }
-    public void setSettingsPath(String path) { settings_path_jTextField.setText(path); }
+    //public void setSettingsPath(String path) { settings_path_jTextField.setText(path); }
     // ----------------------------------------------------------- //
     
     // --------------------- Search function -------------------- //
@@ -1346,6 +1359,14 @@ public class OrderTrackerView extends javax.swing.JFrame {
     
     public void addShiftButtonListener(ActionListener listener) {
         shift_submit_jButton.addActionListener(listener);
+    }
+    
+    public void addSettingsToolbarButtonListener(ActionListener listener) {
+        toolbar_settings_jButton.addActionListener(listener);
+    }
+    
+    public void addSettingsButtonListener(ActionListener listener) {
+        settings_submit_jButton.addActionListener(listener);
     }
     // ------------------------------------------------------- //
     
