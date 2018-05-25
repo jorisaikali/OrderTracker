@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,20 +20,26 @@ import java.io.UnsupportedEncodingException;
  */
 public class OrderTrackerModel {
     
-    private TimeSlot[] todaysOrders;
-    private TimeSlot[] tomorrowsOrders;
+    private ArrayList<TimeSlot> todaysOrders;
+    private ArrayList<TimeSlot> tomorrowsOrders;
     private final String todayFilename = "persistentDataToday.txt";
     private final String tomorrowFilename = "persistentDataTomorrow.txt";
     private final String appDataDirectory;
     private File path;
     private File dataPath;
     private int settingsOrderMax;
+    private TimeSlot[] slotHelper = {new TimeSlot("8:00 AM"), new TimeSlot("8:30 AM"), new TimeSlot("9:00 AM"),
+                                     new TimeSlot("9:30 AM"), new TimeSlot("10:00 AM"), new TimeSlot("10:30 AM"),
+                                     new TimeSlot("11:00 AM"), new TimeSlot("11:30 AM"), new TimeSlot("12:00 PM"),
+                                     new TimeSlot("12:30 PM"), new TimeSlot("1:00 PM"), new TimeSlot("1:30 PM"),
+                                     new TimeSlot("2:00 PM"), new TimeSlot("2:30 PM"), new TimeSlot("3:00 PM"), 
+                                     new TimeSlot("3:30 PM"), new TimeSlot("4:00 PM"), new TimeSlot("4:30 PM"),
+                                     new TimeSlot("5:00 PM"), new TimeSlot("5:30 PM"), new TimeSlot("6:00 PM"),
+                                     new TimeSlot("6:30 PM"), new TimeSlot("7:00 PM"), new TimeSlot("7:30 PM"),
+                                     new TimeSlot("8:00 PM"), new TimeSlot("8:30 PM")};;
     //private String settingsPath;
     
-    public OrderTrackerModel() {
-        this.todaysOrders = initTimeSlots();
-        this.tomorrowsOrders = initTimeSlots();
-        
+    public OrderTrackerModel() {             
         File config = new File("config.ini");
         String line;
         
@@ -66,6 +73,9 @@ public class OrderTrackerModel {
             
 	}
         
+        this.todaysOrders = initTimeSlots();
+        this.tomorrowsOrders = initTimeSlots();
+        
         /*
         if (this.settingsPath.contains("APPDATA")) {
             this.appDataDirectory = System.getenv("APPDATA");
@@ -82,8 +92,8 @@ public class OrderTrackerModel {
         this.dataPath.mkdir();
     }
     
-    public TimeSlot[] getTodaysOrders() { return this.todaysOrders; }
-    public TimeSlot[] getTomorrowsOrders() { return this.tomorrowsOrders; }
+    public ArrayList<TimeSlot> getTodaysOrders() { return this.todaysOrders; }
+    public ArrayList<TimeSlot> getTomorrowsOrders() { return this.tomorrowsOrders; }
     public int getSettingsMax() { return this.settingsOrderMax; }
     //public String getFinalPath() { return this.appDataDirectory + "\\OrderTracker\\data"; }
     
@@ -108,10 +118,8 @@ public class OrderTrackerModel {
     
     public boolean addCustomer(String customerName, String todayOrTomorrow, String time) {
         
-        System.out.println("orderMax: " + this.settingsOrderMax);
-        
         boolean added = false;
-				
+        
         if (todayOrTomorrow.equals("Today")) {
             for (TimeSlot slot : this.todaysOrders) {
                 if (slot.GetTime().equals(time)) {		
@@ -120,7 +128,7 @@ public class OrderTrackerModel {
                         added = true;
                         break;
                     }			
-		}					
+		}
             }
         } else {
             for (TimeSlot slot : this.tomorrowsOrders) {
@@ -133,7 +141,7 @@ public class OrderTrackerModel {
 		}					
             }
 	}
-        
+
         return added;
     }
     
@@ -175,17 +183,17 @@ public class OrderTrackerModel {
     public TimeSlot[] getRow(String time, String todayOrTomorrow) {
         
         if (todayOrTomorrow.equals("Today")) {
-            for (int i = 0; i < this.todaysOrders.length; i++) {
-                if (this.todaysOrders[i].GetTime().equals(time)) {
-                    TimeSlot[] row = { this.todaysOrders[i], this.todaysOrders[i+1], this.todaysOrders[i+2] };
+            for (int i = 0; i < this.todaysOrders.size(); i++) {
+                if (this.todaysOrders.get(i).GetTime().equals(time)) {
+                    TimeSlot[] row = { this.todaysOrders.get(i), this.todaysOrders.get(i+1), this.todaysOrders.get(i+2)};
                     return row;
                 }
             }
         }
         else {
-            for (int i = 0; i < this.tomorrowsOrders.length; i++) {
-                if (this.tomorrowsOrders[i].GetTime().equals(time)) {
-                    TimeSlot[] row = { this.tomorrowsOrders[i], this.tomorrowsOrders[i+1], this.tomorrowsOrders[i+2] };
+            for (int i = 0; i < this.tomorrowsOrders.size(); i++) {
+                if (this.tomorrowsOrders.get(i).GetTime().equals(time)) {
+                    TimeSlot[] row = { this.tomorrowsOrders.get(i), this.tomorrowsOrders.get(i+1), this.tomorrowsOrders.get(i+2)};
                     return row;
                 }
             }
@@ -195,7 +203,7 @@ public class OrderTrackerModel {
     }
     
     public void shiftTimeSlots() {
-        this.todaysOrders = this.tomorrowsOrders.clone();
+        this.todaysOrders = (ArrayList<TimeSlot>)this.tomorrowsOrders.clone();
         this.tomorrowsOrders = initTimeSlots();     
     }
     
@@ -269,39 +277,37 @@ public class OrderTrackerModel {
         }
     }
     
-    private TimeSlot[] initTimeSlots() {
+    private ArrayList<TimeSlot> initTimeSlots() {
 		
-        TimeSlot[] timeSlots = {new TimeSlot("8:00 AM"), new TimeSlot("8:00 AM"), new TimeSlot("8:00 AM"), 
-				new TimeSlot("8:30 AM"), new TimeSlot("8:30 AM"), new TimeSlot("8:30 AM"),
-				new TimeSlot("9:00 AM"), new TimeSlot("9:00 AM"), new TimeSlot("9:00 AM"),
-				new TimeSlot("9:30 AM"), new TimeSlot("9:30 AM"), new TimeSlot("9:30 AM"),
-				new TimeSlot("10:00 AM"), new TimeSlot("10:00 AM"), new TimeSlot("10:00 AM"),
-				new TimeSlot("10:30 AM"), new TimeSlot("10:30 AM"), new TimeSlot("10:30 AM"),
-				new TimeSlot("11:00 AM"), new TimeSlot("11:00 AM"), new TimeSlot("11:00 AM"),
-				new TimeSlot("11:30 AM"), new TimeSlot("11:30 AM"), new TimeSlot("11:30 AM"),
-				new TimeSlot("12:00 PM"), new TimeSlot("12:00 PM"), new TimeSlot("12:00 PM"),
-				new TimeSlot("12:30 PM"), new TimeSlot("12:30 PM"), new TimeSlot("12:30 PM"),
-				new TimeSlot("1:00 PM"), new TimeSlot("1:00 PM"), new TimeSlot("1:00 PM"),
-				new TimeSlot("1:30 PM"), new TimeSlot("1:30 PM"), new TimeSlot("1:30 PM"),
-				new TimeSlot("2:00 PM"), new TimeSlot("2:00 PM"), new TimeSlot("2:00 PM"),
-				new TimeSlot("2:30 PM"), new TimeSlot("2:30 PM"), new TimeSlot("2:30 PM"),
-				new TimeSlot("3:00 PM"), new TimeSlot("3:00 PM"), new TimeSlot("3:00 PM"),
-				new TimeSlot("3:30 PM"), new TimeSlot("3:30 PM"), new TimeSlot("3:30 PM"),
-				new TimeSlot("4:00 PM"), new TimeSlot("4:00 PM"), new TimeSlot("4:00 PM"),
-				new TimeSlot("4:30 PM"), new TimeSlot("4:30 PM"), new TimeSlot("4:30 PM"),
-				new TimeSlot("5:00 PM"), new TimeSlot("5:00 PM"), new TimeSlot("5:00 PM"),
-				new TimeSlot("5:30 PM"), new TimeSlot("5:30 PM"), new TimeSlot("5:30 PM"),
-				new TimeSlot("6:00 PM"), new TimeSlot("6:00 PM"), new TimeSlot("6:00 PM"),
-				new TimeSlot("6:30 PM"), new TimeSlot("6:30 PM"), new TimeSlot("6:30 PM"),
-				new TimeSlot("7:00 PM"), new TimeSlot("7:00 PM"), new TimeSlot("7:00 PM"),
-				new TimeSlot("7:30 PM"), new TimeSlot("7:30 PM"), new TimeSlot("7:30 PM"),
-				new TimeSlot("8:00 PM"), new TimeSlot("8:00 PM"), new TimeSlot("8:00 PM"),
-				new TimeSlot("8:30 PM"), new TimeSlot("8:30 PM"), new TimeSlot("8:30 PM") };
+        ArrayList<TimeSlot> timeSlots = new ArrayList<TimeSlot>();
 		
-            return timeSlots;
-	}
+        int index = 0;
+        for (int i = 0; i < slotHelper.length * this.settingsOrderMax; i++) {
+            if ((i % this.settingsOrderMax) == 0) {
+                index++;
+            }
+            
+            TimeSlot slot = new TimeSlot(slotHelper[index-1].GetTime());
+            timeSlots.add(slot);
+        }
+
+        return timeSlots;
+    }
     
-    private void processFile(String line, BufferedReader bufferedReader, TimeSlot[] slots, int count) throws IOException {
+    private TimeSlot[] addTimeSlotHelper() {
+        
+        /*
+        for (int i = 0; i < slots.length; i++) {
+            if ((i % this.settingsOrderMax) == 0) {
+                
+            }
+        }
+        */
+
+        return null;
+    }
+    
+    private void processFile(String line, BufferedReader bufferedReader, ArrayList<TimeSlot> slots, int count) throws IOException {
         while((line = bufferedReader.readLine()) != null) {		
             if (line.equals("")) {
                 continue;
@@ -309,9 +315,9 @@ public class OrderTrackerModel {
 				
             String[] splitLines = line.split(" ");
             String name = splitLines[2].replace(';', ' ');
-				
+            
             if (name != null) {
-                slots[count].AddCustomer(name);
+                slots.get(count).AddCustomer(name);
             }
             else {
                 count++;
@@ -322,7 +328,7 @@ public class OrderTrackerModel {
         }
     }
     
-    private boolean checkMax(TimeSlot[] slots, String time) {
+    private boolean checkMax(ArrayList<TimeSlot> slots, String time) {
         TimeSlot currSlot = null;
         int index = 0, count = 0;
         
@@ -337,19 +343,21 @@ public class OrderTrackerModel {
         
         if (currSlot.GetTime().contains("00")) {
             for (int i = index; i < index + 6; i++) {               
-                if (slots[i].GetCustomerName() != null && !"null".equals(slots[i].GetCustomerName())) {
+                if (slots.get(i).GetCustomerName() != null && !"null".equals(slots.get(i).GetCustomerName())) {
                     count++;
                 }
             }
         }
         else if (currSlot.GetTime().contains("30")) {
             for (int i = index - 3; i < index + 3; i++) {
-                if (slots[i].GetCustomerName() != null && !"null".equals(slots[i].GetCustomerName())) {
+                if (slots.get(i).GetCustomerName() != null && !"null".equals(slots.get(i).GetCustomerName())) {
                     count++;
                 }
             }
         }
 
+        System.out.println("count: " + count + ", settingsOrderMax: " + this.settingsOrderMax);
+        
         return count >= this.settingsOrderMax;
     }
     

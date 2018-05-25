@@ -16,6 +16,7 @@ import java.awt.event.WindowAdapter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ToolTipManager;
@@ -1278,7 +1279,7 @@ public class OrderTrackerView extends javax.swing.JFrame {
         }
     }
     
-    public void updateCalendarTable(TimeSlot[] timeslots) {
+    public void updateCalendarTable(ArrayList<TimeSlot> timeslots) {
         
         int count = 1, i = 0;
         for (TimeSlot slot : timeslots) {
